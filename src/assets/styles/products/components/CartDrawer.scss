@@ -1,0 +1,131 @@
+.cart-drawer {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+
+  .overlay {
+    position: absolute;
+    inset: 0;
+    background-color: rgba(30, 5, 15, 0.2);
+    backdrop-filter: blur(4px);
+  }
+
+  .panel {
+    position: absolute;
+    right: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    max-width: 28rem;
+    background-color: var(--background);
+    border-left: 1px solid var(--border);
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+  }
+
+  .panel-content {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    padding: 1.5rem;
+  }
+
+  .panel-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 1.5rem;
+  }
+
+  .panel-title {
+    font-family: var(--font-display), sans-serif;
+    font-size: 1.125rem;
+    font-weight: 700;
+    color: var(--foreground);
+  }
+
+  .close {
+    cursor: pointer;
+    color: var(--muted-foreground);
+    transition: color 0.15s ease;
+
+    &:hover { color: var(--foreground); }
+  }
+
+  .empty {
+    flex: 1 1 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .text { font-size: 0.875rem; color: var(--muted-foreground); }
+  }
+
+  .items {
+    flex: 1 1 0;
+    overflow-y: auto;
+
+    .item { margin-top: 1rem; }
+  }
+
+  .item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 1rem;
+
+    .thumb {
+      height: 3.5rem;
+      width: 3.5rem;
+      border-radius: 0.125rem;
+      background-color: var(--secondary);
+      object-fit: contain;
+      padding: 0.25rem;
+    }
+
+    .info { flex: 1 1 0; }
+
+    .name { font-family: var(--font-display), sans-serif; font-size: 0.875rem; color: var(--foreground); }
+    .qty { font-size: 0.75rem; color: var(--muted-foreground); }
+    .row-price { font-size: 0.875rem; font-family: var(--font-display), sans-serif; color: var(--foreground); }
+
+    .remove {
+      cursor: pointer;
+      color: var(--muted-foreground);
+      font-size: 0.75rem;
+      transition: color 0.15s ease;
+      &:hover { color: var(--destructive); }
+    }
+  }
+
+  .panel-footer {
+    border-top: 1px solid var(--border);
+    padding-top: 1rem;
+    margin-top: 1rem;
+
+    .total {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 1rem;
+    }
+
+    .total-label {
+      font-family: var(--font-body), sans-serif; font-size: 0.875rem; color: var(--muted-foreground); }
+    .total-value { font-family: var(--font-display), sans-serif; font-size: 1.125rem; font-weight: 700; color: var(--foreground); }
+
+    .checkout {
+      width: 100%;
+      cursor: pointer;
+      border-radius: 0.125rem;
+      background-color: var(--primary);
+      padding: 0.75rem 0;
+      text-align: center;
+      font-family: var(--font-body), sans-serif;
+      font-size: 0.875rem;
+      font-weight: 500;
+      color: var(--primary-foreground);
+      transition: opacity 0.15s ease;
+      &:hover { opacity: 0.9; }
+    }
+  }
+}

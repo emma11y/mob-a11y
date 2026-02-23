@@ -2,18 +2,20 @@ export interface Route {
   path: string;
   name: string;
   component: string;
+  ts?: string | null;
 }
 
 export const routes: Route[] = [
   {
     path: '/',
     name: 'Accueil',
-    component: '../pages/accueil.html',
+    component: '../pages/home.html',
   },
   {
-    path: '/atelier',
-    name: 'Atelier',
-    component: '../pages/atelier.html',
+    path: '/produits',
+    name: 'Produits',
+    component: '../pages/products/products.html',
+    ts: '../pages/products/products.ts',
   },
   {
     path: '/ressources',
@@ -48,11 +50,29 @@ export class Router {
     this.currentPath = path;
     await this.loadComponent(route.component);
 
+    // Load route-specific TypeScript if provided
+    if (route.ts) {
+      await this.loadScript(route.ts);
+    }
+
     // Update browser history
     history.pushState({ path }, route.name, path);
 
     // Set title
     document.title = `${route.name} - ${titlePage}`;
+  }
+
+  private async loadScript(scriptPath: string): Promise<void> {
+    try {
+      const moduleUrl = new URL(scriptPath, import.meta.url).href;
+      const module = await import(moduleUrl);
+      // Call init function if it exists
+      if (module.init && typeof module.init === 'function') {
+        module.init();
+      }
+    } catch (error) {
+      console.error(`Failed to load script: ${scriptPath}`, error);
+    }
   }
 
   private async loadComponent(componentPath: string) {

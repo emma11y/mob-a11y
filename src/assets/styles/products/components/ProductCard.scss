@@ -1,0 +1,81 @@
+.product-card {
+  animation: fadeIn 0.5s ease-out forwards;
+
+  .card {
+    overflow: hidden;
+    border-radius: 0.5rem;
+    background-color: var(--card);
+    box-shadow: var(--shadow-card);
+    transition: box-shadow 0.3s ease;
+
+    &:hover {
+      box-shadow: var(--shadow-card-hover);
+    }
+  }
+
+  .image {
+    aspect-ratio: 1 / 1;
+    overflow: hidden;
+    background-color: var(--secondary);
+    padding: 1.5rem;
+
+    img {
+      height: 100%;
+      width: 100%;
+      object-fit: contain;
+      transition: transform 0.5s ease;
+    }
+
+    &:hover img {
+      transform: scale(1.1);
+    }
+  }
+
+  .body {
+    padding: 1rem;
+  }
+
+  .header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+  }
+
+  .title {
+    font-family: var(--font-display), sans-serif;
+    font-size: 0.875rem;
+    font-weight: 700;
+    color: var(--foreground);
+  }
+
+  .category {
+    margin-top: 0.125rem;
+    font-size: 0.75rem;
+    color: hsla(var(--muted-foreground-hsl), 0.5);
+  }
+
+  .price {
+    font-family: var(--font-display), sans-serif;
+    font-size: 0.875rem;
+    color: var(--foreground);
+  }
+
+  .add-to-cart {
+    margin-top: 0.75rem;
+    width: 100%;
+    cursor: pointer;
+    border-radius: 0.125rem;
+    background-color: var(--foreground);
+    padding: 0.5rem 0.75rem;
+    text-align: center;
+    font-family: var(--font-body), sans-serif;
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: var(--background);
+    transition: opacity 0.15s ease;
+
+    &:hover {
+      opacity: 0.8;
+    }
+  }
+}

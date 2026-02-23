@@ -1,61 +1,81 @@
-.banner {
-  display: flex;
-  justify-content: space-between;
-  margin: 0 1em;
+.header {
+  border-bottom: 0.1em solid var(--border);
 
-  @media screen and (max-width: 699px) {
-    flex-direction: column;
-  }
-
-  .title {
-    margin-top: 1em;
-    margin-right: 2em;
-
-    h1 {
-      margin: 0;
-    }
-  }
-
-  .theme-switcher {
-    text-align: right;
-    align-content: center;
-
-    button {
-      &:first-child {
-        border-top-left-radius: 0.5em;
-        border-bottom-left-radius: 0.5em;
-      }
-
-      &:last-child {
-        border-top-right-radius: 0.5em;
-        border-bottom-right-radius: 0.5em;
-        border-left: none;
-      }
-    }
-  }
-
-  .theme-switcher-buttons {
+  .banner {
     display: flex;
-    button {
-      width: 5em;
-      font-size: 1em;
-      padding: 0.5em;
+    justify-content: space-between;
+    padding: 0 1em;
+
+    @media screen and (max-width: 699px) {
+      flex-direction: column;
     }
 
-    .fa-circle-check {
-      display: none;
+    .title {
+      margin-top: 1em;
+      margin-right: 2em;
+
+      h1 {
+        margin: 0;
+      }
     }
 
-    [aria-pressed='true'] {
-      background-color: var(--color);
-      color: var(--bg-color);
+    .theme-switcher {
+      text-align: right;
+      align-content: center;
 
+      button {
+        &:first-child {
+          border-top-left-radius: 0.5em;
+          border-bottom-left-radius: 0.5em;
+        }
+
+        &:last-child {
+          border-top-right-radius: 0.5em;
+          border-bottom-right-radius: 0.5em;
+          border-left: none;
+        }
+      }
+    }
+
+    .theme-switcher-buttons {
       display: flex;
-      justify-content: center;
+      button {
+        width: 5em;
+        font-size: 1em;
+        padding: 0.5em;
+      }
 
       .fa-circle-check {
-        display: block;
-        margin-left: 0.5em;
+        display: none;
+      }
+
+      [aria-pressed='true'] {
+        background-color: var(--color);
+        color: var(--bg-color);
+
+        display: flex;
+        justify-content: center;
+
+        .fa-circle-check {
+          display: block;
+          margin-left: 0.5em;
+        }
+      }
+    }
+  }
+
+  nav {
+    margin: 1em;
+
+    ul {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      display: flex;
+      flex-direction: row;
+
+      li {
+        padding-right: 1em;
       }
     }
   }

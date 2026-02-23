@@ -47,27 +47,3 @@
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 }
-
-.site-footer {
-  border-top: 1px solid var(--border);
-}
-
-.footer-content {
-  padding-top: 2rem;
-  padding-bottom: 2rem;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.footer-copy {
-  font-family: var(--font-display), sans-serif;
-  font-size: 0.75rem;
-  color: hsla(var(--muted-foreground-hsl), 0.4);
-}
-
-.footer-info {
-  font-family: var(--font-body), sans-serif;
-  font-size: 0.75rem;
-  color: hsla(var(--muted-foreground-hsl), 0.4);
-}

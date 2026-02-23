@@ -56,9 +56,9 @@ function productCardHTML(product: (typeof products)[number], index: number) {
               <div class="title">${product.name}</div>
               <div class="category">${product.category}</div>
             </div>
-            <div class="price">$${product.price.toFixed(2)}</div>
+            <div class="price">${product.price.toFixed(2)} €</div>
           </div>
-          <div class="add-to-cart" data-add-to-cart="${product.id}">Add to cart</div>
+          <div class="add-to-cart" data-add-to-cart="${product.id}">Ajouter dans le panier</div>
         </div>
       </div>
     </div>
@@ -85,13 +85,13 @@ function cartDrawerHTML() {
 
   const content =
     state.items.length === 0
-      ? `<div class="empty"><span class="text">Your cart is empty</span></div>`
+      ? `<div class="empty"><span class="text">Votre panier est vide</span></div>`
       : `
         <div class="items">${itemsHTML}</div>
         <div class="panel-footer">
           <div class="total">
             <span class="total-label">Total</span>
-            <span class="total-value">$${totalPrice().toFixed(2)}</span>
+            <span class="total-value">${totalPrice().toFixed(2)} €</span>
           </div>
           <div class="checkout">Checkout</div>
         </div>
@@ -103,7 +103,7 @@ function cartDrawerHTML() {
       <div class="panel">
         <div class="panel-content">
           <div class="panel-header">
-            <span class="panel-title">Cart</span>
+            <span class="panel-title">Panier</span>
             <div class="close" data-close-drawer>
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
                 <line x1="18" y1="6" x2="6" y2="18" />
@@ -142,25 +142,13 @@ function homePageHTML() {
         </div>
       </div>
 
-      <div class="container hero-section">
-        <div class="hero-content">
-          <div class="hero-title">Stickers that<br />stick with you.</div>
-          <div class="hero-description">
-            Handcrafted vinyl stickers for your laptop, water bottle, or anywhere you want a little personality.
-          </div>
-        </div>
-      </div>
+     
 
       <div class="container product-grid-section">
         <div class="product-grid">${grid}</div>
       </div>
 
-      <div class="site-footer">
-        <div class="container footer-content">
-          <span class="footer-copy">© 2026 STCKR.</span>
-          <span class="footer-info">All stickers are waterproof & UV resistant</span>
-        </div>
-      </div>
+
 
       ${cartDrawerHTML()}
     </div>

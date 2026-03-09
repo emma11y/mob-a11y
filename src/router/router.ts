@@ -18,6 +18,12 @@ export const routes: Route[] = [
     ts: '../pages/products/products.ts',
   },
   {
+    path: '/finaliser-votre-commande',
+    name: 'Finaliser votre commande',
+    component: '../pages/checkout/checkout.html',
+    ts: '../pages/checkout/checkout.ts',
+  },
+  {
     path: '/ressources',
     name: 'Ressources',
     component: '../pages/ressources.html',
@@ -25,7 +31,8 @@ export const routes: Route[] = [
   {
     path: '/a-propos',
     name: 'A propos',
-    component: '../pages/about.html',
+    component: '../pages/about/about.html',
+    ts: '../pages/about/about.ts',
   },
 ];
 
@@ -84,7 +91,7 @@ export class Router {
 
     try {
       const html = await fetch(new URL(componentPath, import.meta.url)).then(
-        (res) => res.text()
+        (res) => res.text(),
       );
       outlet.innerHTML = html;
     } catch (error) {

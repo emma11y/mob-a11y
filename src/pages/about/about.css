@@ -1,0 +1,18 @@
+.about-section {
+  padding-top: 6rem;
+  padding-bottom: 4rem;
+  height: 67.5vh;
+
+  .title {
+    font-family: var(--font-display), sans-serif;
+    font-size: 2.25rem;
+    font-weight: 700;
+    line-height: 1.25;
+    letter-spacing: -0.025em;
+    color: var(--foreground);
+  }
+
+  .footer {
+    margin-top: 2rem;
+  }
+}

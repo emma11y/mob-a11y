@@ -8,8 +8,37 @@ import { products } from '../../data/products';
 // Simple cart state
 type CartItem = { product: (typeof products)[number]; quantity: number };
 
+// Store cart in localStorage for persistence across pages
+function loadCart(): CartItem[] {
+  try {
+    const stored = localStorage.getItem('cart');
+    if (!stored) return [];
+    const parsed = JSON.parse(stored);
+    return parsed
+      .map((item: any) => ({
+        product: products.find((p) => p.id === item.productId),
+        quantity: item.quantity,
+      }))
+      .filter((item: CartItem) => item.product);
+  } catch {
+    return [];
+  }
+}
+
+function saveCart(items: CartItem[]) {
+  localStorage.setItem(
+    'cart',
+    JSON.stringify(
+      items.map((item) => ({
+        productId: item.product.id,
+        quantity: item.quantity,
+      })),
+    ),
+  );
+}
+
 const state = {
-  items: [] as CartItem[],
+  items: loadCart(),
   isCartOpen: false,
 };
 
@@ -22,12 +51,15 @@ function addToCart(productId: number) {
   } else {
     state.items.push({ product, quantity: 1 });
   }
-  render();
+
+  saveCart(state.items);
+  refreshCart();
 }
 
 function removeFromCart(productId: number) {
   state.items = state.items.filter((i) => i.product.id !== productId);
-  render();
+  saveCart(state.items);
+  refreshCart();
 }
 
 function totalItems() {
@@ -40,7 +72,35 @@ function totalPrice() {
 
 function setIsCartOpen(open: boolean) {
   state.isCartOpen = open;
-  render();
+
+  const cartElement = document.querySelector('#cart');
+  if (cartElement) {
+    if (open) {
+      cartElement.innerHTML = cartDrawerHTML();
+
+      document
+        .querySelectorAll<HTMLElement>('[data-close-drawer]')
+        .forEach((elt) =>
+          elt.addEventListener('click', () => setIsCartOpen(false)),
+        );
+
+      // Remove from cart
+      document.querySelectorAll<HTMLElement>('[data-remove]').forEach((el) => {
+        el.addEventListener('click', () => {
+          const id = Number(el.getAttribute('data-remove'));
+          removeFromCart(id);
+        });
+      });
+
+      const checkoutElement = document.querySelector('.checkout');
+      checkoutElement?.addEventListener(
+        'click',
+        () => (window.location.href = '/finaliser-votre-commande'),
+      );
+    } else {
+      cartElement.innerHTML = '';
+    }
+  }
 }
 
 function productCardHTML(product: (typeof products)[number], index: number) {
@@ -74,12 +134,12 @@ function cartDrawerHTML() {
         <img src="${item.product.image}" class="thumb" />
         <div class="info">
           <div class="name">${item.product.name}</div>
-          <div class="qty">Qty: ${item.quantity}</div>
+          <div class="qty">Quantité : ${item.quantity}</div>
         </div>
-        <div class="row-price">$${(item.product.price * item.quantity).toFixed(2)}</div>
+        <div class="row-price">${(item.product.price * item.quantity).toFixed(2)} €</div>
         <div class="remove" data-remove="${item.product.id}">✕</div>
       </div>
-    `
+    `,
     )
     .join('');
 
@@ -93,7 +153,7 @@ function cartDrawerHTML() {
             <span class="total-label">Total</span>
             <span class="total-value">${totalPrice().toFixed(2)} €</span>
           </div>
-          <div class="checkout">Checkout</div>
+          <div class="checkout">Payer</div>
         </div>
       `;
 
@@ -118,91 +178,26 @@ function cartDrawerHTML() {
   `;
 }
 
-function homePageHTML() {
+function productsPageHTML() {
   const grid = products.map((p, i) => productCardHTML(p, i)).join('');
-  const cartBadge = totalItems();
+
   return `
+
     <div class="index-container">
-      <div class="site-header">
-        <div class="container header-container">
-          <div class="site-logo">STCKR.</div>
-          <div class="nav-menu">
-            <span class="nav-item">Shop</span>
-            <span class="nav-item">About</span>
-            <!-- ThemeToggle intentionally omitted in vanilla sample -->
-            <div class="cart-toggle" data-open-drawer>
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                <path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z" />
-                <line x1="3" y1="6" x2="21" y2="6" />
-                <path d="M16 10a4 4 0 01-8 0" />
-              </svg>
-              ${cartBadge > 0 ? `<span class="cart-badge">${cartBadge}</span>` : ''}
-            </div>
-          </div>
-        </div>
-      </div>
-
-     
-
       <div class="container product-grid-section">
         <div class="product-grid">${grid}</div>
-      </div>
-
-
-
-      ${cartDrawerHTML()}
-    </div>
-  `;
-}
-
-function notFoundPageHTML() {
-  return `
-    <div class="not-found-container">
-      <div class="not-found-content">
-        <h1 class="not-found-title">404</h1>
-        <p class="not-found-message">Oops! Page not found</p>
-        <a href="/" class="not-found-link" data-link>
-          Return to Home
-        </a>
       </div>
     </div>
   `;
 }
 
 function router() {
-  const path = window.location.pathname;
-  if (path === '/' || path === '/index.html') {
-    return homePageHTML();
-  } else {
-    console.error(
-      '404 Error: User attempted to access non-existent route:',
-      path
-    );
-    return notFoundPageHTML();
-  }
+  return productsPageHTML();
 }
 
 function attachEventHandlers(root: HTMLElement) {
-  // Navigation Links
-  root.querySelectorAll<HTMLElement>('[data-link]').forEach((el) => {
-    el.addEventListener('click', (e) => {
-      e.preventDefault();
-      const href = el.getAttribute('href');
-      if (href) {
-        window.history.pushState(null, '', href);
-        render();
-      }
-    });
-  });
-
-  // Open cart
-  root.querySelectorAll<HTMLElement>('[data-open-drawer]').forEach((el) => {
-    el.addEventListener('click', () => setIsCartOpen(true));
-  });
   // Close cart
-  root.querySelectorAll<HTMLElement>('[data-close-drawer]').forEach((el) => {
-    el.addEventListener('click', () => setIsCartOpen(false));
-  });
+
   // Add to cart
   root.querySelectorAll<HTMLElement>('[data-add-to-cart]').forEach((el) => {
     el.addEventListener('click', () => {
@@ -210,23 +205,35 @@ function attachEventHandlers(root: HTMLElement) {
       addToCart(id);
     });
   });
-  // Remove from cart
-  root.querySelectorAll<HTMLElement>('[data-remove]').forEach((el) => {
-    el.addEventListener('click', () => {
-      const id = Number(el.getAttribute('data-remove'));
-      removeFromCart(id);
-    });
-  });
 }
 
 function render() {
-  const root = document.getElementById('root');
+  const root = document.getElementById('products');
   if (!root) return;
   root.innerHTML = router();
   attachEventHandlers(root);
 }
 
+function refreshCart() {
+  // Cart
+  const cartBadge = document.querySelector('.cart-badge');
+  if (cartBadge) {
+    cartBadge.textContent = totalItems().toString() ?? '';
+  }
+
+  setIsCartOpen(state.isCartOpen);
+}
+
 // Initial render
 export function init() {
   render();
+
+  // Open cart
+  const openCart = document.querySelector<HTMLElement>('[data-open-drawer]');
+
+  if (openCart) {
+    openCart.addEventListener('click', () => {
+      setIsCartOpen(true);
+    });
+  }
 }

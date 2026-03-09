@@ -48,7 +48,9 @@
     color: var(--muted-foreground);
     transition: color 0.15s ease;
 
-    &:hover { color: var(--foreground); }
+    &:hover {
+      color: var(--foreground);
+    }
   }
 
   .empty {
@@ -57,14 +59,19 @@
     align-items: center;
     justify-content: center;
 
-    .text { font-size: 0.875rem; color: var(--muted-foreground); }
+    .text {
+      font-size: 0.875rem;
+      color: var(--muted-foreground);
+    }
   }
 
   .items {
     flex: 1 1 0;
     overflow-y: auto;
 
-    .item { margin-top: 1rem; }
+    .item {
+      margin-top: 1rem;
+    }
   }
 
   .item {
@@ -83,18 +90,33 @@
       padding: 0.25rem;
     }
 
-    .info { flex: 1 1 0; }
+    .info {
+      flex: 1 1 0;
+    }
 
-    .name { font-family: var(--font-display), sans-serif; font-size: 0.875rem; color: var(--foreground); }
-    .qty { font-size: 0.75rem; color: var(--muted-foreground); }
-    .row-price { font-size: 0.875rem; font-family: var(--font-display), sans-serif; color: var(--foreground); }
+    .name {
+      font-family: var(--font-display), sans-serif;
+      font-size: 0.875rem;
+      color: var(--foreground);
+    }
+    .qty {
+      font-size: 0.75rem;
+      color: var(--muted-foreground);
+    }
+    .row-price {
+      font-size: 0.875rem;
+      font-family: var(--font-display), sans-serif;
+      color: var(--foreground);
+    }
 
     .remove {
       cursor: pointer;
       color: var(--muted-foreground);
       font-size: 0.75rem;
       transition: color 0.15s ease;
-      &:hover { color: var(--destructive); }
+      &:hover {
+        color: var(--destructive);
+      }
     }
   }
 
@@ -110,8 +132,16 @@
     }
 
     .total-label {
-      font-family: var(--font-body), sans-serif; font-size: 0.875rem; color: var(--muted-foreground); }
-    .total-value { font-family: var(--font-display), sans-serif; font-size: 1.125rem; font-weight: 700; color: var(--foreground); }
+      font-family: var(--font-body), sans-serif;
+      font-size: 0.875rem;
+      color: var(--muted-foreground);
+    }
+    .total-value {
+      font-family: var(--font-display), sans-serif;
+      font-size: 1.125rem;
+      font-weight: 700;
+      color: var(--foreground);
+    }
 
     .checkout {
       width: 100%;
@@ -125,7 +155,9 @@
       font-weight: 500;
       color: var(--primary-foreground);
       transition: opacity 0.15s ease;
-      &:hover { opacity: 0.9; }
+      &:hover {
+        opacity: 0.9;
+      }
     }
   }
 }

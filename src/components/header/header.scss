@@ -22,31 +22,22 @@
     .theme-switcher {
       text-align: right;
       align-content: center;
-
-      button {
-        &:first-child {
-          border-top-left-radius: 0.5em;
-          border-bottom-left-radius: 0.5em;
-        }
-
-        &:last-child {
-          border-top-right-radius: 0.5em;
-          border-bottom-right-radius: 0.5em;
-          border-left: none;
-        }
-      }
     }
 
     .theme-switcher-buttons {
       display: flex;
-      button {
-        width: 5em;
-        font-size: 1em;
-        padding: 0.5em;
-      }
 
-      .fa-circle-check {
-        display: none;
+      button {
+        color: var(--color);
+        border: none;
+        background-color: var(--bg-color);
+        border-radius: 25%;
+        cursor: pointer;
+        height: 2rem;
+
+        &:hover {
+          background-color: hsla(var(--muted-foreground-hsl), 0.2);
+        }
       }
 
       [aria-pressed='true'] {
@@ -55,13 +46,14 @@
 
         display: flex;
         justify-content: center;
-
-        .fa-circle-check {
-          display: block;
-          margin-left: 0.5em;
-        }
       }
     }
+  }
+
+  .subtitle {
+    margin-top: 0.5em;
+    margin-left: 1em;
+    color: hsla(var(--muted-foreground-hsl), 0.8);
   }
 
   nav {

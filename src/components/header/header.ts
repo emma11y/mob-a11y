@@ -3,7 +3,7 @@ import './header.scss';
 export class CustomHeader extends HTMLElement {
   async connectedCallback() {
     const html = await fetch(new URL('./header.html', import.meta.url)).then(
-      (res) => res.text()
+      (res) => res.text(),
     );
 
     this.innerHTML = html;
@@ -43,10 +43,13 @@ export class CustomHeader extends HTMLElement {
 
     buttons.forEach((button) => {
       const dataTheme = button.getAttribute('data-theme');
+
       if (dataTheme === theme) {
         button.setAttribute('aria-pressed', 'true');
+        (button as HTMLElement).style.display = 'none'; // cache le bouton du thème actif
       } else {
         button.setAttribute('aria-pressed', 'false');
+        (button as HTMLElement).style.display = 'inline-block'; // affiche l'autre
       }
     });
 

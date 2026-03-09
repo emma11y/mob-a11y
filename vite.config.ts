@@ -2,6 +2,7 @@ import { defineConfig } from 'vite';
 import FullReload from 'vite-plugin-full-reload';
 
 export default defineConfig({
+  appType: 'spa',
   css: {
     preprocessorOptions: {
       scss: {
@@ -11,6 +12,7 @@ export default defineConfig({
   },
   server: {
     port: 5173,
+    host: '0.0.0.0',
     open: true,
   },
   build: {
@@ -28,7 +30,7 @@ export default defineConfig({
         'index.html',
         '404.html',
       ],
-      { delay: 100 }
+      { delay: 100 },
     ),
   ],
 });

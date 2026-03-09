@@ -11,7 +11,7 @@ async function initApp() {
   if (!appContainer) return;
 
   const layout = await fetch(new URL('./layout.html', import.meta.url)).then(
-    (res) => res.text()
+    (res) => res.text(),
   );
 
   appContainer.innerHTML = layout;

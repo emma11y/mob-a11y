@@ -163,12 +163,12 @@ function cartDrawerHTML() {
 
   return `
     <div class="cart-drawer" role="dialog" aria-modal="true" aria-labelledby="panel-title">
-      <div class="overlay" data-close-drawer data-testid="cart-close"></div>
+      <div class="overlay" data-close-drawer></div>
       <div class="panel">
         <div class="panel-content">
           <div class="panel-header">
             <h1 id="panel-title">Votre panier</h1>
-            <div class="button" data-close-drawer>
+            <div class="button" id="cart-close" data-testid="cart-close" data-close-drawer>
               <svg aria-hidden="true" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
                 <line x1="18" y1="6" x2="6" y2="18" />
                 <line x1="6" y1="6" x2="18" y2="18" />

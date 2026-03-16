@@ -135,7 +135,13 @@ function cartDrawerHTML() {
           <div class="qty">Quantité : ${item.quantity}</div>
         </div>
         <div class="row-price">${(item.product.price * item.quantity).toFixed(2)} €</div>
-        <div class="button remove" data-remove="${item.product.id}">✕</div>
+        <div class="button remove" data-remove="${item.product.id}">
+           <svg aria-hidden="true" aria-hidden="true" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <line x1="18" y1="6" x2="6" y2="18" />
+                <line x1="6" y1="6" x2="18" y2="18" />
+            </svg>
+            <span class="sr-only">Supprimer le produit du panier</span>
+        </div>
       </div>
     `,
     )
@@ -163,7 +169,7 @@ function cartDrawerHTML() {
           <div class="panel-header">
             <h1 id="panel-title">Votre panier</h1>
             <div class="button" data-close-drawer>
-              <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <svg aria-hidden="true" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
                 <line x1="18" y1="6" x2="6" y2="18" />
                 <line x1="6" y1="6" x2="18" y2="18" />
               </svg>

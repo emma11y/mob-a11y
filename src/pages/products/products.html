@@ -1,6 +1,12 @@
 <div class="container hero-section" id="products-page">
-  <div class="button" data-testid="cart-toggle" data-open-drawer>
+  <button
+    class="button"
+    id="cart-toggle"
+    data-testid="cart-toggle"
+    data-open-drawer
+  >
     <svg
+      aria-hidden="true"
       width="24"
       height="24"
       viewBox="0 0 24 24"
@@ -13,15 +19,15 @@
       <path d="M16 10a4 4 0 01-8 0" />
     </svg>
     <span class="cart-badge"></span>
-  </div>
+  </button>
   <div class="hero-content" id="hero">
     <div class="hero-title" id="hero-title">
       Des autocollants qui vous collent à la peau.
     </div>
     <p class="hero-description">
-      Autocollants en vinyle faits à la main pour votre ordinateur portable,
-      votre bouteille d'eau ou tout autre objet auquel vous souhaitez ajouter
-      une touche personnelle.
+      Stickers en vinyle faits à la main pour votre ordinateur portable, votre
+      bouteille d'eau ou tout autre objet auquel vous souhaitez ajouter une
+      touche personnelle.
     </p>
   </div>
   <!-- TODO : split products.ts -->

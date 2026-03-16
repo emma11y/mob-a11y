@@ -67,13 +67,10 @@ export const printButtonLinkViolations = async (
 
   const filteredViolations = results.violations
     .map((v) => {
-      const nodes = v.nodes.filter((n: any) =>
-        n.all.some((node: any) =>
-          ['BUTTON', 'A'].includes(
-            node.html?.match(/^<([a-zA-Z]+)/)?.[1]?.toUpperCase() || '',
-          ),
-        ),
-      );
+      const nodes = v.nodes.filter((n: any) => {
+        const tag = n.html?.match(/^<([a-zA-Z]+)/)?.[1]?.toUpperCase();
+        return ['BUTTON', 'A'].includes(tag);
+      });
       return { ...v, nodes };
     })
     .filter((v) => v.nodes.length > 0);
@@ -83,18 +80,22 @@ export const printButtonLinkViolations = async (
     return;
   }
 
-  console.log(
-    `❌ ${filteredViolations.length} règle(s) Axe affectant des <button> ou <a>\n`,
-  );
+  let message = `❌ ${filteredViolations.length} violation(s)\n\n`;
 
   filteredViolations.forEach((v: any) => {
-    console.log(`🔎 ${v.id} (${v.impact})`);
-    console.log(`   ${v.help}`);
+    message += `🔎 ${v.id} (${v.impact})\n`;
+    message += `   ${v.help}\n`;
+
     v.nodes.forEach((n: any) => {
-      console.log(`   → ${n.target.join(', ')}`);
+      message += `   → ${n.target.join(', ')}\n`;
     });
-    console.log('');
+
+    message += '\n';
   });
+
+  console.log(message);
+
+  throw new Error(message);
 };
 
 const formatViolations = (violations: any[]) => {

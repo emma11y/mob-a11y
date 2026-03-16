@@ -11,9 +11,10 @@ import {
 // 3: Navigation clavier
 // 4: Lecteur d'écran
 
+// TODO : fix tests, they should not work
 test.describe('Exercice 3 : Navigation au clavier', () => {
   test.beforeEach(async ({ page }) => {
-    await page.goto('http://localhost:5173/');
+    await page.goto('http://localhost:5173/produits');
   });
 
   test('Tous les boutons et liens doivent être focusables via la touche Tab', async ({
@@ -42,7 +43,7 @@ test.describe('Exercice 3 : Navigation au clavier', () => {
     for (const el of interactiveElements) {
       await el.focus();
 
-      const hasFocusVisible = await el.evaluate((element) => {
+      const hasFocusVisible = await el.evaluate((element: Element) => {
         const style = window.getComputedStyle(element, ':focus-visible');
         return style.outlineStyle !== 'none' && style.outlineWidth !== '0px';
       });

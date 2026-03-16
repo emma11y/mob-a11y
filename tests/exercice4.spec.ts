@@ -8,9 +8,8 @@ import {
 // Definition of done
 // ------------------
 // 1: Détection d'erreur HTML 5
-// 2: Détection d'erreurs automatiques avec Axe
-// 3: Navigation clavier
-// 4: Lecteur d'écran
+// 2: Navigation clavier
+// 3: Lecteur d'écran
 
 test.describe('Exercice 4 : Boutons et liens', () => {
   test.beforeEach(async ({ page }) => {
@@ -72,13 +71,5 @@ test.describe('Exercice 4 : Boutons et liens', () => {
     const cart = await page.locator('id=cart');
     const cta = await cart.getByText('Payer');
     await expect(cta).toHaveRole('link');
-  });
-
-  test('Afficher les violations Axe sur les <button> et <a>', async ({
-    page,
-  }) => {
-    await page.goto('http://localhost:5173/produits');
-
-    await printButtonLinkViolations(page, 'body');
   });
 });

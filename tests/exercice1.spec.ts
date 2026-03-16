@@ -7,7 +7,7 @@ import { expectNoAxeViolations } from './utils';
 // 2: Détection d'erreur HTML 5
 // 3: Lecteur d'écran
 
-test.describe('Exercice 1: Heading levels', () => {
+test.describe('Exercice 1: Niveaux de titres', () => {
   test.beforeEach(async ({ page }) => {
     await page.goto('http://localhost:5173/produits');
   });

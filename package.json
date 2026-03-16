@@ -9,6 +9,7 @@
     "preview": "vite preview",
     "format": "prettier . --write",
     "tests": "playwright test --reporter=list",
+    "tests:debug": "playwright test --debug",
     "tests:report": "playwright show-report"
   },
   "devDependencies": {

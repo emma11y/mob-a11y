@@ -5,7 +5,7 @@ Les personnes malvoyantes ne peuvent pas utiliser la souris, pour la simple rais
 
 ## Comment naviguer au clavier ?
 
-Vous devez utiliser la touche TAB pour aller sur4chaque élément recevant le focus : lien, bouton, champ de formulaire, menu, fenêtre de dialog.
+Vous devez utiliser la touche TAB pour aller sur chaque élément recevant le focus : lien, bouton, champ de formulaire, menu, fenêtre de dialog.
 
 Normalement, sur la page principale, vous devez voir tous les liens ou boutons se mettre en valeur.
 Mais en naviguant avec la touche TAB, vous constatez que vous ne savez pas où vous êtes.

@@ -70,7 +70,7 @@ function totalPrice() {
   return state.items.reduce((sum, i) => sum + i.product.price * i.quantity, 0);
 }
 
-function setIsCartOpen(open: boolean) {
+function drawCart(open: boolean) {
   state.isCartOpen = open;
 
   const cartElement = document.querySelector('#cart');
@@ -80,9 +80,7 @@ function setIsCartOpen(open: boolean) {
 
       document
         .querySelectorAll<HTMLElement>('[data-close-drawer]')
-        .forEach((elt) =>
-          elt.addEventListener('click', () => setIsCartOpen(false)),
-        );
+        .forEach((elt) => elt.addEventListener('click', () => drawCart(false)));
 
       // Remove from cart
       document.querySelectorAll<HTMLElement>('[data-remove]').forEach((el) => {
@@ -137,7 +135,7 @@ function cartDrawerHTML() {
           <div class="qty">Quantité : ${item.quantity}</div>
         </div>
         <div class="row-price">${(item.product.price * item.quantity).toFixed(2)} €</div>
-        <div class="remove" data-remove="${item.product.id}">✕</div>
+        <div class="button remove" data-remove="${item.product.id}">✕</div>
       </div>
     `,
     )
@@ -153,19 +151,19 @@ function cartDrawerHTML() {
             <span class="total-label">Total</span>
             <span class="total-value">${totalPrice().toFixed(2)} €</span>
           </div>
-          <div class="checkout">Payer</div>
+          <div role="link" class="checkout">Payer</div>
         </div>
       `;
 
   return `
-    <div class="cart-drawer">
-      <div class="overlay" data-close-drawer></div>
+    <div class="cart-drawer" role="dialog" aria-modal="true" aria-labelledby="panel-title">
+      <div class="overlay" data-close-drawer data-testid="cart-close"></div>
       <div class="panel">
         <div class="panel-content">
           <div class="panel-header">
-            <span class="panel-title">Panier</span>
-            <div class="close" data-close-drawer>
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <h1 id="panel-title">Votre panier</h1>
+            <div class="button" data-close-drawer>
+              <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
                 <line x1="18" y1="6" x2="6" y2="18" />
                 <line x1="6" y1="6" x2="18" y2="18" />
               </svg>
@@ -221,7 +219,7 @@ function refreshCart() {
     cartBadge.textContent = totalItems().toString() ?? '';
   }
 
-  setIsCartOpen(state.isCartOpen);
+  drawCart(state.isCartOpen);
 }
 
 // Initial render
@@ -233,7 +231,7 @@ export function init() {
 
   if (openCart) {
     openCart.addEventListener('click', () => {
-      setIsCartOpen(true);
+      drawCart(true);
     });
   }
 }

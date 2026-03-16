@@ -27,19 +27,6 @@
     .theme-switcher-buttons {
       display: flex;
 
-      button {
-        color: var(--color);
-        border: none;
-        background-color: var(--bg-color);
-        border-radius: 25%;
-        cursor: pointer;
-        height: 2rem;
-
-        &:hover {
-          background-color: hsla(var(--muted-foreground-hsl), 0.2);
-        }
-      }
-
       [aria-pressed='true'] {
         background-color: var(--color);
         color: var(--bg-color);

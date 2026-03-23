@@ -6,17 +6,17 @@ import { expectNoAxeViolations } from './utils';
 // 1: Détection d'erreur HTML 5
 // 2: Lecteur d'écran
 
-test.describe('Exercice 5: Langue', () => {
+test.describe('Exercice 5 : Langue', () => {
   test.beforeEach(async ({ page }) => {
     await page.goto('http://localhost:5173/produits');
   });
 
-  test('la page a la bonne langue', async ({ page }) => {
+  test('La page doit avoir la bonne langue', async ({ page }) => {
     const htmlLang = await page.getAttribute('html', 'lang');
     expect(htmlLang).toBe('fr');
   });
 
-  test('le mot "Stickers" est entouré d’une balise span avec un attribut lang vers l\'anglais', async ({
+  test('Le mot "Stickers" doit être entouré d’une balise span avec un attribut lang vers l\'anglais', async ({
     page,
   }) => {
     const spans = await page.$$('.hero-description [lang]');

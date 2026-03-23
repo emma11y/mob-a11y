@@ -80,34 +80,94 @@ function validateForm(): boolean {
 
   if (!shippingForm || !paymentForm) return false;
 
+  let hasError = false;
+
   // Basic HTML5 validation
   if (!shippingForm.checkValidity() || !paymentForm.checkValidity()) {
-    return false;
+    shippingForm
+      .querySelectorAll('[required]')
+      .forEach((elt) => checkRequiredError(elt));
+
+    paymentForm
+      .querySelectorAll('[required]')
+      .forEach((elt) => checkRequiredError(elt));
+
+    hasError = true;
+  }
+
+  const email = (document.getElementById('email') as HTMLInputElement).value;
+  if (
+    email &&
+    !/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(email)
+  ) {
+    showError(
+      'email',
+      'Votre e-mail est invalide. Format attendu : nom.prenom@domaine.fr',
+    );
+    hasError = true;
   }
 
   // Additional validation for card number
   const cardNumber = (document.getElementById('cardNumber') as HTMLInputElement)
     .value;
-  if (!/^\d{4}\s?\d{4}\s?\d{4}\s?\d{4}$/.test(cardNumber.replace(/\s/g, ''))) {
-    showError('cardNumber', 'Numéro de carte invalide');
-    return false;
+  if (
+    cardNumber &&
+    !/^\d{4}\s?\d{4}\s?\d{4}\s?\d{4}$/.test(cardNumber.replace(/\s/g, ''))
+  ) {
+    showError(
+      'cardNumber',
+      'Numéro de carte invalide (Format attendu : 0000 0000 0000 0000)',
+    );
+    hasError = true;
   }
 
   // Validate expiry format
   const expiry = (document.getElementById('expiry') as HTMLInputElement).value;
-  if (!/^\d{2}\/\d{2}$/.test(expiry)) {
-    showError('expiry', 'Format invalide (MM/YY)');
-    return false;
+  if (expiry) {
+    if (!/^\d{2}\/\d{2}$/.test(expiry)) {
+      showError('expiry', 'Format invalide (MM/YY)');
+      hasError = true;
+    } else {
+      const month = Number.parseInt(expiry.substring(0, 2));
+      const year = Number.parseInt('20' + expiry.substring(3, 5));
+
+      if (month > 12) {
+        showError('expiry', 'Format invalide (MM/YY)');
+        hasError = true;
+      } else {
+        const expiryDate = new Date(year, month, 0);
+
+        if (expiryDate <= new Date()) {
+          showError('expiry', 'Votre carte est expirée');
+          hasError = true;
+        }
+      }
+    }
   }
 
   // Validate CVV
   const cvv = (document.getElementById('cvv') as HTMLInputElement).value;
-  if (!/^\d{3}$/.test(cvv)) {
-    showError('cvv', 'CVV invalide');
-    return false;
+  if (cvv && !/^\d{3}$/.test(cvv)) {
+    showError('cvv', 'Format invalide (CVV)');
+    hasError = true;
   }
 
-  return true;
+  return !hasError;
+}
+
+function checkRequiredError(element: Element) {
+  const fieldId = element.id;
+  const field = document.getElementById(fieldId);
+  if (!field) return;
+
+  if (field.hasAttribute('required') && !(field as HTMLInputElement).value) {
+    const label = element.parentElement?.querySelector('label');
+    if (label) {
+      const title = label.textContent.replace(' *', '');
+
+      showError(fieldId, `Le champ ${title} est obligatoire`);
+    }
+  }
 }
 
 function showError(fieldId: string, message: string): void {
@@ -123,7 +183,8 @@ function showError(fieldId: string, message: string): void {
 
   // Add error class and message
   parent.classList.add('has-error');
-  const errorEl = document.createElement('div');
+  const errorEl = document.createElement('p');
+  errorEl.id = `error-${fieldId}`;
   errorEl.className = 'form-error';
   errorEl.textContent = message;
   parent.appendChild(errorEl);
@@ -185,14 +246,29 @@ function handlePaymentSubmit(e: Event): void {
   clearErrors();
 
   if (!validateForm()) {
+    showAlert("Vous n'avez pas rempli les champs correctement.", 'error');
+
+    const element = document.querySelector(
+      '.has-error input',
+    ) as HTMLInputElement;
+    if (element) {
+      element.focus();
+    }
+
     return;
   }
 
   const cart = loadCartFromStorage();
   if (cart.length === 0) {
-    alert('Votre panier est vide');
+    showAlert('Votre panier est vide', 'error');
     return;
   }
+
+  // Show success message
+  showAlert(
+    'Commande validée avec succès ! Merci pour votre achat. <br> Vous allez être automatiquement redirigé vers la page produits...',
+    'success',
+  );
 
   // Get form data
   const shippingForm = document.getElementById(
@@ -219,11 +295,26 @@ function handlePaymentSubmit(e: Event): void {
   // Clear cart
   localStorage.removeItem('cart');
 
-  // Show success message
-  alert('Commande validée avec succès! Merci pour votre achat.');
-
   // Redirect to products
-  window.location.href = '/produits';
+  setTimeout(() => {
+    window.location.href = '/produits';
+  }, 2000);
+}
+
+function showAlert(message: string, type: string) {
+  const alert = document.querySelector('.alert');
+  if (alert) {
+    const text = document.createElement('p');
+    text.innerHTML = message;
+    alert.appendChild(text);
+    alert.classList.add(type);
+
+    setTimeout(() => {
+      alert.classList.remove(type);
+      alert.removeChild(text);
+      alert.textContent = '';
+    }, 5000);
+  }
 }
 
 export function init(): void {
@@ -232,7 +323,7 @@ export function init(): void {
     '.checkout-container',
   ) as HTMLDivElement;
   const emptyCart = document.getElementById('empty-cart');
-  const payButton = document.getElementById('pay-button') as HTMLButtonElement;
+  const payButton = document.querySelector('.pay-button') as HTMLButtonElement;
 
   // Show empty cart message if cart is empty
   if (cart.length === 0) {

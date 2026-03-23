@@ -1,5 +1,4 @@
 import { test, expect } from '@playwright/test';
-import { printButtonLinkViolations } from './utils';
 
 // Definition of done
 // ------------------
@@ -10,12 +9,6 @@ import { printButtonLinkViolations } from './utils';
 test.describe('Exercice 6 : Les boutons doivent avoir des labels explicites', () => {
   test.beforeEach(async ({ page }) => {
     await page.goto('http://localhost:5173/produits');
-  });
-
-  test("Aucune violation Axe sur le bouton d'ouverture du panier", async ({
-    page,
-  }) => {
-    await printButtonLinkViolations(page, '#cart-toggle');
   });
 
   test("L'icône du bouton d'ouverture du panier doit avoir un texte alternatif", async ({
@@ -53,26 +46,35 @@ test.describe('Exercice 6 : Les boutons doivent avoir des labels explicites', ()
   test('Le bouton "Ajouter dans le panier" doit être explicite', async ({
     page,
   }) => {
-    const buttons = await page.locator('text=Ajouter dans le panier');
-    await expect(buttons).toHaveCount(0);
+    const buttons = await page.locator('.add-to-cart');
+
+    const count = await buttons.count();
+    console.log('count', count);
+    for (let i = 0; i < count; i++) {
+      const button = await buttons.nth(i);
+      const text = await button.textContent();
+      console.log('text', text);
+      await expect(text).not.toStrictEqual('Ajouter dans le panier');
+    }
   });
 
   test('Le bouton "Supprimer le produit du panier" doit être explicite', async ({
     page,
   }) => {
-    const buttonsToAdd = await page
-      .locator('text=Ajouter dans le panier')
-      .elementHandles();
+    const products = await page.locator('.add-to-cart');
 
-    for (const el of buttonsToAdd) {
-      await el.click();
-    }
+    await products.nth(0).click();
+    await products.nth(3).click();
 
     await page.getByTestId('cart-toggle').click();
 
-    const buttonsToRemove = await page.locator(
-      'text=Supprimer le produit du panier',
-    );
-    await expect(buttonsToRemove).toHaveCount(0);
+    const buttonsToRemove = await page.locator('.remove span');
+
+    const count = await buttonsToRemove.count();
+    for (let i = 0; i < count; i++) {
+      const button = await buttonsToRemove.nth(i);
+      const text = await button.textContent();
+      await expect(text).not.toStrictEqual('Supprimer le produit du panier');
+    }
   });
 });

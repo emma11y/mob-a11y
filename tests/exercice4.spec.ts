@@ -1,4 +1,4 @@
-import { test, expect } from '@playwright/test';
+import { test, expect, Locator } from '@playwright/test';
 import {
   expectNoAxeViolations,
   expectNoColorContrastViolations,
@@ -21,7 +21,7 @@ test.describe('Exercice 4 : Boutons et liens', () => {
   }) => {
     const toggle = await page.getByTestId('cart-toggle');
 
-    await expect(toggle).toHaveRole('button');
+    await expect(await toggle.evaluate((node) => node.tagName)).toBe('BUTTON');
   });
 
   test("Les boutons d'ajout dans le panier doivent être des <button>", async ({
@@ -33,7 +33,7 @@ test.describe('Exercice 4 : Boutons et liens', () => {
 
     const count = await buttons.count();
     for (let i = 0; i < count; i++) {
-      await expect(buttons.nth(i)).toHaveRole('button');
+      await checkTagHtml(buttons.nth(i), 'BUTTON');
     }
   });
 
@@ -44,7 +44,7 @@ test.describe('Exercice 4 : Boutons et liens', () => {
     const cart = await page.locator('id=cart');
     const toggle = await cart.getByTestId('cart-close');
 
-    await expect(toggle).toHaveRole('button');
+    await checkTagHtml(toggle, 'BUTTON');
   });
 
   test('Les boutons de supression d\élément dans le panier doivent être des <button>', async ({
@@ -60,7 +60,7 @@ test.describe('Exercice 4 : Boutons et liens', () => {
 
     const count = await buttons.count();
     for (let i = 0; i < count; i++) {
-      await expect(buttons.nth(i)).toHaveRole('button');
+      await checkTagHtml(buttons.nth(i), 'BUTTON');
     }
   });
 
@@ -70,6 +70,11 @@ test.describe('Exercice 4 : Boutons et liens', () => {
 
     const cart = await page.locator('id=cart');
     const cta = await cart.getByText('Payer');
-    await expect(cta).toHaveRole('link');
+
+    await checkTagHtml(cta, 'A');
   });
+
+  async function checkTagHtml(locator: Locator, expected: string) {
+    await expect(await locator.evaluate((node) => node.tagName)).toBe(expected);
+  }
 });

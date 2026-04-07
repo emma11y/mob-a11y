@@ -1,5 +1,4 @@
-import AxeBuilder from '@axe-core/playwright';
-import { ElementHandle, expect, Locator, type Page } from '@playwright/test';
+import { ElementHandle, Locator, type Page } from '@playwright/test';
 
 export async function switchToLightTheme(page: Page) {
   const dataSelectedTheme = await page

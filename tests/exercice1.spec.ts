@@ -23,6 +23,12 @@ test.describe('Exercice 1 : Niveaux de titres', () => {
   test("Axe : Le titre doit respecter l'ordre des niveaux de titres.", async ({
     page,
   }) => {
+    const headings = await page.getByRole('heading').all();
+
+    if (headings.length < 2) {
+      throw new Error("❌ Aucune hiérarchie de titre n'a été trouvée sur la page.");
+    }
+
     await expectNoAxeViolationsWithId(page, [
       'page-has-heading-one',
       'heading-order',

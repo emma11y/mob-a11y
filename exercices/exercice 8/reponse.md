@@ -13,3 +13,20 @@ Les descriptions doivent être les plus précises possibles.
 L'exception concerne les éléments graphiques purement décoratifs, comme les logos par exemple.
 
 Si un élément ne porte aucune information pertinente, on met l'attribut `alt` vide : `<img alt="">`. Le lecteur d'écran va dire que c'est un élément décoratif.
+
+## Toolbox
+
+**Lecteur d'écran**
+
+Avec les lecteurs d'écran NVDA et VoiceOver, on peut entendre les alternatives textuelles aux images.
+
+**Tests automatisés :**
+
+Sur la règle avec les id `image-alt`, `image-redundant-alt`
+
+- [axe-core](https://github.com/dequelabs/axe-core)
+- [Playwright with axe-core](https://playwright.dev/docs/accessibility-testing)
+
+**Bookmarklets :**
+
+- [Images booktmarklet](https://accessibility-bookmarklets.org/install.html)

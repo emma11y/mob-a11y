@@ -53,3 +53,16 @@ On va utiliser `aria-invalid` pour restituer que le champ est invalide et `aria-
 <input type="text" id="txtNom" aria-invalid="true" aria-describedBy="error-Nom" />
 <p id="error-Nom">Le champ Nom est obligatoire</p>
 ```
+
+## Toolbox
+
+**Tests automatisés :**
+
+Sur la règle avec les id `label`, `label-title-only`, `form-field-multiple-labels`, `input-button-name`, `select-name`, `textarea-name`, `aria-input-field-name`,
+
+- [axe-core](https://github.com/dequelabs/axe-core)
+- [Playwright with axe-core](https://playwright.dev/docs/accessibility-testing)
+
+**Bookmarklets :**
+
+- [Forms booktmarklet](https://accessibility-bookmarklets.org/install.html)

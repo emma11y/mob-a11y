@@ -7,6 +7,8 @@ import { expectNoAxeViolationsWithId } from './utils/axe-utils';
 // 2: Détection d'erreur HTML 5
 // 3: Lecteur d'écran
 
+// TODO : debug 3 first tests on mac os : they should not pass
+
 test.describe('Exercice 7 : Formulaire', () => {
   test.beforeEach(async ({ page }) => {
     await page.goto('http://localhost:5173/produits');
@@ -36,7 +38,7 @@ test.describe('Exercice 7 : Formulaire', () => {
 
     const count = await labels.count();
     for (let i = 0; i < count; i++) {
-      await expect(labels.nth(i)).toHaveAttribute('for');
+      await expect(await labels.nth(i).getAttribute('for')).not.toBeNull();
     }
   });
 
@@ -46,6 +48,9 @@ test.describe('Exercice 7 : Formulaire', () => {
 
     const count = await labels.count();
     for (let i = 0; i < count; i++) {
+      console.log('for', await labels.nth(i).getAttribute('for'));
+      console.log('id', await inputs.nth(i).getAttribute('id'));
+
       await expect(await labels.nth(i).getAttribute('for')).toStrictEqual(
         await inputs.nth(i).getAttribute('id'),
       );

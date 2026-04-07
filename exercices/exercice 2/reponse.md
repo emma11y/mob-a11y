@@ -31,16 +31,20 @@ Si on se base sur les critères [RGAA](https://accessibilite.numerique.gouv.fr/m
 ## Toolbox
 
 **Design :**
-[Tanaguru contrast finder](https://contrast-finder.tanaguru.com/)
-[Contrast checker](https://webaim.org/resources/contrastchecker/)
+
+- [Tanaguru contrast finder](https://contrast-finder.tanaguru.com/)
+- [Contrast checker](https://webaim.org/resources/contrastchecker/)
 
 **Extension de navigateur :**
+
 WCAG Color contrast checker
-[Chrome](https://chromewebstore.google.com/detail/wcag-color-contrast-check/plnahcmalebffmaghcpcmpaciebdhgdf)
-[Firefox](https://addons.mozilla.org/fr/firefox/addon/wcag-contrast-checker/)
+
+- [Chrome](https://chromewebstore.google.com/detail/wcag-color-contrast-check/plnahcmalebffmaghcpcmpaciebdhgdf)
+- [Firefox](https://addons.mozilla.org/fr/firefox/addon/wcag-contrast-checker/)
 
 **Tests automatisés :**
-[axe-core](https://github.com/dequelabs/axe-core)
-[Playwright with axe-core](https://playwright.dev/docs/accessibility-testing)
+
+- [axe-core](https://github.com/dequelabs/axe-core)
+- [Playwright with axe-core](https://playwright.dev/docs/accessibility-testing)
 
 Sur la règle avec l'id `color-contrast`.

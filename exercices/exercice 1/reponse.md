@@ -24,7 +24,9 @@ Avec les lecteurs d'écran NVDA et VoiceOver, on peut naviguer de titre en titre
 Outils intéressants à ajouter dans votre toolbox de dev accessibilité :
 
 **Extensions de navigateur web :**
-[HeadingsMap](https://www.accessibility-developer-guide.com/setup/helper-tools/browser-extensions/headingsmap/)
+
+- [HeadingsMap](https://www.accessibility-developer-guide.com/setup/helper-tools/browser-extensions/headingsmap/)
 
 **Bookmarklets :**
-[Headings booktmarklet](https://accessibility-bookmarklets.org/install.html)
+
+- [Headings booktmarklet](https://accessibility-bookmarklets.org/install.html)

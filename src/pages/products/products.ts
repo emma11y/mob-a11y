@@ -1,7 +1,6 @@
 import '../../assets/styles/products/main.scss';
 import '../../assets/styles/products/Index.scss';
 import '../../assets/styles/products/components/ProductCard.scss';
-import '../../assets/styles/products/components/SiteHeader.scss';
 import '../../assets/styles/products/components/CartDrawer.scss';
 import { products } from '../../data/products';
 

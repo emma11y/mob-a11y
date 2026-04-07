@@ -237,10 +237,6 @@ body {
   background-color: var(--primary);
 }
 
-.text-primary-foreground {
-  color: var(--primary-foreground);
-}
-
 .animate-fade-in {
   animation: fadeIn 0.5s ease-out forwards;
 }
@@ -476,16 +472,8 @@ body {
   line-height: 1.75rem;
 }
 
-.text-primary {
-  color: var(--primary);
-}
-
 .underline {
   text-decoration: underline;
-}
-
-.hover\:text-primary\/90:hover {
-  color: var(--primary-90);
 }
 
 .font-display {

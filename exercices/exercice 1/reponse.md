@@ -29,4 +29,8 @@ Outils intéressants à ajouter dans votre toolbox de dev accessibilité :
 
 **Bookmarklets :**
 
+Un bookmarklet est un lien contenant du JavaScript.
+Lorsqu'un lien de type bookmarklet est activé, le navigateur exécute le code JavaScript qu'il contient.
+Mettez les en favori dans votre navigateur préféré :
+
 - [Headings booktmarklet](https://accessibility-bookmarklets.org/install.html)

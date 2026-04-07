@@ -42,7 +42,7 @@ test.describe('Exercice 4 : Boutons et liens', () => {
     await checkTagHtml(toggle, 'BUTTON');
   });
 
-  test('Les boutons de supression d\élément dans le panier doivent être des <button>', async ({
+  test('Les boutons de suppression d\élément dans le panier doivent être des <button>', async ({
     page,
   }) => {
     await page.getByText('Ajouter dans le panier').first().click();

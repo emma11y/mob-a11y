@@ -12,19 +12,13 @@ export class CustomHeader extends HTMLElement {
   }
 
   initTheme() {
-    const themeStored = localStorage.getItem('theme');
-
-    if (themeStored) {
-      this.setTheme(themeStored);
+    if (
+      window.matchMedia &&
+      window.matchMedia('(prefers-color-scheme: dark)').matches
+    ) {
+      this.setTheme('dark');
     } else {
-      if (
-        window.matchMedia &&
-        window.matchMedia('(prefers-color-scheme: dark)').matches
-      ) {
-        this.setTheme('dark');
-      } else {
-        this.setTheme('light');
-      }
+      this.setTheme('light');
     }
 
     const btnLight = document.getElementById('btnLight');
@@ -54,7 +48,6 @@ export class CustomHeader extends HTMLElement {
     });
 
     document.documentElement.setAttribute('data-selected-theme', theme);
-    localStorage.setItem('theme', theme);
   }
 }
 

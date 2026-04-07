@@ -1,23 +1,28 @@
 import AxeBuilder from '@axe-core/playwright';
 import { ElementHandle, expect, Locator, type Page } from '@playwright/test';
 
-export async function logElementInfos(el: ElementHandle<Element> | Locator) {
-  const text = await el.innerText();
-  const tagName = await el.evaluate((e) => e.tagName);
-  const id = await el.evaluate((e) => e.id);
-  const className = await el.evaluate((e) => e.className);
-  const selector = `${tagName.toLowerCase()}${id ? '#' + id : ''}${className ? '.' + className.split(/\s+/).filter(Boolean).join('.') : ''}`;
-  const outerHTML = await el.evaluate((e) => e.outerHTML);
-  console.log(
-    `Élément testé : "${text.trim()}" | Selector: ${selector} | HTML: ${outerHTML.substring(0, 50)}...`,
-  );
+export async function switchToLightTheme(page: Page) {
+  const dataSelectedTheme = await page
+    .locator('html')
+    .getAttribute('data-selected-theme');
+
+  if (dataSelectedTheme !== 'light') {
+    await page.getByTitle('Clair').click();
+  }
+
+  await page.waitForSelector('[data-selected-theme="light"]');
 }
 
-export async function getElementSelector(el: ElementHandle<Element> | Locator) {
-  const tagName = await el.evaluate((e) => e.tagName);
-  const id = await el.evaluate((e) => e.id);
-  const className = await el.evaluate((e) => e.className);
-  return `${tagName.toLowerCase()}${id ? '#' + id : ''}${className ? '.' + className.split(/\s+/).filter(Boolean).join('.') : ''}`;
+export async function switchToDarkTheme(page: Page) {
+  const dataSelectedTheme = await page
+    .locator('html')
+    .getAttribute('data-selected-theme');
+
+  if (dataSelectedTheme !== 'dark') {
+    await page.getByTitle('Sombre').click();
+  }
+
+  await page.waitForSelector('[data-selected-theme="dark"]');
 }
 
 export const printAxeViolations = async (page: any) => {

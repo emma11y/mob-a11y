@@ -1,5 +1,9 @@
 import { test } from '@playwright/test';
-import { expectNoAxeViolationsWithId } from './utils';
+import {
+  expectNoAxeViolationsWithId,
+  switchToDarkTheme,
+  switchToLightTheme,
+} from './utils';
 
 // Definition of done
 // ------------------
@@ -10,7 +14,27 @@ test.describe('Exercice 2 : Contrastes', () => {
     await page.goto('http://localhost:5173/produits');
   });
 
-  test('Aucune violation de contraste sur la page', async ({ page }) => {
+  test('Aucune violation de contraste sur la page - en thème clair', async ({
+    page,
+  }) => {
+    await page.locator('#products-page').waitFor();
+
+    await switchToLightTheme(page);
+
+    await expectNoAxeViolationsWithId(
+      page,
+      ['color-contrast'],
+      '#products-page',
+    );
+  });
+
+  test('Aucune violation de contraste sur la page - en thème sombre', async ({
+    page,
+  }) => {
+    await page.locator('#products-page').waitFor();
+
+    await switchToDarkTheme(page);
+
     await expectNoAxeViolationsWithId(
       page,
       ['color-contrast'],

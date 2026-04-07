@@ -121,14 +121,14 @@ a {
 
   &:hover {
     text-decoration: none;
-    border-bottom: 0.2em solid var(--color);
+    outline: 0.2em solid var(--color);
+    outline-offset: 0.2em;
   }
 }
 
 button,
 .button {
   color: var(--color);
-  border: 0.15em solid transparent;
   background-color: var(--bg-color);
   border-radius: 25%;
   cursor: pointer;
@@ -136,8 +136,10 @@ button,
   width: 3rem;
   text-align: center;
   align-content: center;
+  border: none;
 
   &:hover {
-    border-color: var(--color);
+    outline: 0.15em solid var(--color);
+    outline-offset: 0.15em;
   }
 }

@@ -12,7 +12,7 @@ Mais en naviguant avec la touche TAB, vous constatez que vous ne savez pas où v
 
 Votre mission est de trouver pourquoi.
 
-Petite indice : allez dans le fichier [styles.scss](../style.scss)
+Petit indice : allez dans le fichier [styles.scss](../style.scss)
 
 ## Corriger le test avec Playwright
 

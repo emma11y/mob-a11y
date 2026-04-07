@@ -205,16 +205,14 @@
   width: 100%;
   background-color: var(--primary);
   color: var(--primary-foreground);
-  border: 0.25em solid transparent;
   border-radius: 0.25em;
   font-weight: 600;
   font-size: 1rem;
 
-  &:hover,
-  &:focus-visible {
+  &:hover {
     background-color: var(--background);
     color: var(--primary);
-    border-color: var(--primary);
+    outline-color: var(--primary);
   }
 }
 
@@ -225,16 +223,14 @@
   font-size: 0.9rem;
   max-width: 12em;
   margin: 1em auto;
-  border-bottom: 0.2em solid transparent;
   text-decoration: underline;
 
   &::before {
     content: ' ← ';
   }
 
-  &:hover,
-  &:focus-visible {
-    border-bottom-color: var(--primary);
+  &:hover {
+    outline-color: var(--primary);
     text-decoration: none;
   }
 }

@@ -1,9 +1,6 @@
 import { test } from '@playwright/test';
-import {
-  expectNoAxeViolationsWithId,
-  switchToDarkTheme,
-  switchToLightTheme,
-} from './utils';
+import { switchToDarkTheme, switchToLightTheme } from './utils/utils';
+import { expectNoAxeViolationsWithId } from './utils/axe-utils';
 
 // Definition of done
 // ------------------

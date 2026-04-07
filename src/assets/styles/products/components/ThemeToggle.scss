@@ -2,8 +2,4 @@
   cursor: pointer;
   color: var(--muted-foreground);
   transition: color 0.15s ease;
-
-  &:hover {
-    color: var(--foreground);
-  }
 }

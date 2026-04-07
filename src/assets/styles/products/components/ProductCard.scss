@@ -64,7 +64,6 @@
     margin-top: 0.75rem;
     width: 100%;
     cursor: pointer;
-    border: 0.15em solid transparent;
     border-radius: 0.125rem;
     background-color: var(--foreground);
     padding: 0.5rem 0.75rem;
@@ -75,9 +74,7 @@
     color: var(--background);
 
     &:hover {
-      border-color: var(--foreground);
-      background-color: var(--background);
-      color: var(--foreground);
+      outline-color: var(--foreground);
     }
   }
 }

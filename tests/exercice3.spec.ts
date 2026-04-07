@@ -1,5 +1,5 @@
 import { test, expect, ElementHandle } from '@playwright/test';
-import { getElementSelector, logElementInfos } from './utils';
+import { getElementInfos } from './utils/debug-utils';
 
 // Definition of done
 // ------------------
@@ -13,52 +13,39 @@ test.describe('Exercice 3 : Navigation au clavier', () => {
     await page.goto('http://localhost:5173/produits');
   });
 
-  test('Tous les boutons et liens doivent être focusables via la touche Tab', async ({
+  test('Tous les boutons et liens doivent avoir le pseudo-class :focus-visible', async ({
     page,
   }) => {
-    const interactiveElements = await page
-      .locator('button, a')
-      .elementHandles();
+    const visited = new Set<string>();
 
-    for (const el of interactiveElements) {
-      await el.focus();
-
-      const isFocused = await page.evaluate(
-        (el) => document.activeElement === el,
-        el,
-      );
-      expect(isFocused).toBe(true);
-    }
-  });
-
-  test('Focus clavier visible sur les éléments interactifs', async ({
-    page,
-  }) => {
-    const interactiveElements = await page.locator('button, a').all();
-
-    for (const el of interactiveElements) {
+    while (true) {
       await page.keyboard.press('Tab');
 
-      await logElementInfos(el);
+      const active = (await page.evaluateHandle(
+        () => document.activeElement,
+      )) as ElementHandle<HTMLElement>;
 
-      const isFocused = await el.evaluate(
-        (element) => element === document.activeElement,
+      const info = await getElementInfos(active);
+
+      // ignore les éléments non interactifs
+      if (info.tag !== 'BUTTON' && info.tag !== 'A') continue;
+
+      const uniqueId = `${info.tag}:${info.id}:${info.className}`;
+      if (visited.has(uniqueId)) break;
+      visited.add(uniqueId);
+
+      console.log(
+        `Élément focus : "${info.text}" | selector: ${uniqueId} | outline: ${info.outlineStyle} ${info.outlineWidth}`,
       );
 
-      if (!isFocused) continue;
+      const hasVisibleFocus =
+        info.outlineStyle !== 'none' && info.outlineWidth !== '0px';
 
-      const hasVisibleFocus = await el.evaluate((element) => {
-        const style = window.getComputedStyle(element);
-
-        return style.outlineStyle !== 'none' && style.outlineWidth !== '0px';
-      });
-
-      expect(
-        hasVisibleFocus,
-        `L'élément "${(await el.innerText()).trim()}" avec sélecteur ${await getElementSelector(
-          el,
-        )} ne possède pas de focus visible`,
-      ).toBe(true);
+      if (!hasVisibleFocus) {
+        throw new Error(
+          `L'élément "${info.text}" avec selector "${uniqueId}" n'a pas de focus visible (outlineStyle: ${info.outlineStyle}, outlineWidth: ${info.outlineWidth})`,
+        );
+      }
     }
   });
 });

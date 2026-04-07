@@ -1,29 +1,5 @@
 import AxeBuilder from '@axe-core/playwright';
-import { ElementHandle, expect, Locator, type Page } from '@playwright/test';
-
-export async function switchToLightTheme(page: Page) {
-  const dataSelectedTheme = await page
-    .locator('html')
-    .getAttribute('data-selected-theme');
-
-  if (dataSelectedTheme !== 'light') {
-    await page.getByTitle('Clair').click();
-  }
-
-  await page.waitForSelector('[data-selected-theme="light"]');
-}
-
-export async function switchToDarkTheme(page: Page) {
-  const dataSelectedTheme = await page
-    .locator('html')
-    .getAttribute('data-selected-theme');
-
-  if (dataSelectedTheme !== 'dark') {
-    await page.getByTitle('Sombre').click();
-  }
-
-  await page.waitForSelector('[data-selected-theme="dark"]');
-}
+import { expect, Page } from '@playwright/test';
 
 export const printAxeViolations = async (page: any) => {
   const accessibilityScanResults = await new AxeBuilder({ page })

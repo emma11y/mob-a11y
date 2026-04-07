@@ -1,5 +1,6 @@
 import { test, expect } from '@playwright/test';
-import { printAxeViolations } from './utils';
+import { printAxeViolations } from './utils/axe-utils';
+
 test.describe("Tests d'accessibilité Axe", () => {
   test('La page Produit ne doit pas avoir de violations Axe', async ({
     page,

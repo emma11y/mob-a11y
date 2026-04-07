@@ -44,7 +44,7 @@ WCAG Color contrast checker
 
 **Tests automatisés :**
 
+Sur la règle avec l'id `color-contrast`.
+
 - [axe-core](https://github.com/dequelabs/axe-core)
 - [Playwright with axe-core](https://playwright.dev/docs/accessibility-testing)
-
-Sur la règle avec l'id `color-contrast`.

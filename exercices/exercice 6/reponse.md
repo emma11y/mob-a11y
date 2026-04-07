@@ -12,8 +12,21 @@ On aborde l'attribut ARIA dans l'exercice suivant. L'attribut `aria-hidden="true
 
 ## Définir un libellé explicite
 
-Chaque bouton ou lien ayant un image doit avoir un libellé explicite.
+Chaque bouton ou lien ayant un image doit avoir un **libellé explicite**.
 
 Si tous les boutons ont le même libellé, comment savoir quel produit ajouter dans le panier ? Quel produit supprimer ?
 
 C'est pourquoi il est important de savoir les différencier.
+
+## Toolbox
+
+**Lecteur d'écran**
+
+Avec les lecteurs d'écran NVDA et VoiceOver, on peut naviguer entre les liens et boutons avec les touches **Tab**.
+
+**Tests automatisés :**
+
+Sur la règle avec les id `link-name`, `link-in-text-block`, `button-name`
+
+- [axe-core](https://github.com/dequelabs/axe-core)
+- [Playwright with axe-core](https://playwright.dev/docs/accessibility-testing)

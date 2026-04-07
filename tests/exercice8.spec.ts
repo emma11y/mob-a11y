@@ -1,5 +1,5 @@
 import { test } from '@playwright/test';
-import { expectNoAxeViolationsWithId } from './utils';
+import { expectNoAxeViolationsWithId } from './utils/axe-utils';
 
 test.describe('Exercice 8 : les images doivent être décrites', () => {
   test.beforeEach(async ({ page }) => {

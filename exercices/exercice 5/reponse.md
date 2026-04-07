@@ -4,9 +4,17 @@ Vous avez pu constater qu'avec le lecteur d'écran, la voix vocalisait le texte 
 
 Lorsqu'on créé un nouveau projet avec Angular, React, VueJS ou autre framework, la langue par défaut sur le projet est en anglais.
 
-C'est pourquoi il est important de ne pas oublier de modifier l'attribut `lang` sur la balise `<html>`. Ce qui donnerait `<html lang="fr"></html>`
+C'est pourquoi il est important de ne pas oublier de modifier l'attribut `lang` sur la balise `<html>`. Ce qui donnerait :
 
-Cependant, lorsqu'un mot ou un paraphrase est en anglais, mettre `<span lang="en">Stickers</span>` pour que le lecteur d'écran vocalise le mot "stickers" dans la bonne langue.
+```html
+<html lang="fr"></html>
+```
+
+Cependant, lorsqu'un mot ou un paraphrase est en langue différente de celle de la page, mettre l'attribut `lang=` permet au lecteur d'écran de vocaliser le mot "stickers" dans la bonne langue :
+
+```html
+<span lang="en">Stickers</span>
+```
 
 ## Astuce
 

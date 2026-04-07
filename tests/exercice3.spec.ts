@@ -34,9 +34,7 @@ test.describe('Exercice 3 : Navigation au clavier', () => {
   test('Focus clavier visible sur les éléments interactifs', async ({
     page,
   }) => {
-    const interactiveElements = await page
-      .locator('button:visible, a:visible')
-      .all();
+    const interactiveElements = await page.locator('button, a').all();
 
     for (const el of interactiveElements) {
       await page.keyboard.press('Tab');

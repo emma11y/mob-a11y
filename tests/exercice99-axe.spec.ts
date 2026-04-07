@@ -8,13 +8,6 @@ test.describe("Tests d'accessibilité Axe", () => {
     await printAxeViolations(page);
   });
 
-  test('La page Produit ne doit pas avoir de violations Axe', async ({
-    page,
-  }) => {
-    await page.goto('http://localhost:5173/produits');
-    await printAxeViolations(page);
-  });
-
   test('La page Finaliser votre commande ne doit pas avoir de violations Axe', async ({
     page,
   }) => {

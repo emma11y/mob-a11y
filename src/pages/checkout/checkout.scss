@@ -71,7 +71,7 @@
     label {
       &::after {
         content: ' *';
-        color: hsl(var(--destructive-hsl));
+        color: var(--destructive);
       }
     }
   }
@@ -99,7 +99,7 @@
   &:focus {
     outline: none;
     border-color: var(--primary);
-    box-shadow: 0 0 0 3px rgba(var(--primary-hsl), 0.1);
+    box-shadow: 0 0 0 3px var(--primary-10);
   }
 }
 
@@ -278,12 +278,12 @@
 /* Error message styling */
 .form-error {
   font-size: 0.875rem;
-  color: hsl(var(--destructive-hsl));
+  color: var(--destructive);
   margin-top: 0.25rem;
 }
 
 .form-field.has-error input {
-  border-color: hsl(var(--destructive-hsl));
+  border-color: var(--destructive);
 }
 
 .alert {
@@ -294,12 +294,12 @@
   background-color: transparent;
 
   &.error {
-    background-color: hsl(var(--destructive-hsl));
+    background-color: var(--destructive);
     color: var(--background);
   }
 
   &.success {
-    background-color: hsl(var(--accent-hsl));
+    background-color: var(--accent);
     color: var(--background);
   }
 }

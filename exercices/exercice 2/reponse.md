@@ -28,6 +28,19 @@ Si on se base sur les critères [RGAA](https://accessibilite.numerique.gouv.fr/m
 - le rapport de contraste entre le texte **sans gras et ayant une taille supérieure de 24px** et son arrière-plan est de **3:1**
 - le rapport de contraste entre le texte **en gras et ayant une taille supérieure à 18,5px** et son arrière-plan est de **3:1**
 
-### Bonus
+## Toolbox
 
-Si vous voulez choisir votre couleur, utilisez le site français [Tanaguru contrast finder](https://contrast-finder.tanaguru.com/) pour définir la couleur de votre texte ou de votre arrière-plan.
+**Design :**
+[Tanaguru contrast finder](https://contrast-finder.tanaguru.com/)
+[Contrast checker](https://webaim.org/resources/contrastchecker/)
+
+**Extension de navigateur :**
+WCAG Color contrast checker
+[Chrome](https://chromewebstore.google.com/detail/wcag-color-contrast-check/plnahcmalebffmaghcpcmpaciebdhgdf)
+[Firefox](https://addons.mozilla.org/fr/firefox/addon/wcag-contrast-checker/)
+
+**Tests automatisés :**
+[axe-core](https://github.com/dequelabs/axe-core)
+[Playwright with axe-core](https://playwright.dev/docs/accessibility-testing)
+
+Sur la règle avec l'id `color-contrast`.

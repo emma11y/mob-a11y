@@ -376,11 +376,11 @@ body {
 }
 
 .text-muted-foreground\/50 {
-  color: hsla(var(--muted-foreground-hsl), 0.5);
+  color: var(--muted-foreground-50);
 }
 
 .text-muted-foreground\/60 {
-  color: hsla(var(--muted-foreground-hsl), 0.6);
+  color: var(--muted-foreground-60);
 }
 
 .inset-0 {
@@ -485,7 +485,7 @@ body {
 }
 
 .hover\:text-primary\/90:hover {
-  color: hsla(var(--primary-hsl), 0.9);
+  color: var(--primary-90);
 }
 
 .font-display {

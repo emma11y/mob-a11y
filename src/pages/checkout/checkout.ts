@@ -46,7 +46,7 @@ function renderCartItems(cart: CartProduct[]): void {
     .map(
       (item) => `
     <div class="cart-item">
-      <img src="${item.product.image}" alt="${item.product.name}" class="cart-item-image" />
+      <img src="${item.product.image}" class="cart-item-image" />
       <div class="cart-item-details">
         <div class="cart-item-name">${item.product.name}</div>
         <div class="cart-item-qty">Quantité : ${item.quantity}</div>

@@ -48,10 +48,11 @@ test.describe('Exercice 7 : Formulaire', () => {
 
     const count = await labels.count();
     for (let i = 0; i < count; i++) {
+
       console.log('for', await labels.nth(i).getAttribute('for'));
       console.log('id', await inputs.nth(i).getAttribute('id'));
 
-      await expect(await labels.nth(i).getAttribute('for')).toStrictEqual(
+      expect(await labels.nth(i).getAttribute('for')).toStrictEqual(
         await inputs.nth(i).getAttribute('id'),
       );
     }

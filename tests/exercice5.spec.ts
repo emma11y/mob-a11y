@@ -1,5 +1,4 @@
 import { test, expect } from '@playwright/test';
-import { expectNoAxeViolations } from './utils';
 
 // Definition of done
 //-----------------

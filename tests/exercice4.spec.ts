@@ -73,5 +73,10 @@ test.describe('Exercice 4 : Boutons et liens', () => {
     await expect(await locator.evaluate((node) => node.tagName)).toBe(expected);
   }
 
-  // TODO à réfléchir si je dois mettre un test avec div role=button
+  test('Pas de div role=button', async ({ page }) => {
+    const divButtons = await page
+      .locator('div[role="button"]')
+      .elementHandles();
+    expect(divButtons.length).toBe(0);
+  });
 });

@@ -25,7 +25,7 @@ Il existe plusieurs pseudo-classes CSS :
 
 **Lecteur d'écran**
 
-Avec les lecteurs d'écran NVDA et VoiceOver, on peut naviguer d'élément en élément avec les touches **Tab**
+Avec les lecteurs d'écran NVDA et VoiceOver, on peut naviguer d'élément en élément avec les touches **Tab**.
 
 **Tests automatisés :**
 

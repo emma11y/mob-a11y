@@ -1,4 +1,5 @@
 import { test, expect } from '@playwright/test';
+import { expectNoAxeViolationsWithId } from './utils';
 
 // Definition of done
 // ------------------
@@ -16,6 +17,18 @@ test.describe('Exercice 7 : Formulaire', () => {
     await products.nth(3).click();
 
     await page.goto('http://localhost:5173/finaliser-votre-commande');
+  });
+
+  test('Aucune violation Axe sur le formulaire', async ({ page }) => {
+    await expectNoAxeViolationsWithId(page, [
+      'label',
+      'label-title-only',
+      'form-field-multiple-labels',
+      'input-button-name',
+      'select-name',
+      'textarea-name',
+      'aria-input-field-name',
+    ]);
   });
 
   test('Chaque label doit avoir un attribut for', async ({ page }) => {

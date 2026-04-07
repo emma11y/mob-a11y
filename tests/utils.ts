@@ -1,51 +1,48 @@
 import AxeBuilder from '@axe-core/playwright';
-import { expect, type Page } from '@playwright/test';
+import { ElementHandle, expect, Locator, type Page } from '@playwright/test';
 
-export const printAxeViolations = (violations: any[]) => {
-  if (violations.length === 0) {
-    console.log('✅ Aucune violation d’accessibilité détectée');
-    return;
-  }
-
-  console.log(`❌ ${violations.length} règle(s) d’accessibilité violée(s)\n`);
-
-  violations.forEach((violation) => {
-    console.log(`🔎 ${violation.id} (${violation.impact})`);
-    console.log(`   ${violation.help}`);
-
-    violation.nodes.forEach((node: any) => {
-      console.log(`   → ${node.target.join(', ')}`);
-    });
-
-    console.log('');
-  });
-};
-
-export const expectNoColorContrastViolations = async (
-  page: Page,
-  selector = 'body',
-) => {
-  const results = await new AxeBuilder({ page }).include(selector).analyze();
-
-  // ne garder que les violations de contraste
-  const contrastViolations = results.violations.filter(
-    (v) => v.id === 'color-contrast',
+export async function logElementInfos(el: ElementHandle<Element> | Locator) {
+  const text = await el.innerText();
+  const tagName = await el.evaluate((e) => e.tagName);
+  const id = await el.evaluate((e) => e.id);
+  const className = await el.evaluate((e) => e.className);
+  const selector = `${tagName.toLowerCase()}${id ? '#' + id : ''}${className ? '.' + className.split(/\s+/).filter(Boolean).join('.') : ''}`;
+  const outerHTML = await el.evaluate((e) => e.outerHTML);
+  console.log(
+    `Élément testé : "${text.trim()}" | Selector: ${selector} | HTML: ${outerHTML.substring(0, 50)}...`,
   );
+}
 
-  if (contrastViolations.length > 0) {
-    // compter toutes les occurrences dans le DOM
-    const totalOccurrences = contrastViolations.reduce(
-      (sum, v) => sum + v.nodes.length,
-      0,
+export async function getElementSelector(el: ElementHandle<Element> | Locator) {
+  const tagName = await el.evaluate((e) => e.tagName);
+  const id = await el.evaluate((e) => e.id);
+  const className = await el.evaluate((e) => e.className);
+  return `${tagName.toLowerCase()}${id ? '#' + id : ''}${className ? '.' + className.split(/\s+/).filter(Boolean).join('.') : ''}`;
+}
+
+export const printAxeViolations = async (page: any) => {
+  const accessibilityScanResults = await new AxeBuilder({ page })
+    .withTags(['wcag2a', 'wcag2aa', 'wcag21a', 'wcag21aa'])
+    .analyze();
+
+  if (accessibilityScanResults.violations.length) {
+    console.log(
+      `❌ ${accessibilityScanResults.violations.length} règle(s) d’accessibilité violée(s)\n`,
     );
 
-    // message d’erreur détaillé
-    const message = `❌ ${totalOccurrences} élément(s) affecté(s) par une violation de contraste\n\n${formatViolations(
-      contrastViolations,
-    )}`;
+    accessibilityScanResults.violations.forEach((violation) => {
+      console.log(`🔎 ${violation.id} (${violation.impact})`);
+      console.log(`   ${violation.help}`);
 
-    throw new Error(message);
+      violation.nodes.forEach((node: any) => {
+        console.log(`   → ${node.target.join(', ')}`);
+      });
+
+      console.log('');
+    });
   }
+
+  expect(accessibilityScanResults.violations.length).toBe(0);
 };
 
 export const expectNoAxeViolations = async (page: Page, selector = 'body') => {
@@ -57,6 +54,25 @@ export const expectNoAxeViolations = async (page: Page, selector = 'body') => {
     const message = `❌ ${violations.length} violation(s)\n\n${formatViolations(violations)}`;
     throw new Error(message);
   }
+
+  expect(violations.length).toBe(0);
+};
+
+export const expectNoAxeViolationsWithId = async (
+  page: Page,
+  ids: string[],
+  selector = 'body',
+) => {
+  const results = await new AxeBuilder({ page }).include(selector).analyze();
+
+  const violations = results.violations.filter((v) => ids.includes(v.id));
+
+  if (violations.length > 0) {
+    const message = `❌ ${violations.length} violation(s)\n\n${formatViolations(violations)}`;
+    throw new Error(message);
+  }
+
+  expect(violations.length).toBe(0);
 };
 
 export const printButtonLinkViolations = async (
@@ -75,34 +91,33 @@ export const printButtonLinkViolations = async (
     })
     .filter((v) => v.nodes.length > 0);
 
-  if (filteredViolations.length === 0) {
-    console.log('✅ Aucune violation Axe sur les boutons et liens');
-    return;
-  }
+  expect(filteredViolations.length).toBe(0);
 
-  let message = `❌ ${filteredViolations.length} violation(s)\n\n`;
+  if (filteredViolations.length) {
+    let message = `❌ ${filteredViolations.length} violation(s)\n\n`;
 
-  filteredViolations.forEach((v: any) => {
-    message += `🔎 ${v.id} (${v.impact})\n`;
-    message += `   ${v.help}\n`;
+    filteredViolations.forEach((v: any) => {
+      message += `🔎 ${v.id} (${v.impact})\n`;
+      message += `   ${v.help}\n`;
 
-    v.nodes.forEach((n: any) => {
-      message += `   → ${n.target.join(', ')}\n`;
+      v.nodes.forEach((n: any) => {
+        message += `   → ${n.target.join(', ')}\n`;
+      });
+
+      message += '\n';
     });
 
-    message += '\n';
-  });
+    console.log(message);
 
-  console.log(message);
-
-  throw new Error(message);
+    throw new Error(message);
+  }
 };
 
 const formatViolations = (violations: any[]) => {
   return violations
     .map((v) => {
       const nodes = v.nodes
-        .map((n) => `   → ${n.target.join(', ')}`)
+        .map((n: any) => `   → ${n.target.join(', ')}`)
         .join('\n');
       return `🔎 ${v.id} (${v.impact})\n   ${v.help}\n${nodes}`;
     })

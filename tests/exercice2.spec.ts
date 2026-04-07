@@ -1,8 +1,5 @@
-import { test, expect } from '@playwright/test';
-import {
-  expectNoAxeViolations,
-  expectNoColorContrastViolations,
-} from './utils';
+import { test } from '@playwright/test';
+import { expectNoAxeViolationsWithId } from './utils';
 
 // Definition of done
 // ------------------
@@ -14,6 +11,10 @@ test.describe('Exercice 2 : Contrastes', () => {
   });
 
   test('Aucune violation de contraste sur la page', async ({ page }) => {
-    await expectNoColorContrastViolations(page, '#products-page');
+    await expectNoAxeViolationsWithId(
+      page,
+      ['color-contrast'],
+      '#products-page',
+    );
   });
 });

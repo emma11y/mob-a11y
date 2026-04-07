@@ -1,4 +1,5 @@
 import { test, expect } from '@playwright/test';
+import { expectNoAxeViolationsWithId } from './utils';
 
 // Definition of done
 // ------------------
@@ -9,6 +10,16 @@ import { test, expect } from '@playwright/test';
 test.describe('Exercice 6 : Les boutons doivent avoir des labels explicites', () => {
   test.beforeEach(async ({ page }) => {
     await page.goto('http://localhost:5173/produits');
+  });
+
+  test('Axe : Les boutons et liens doivent être explicites.', async ({
+    page,
+  }) => {
+    await expectNoAxeViolationsWithId(page, [
+      'link-name',
+      'link-in-text-block',
+      'button-name',
+    ]);
   });
 
   test("L'icône du bouton d'ouverture du panier doit avoir un texte alternatif", async ({

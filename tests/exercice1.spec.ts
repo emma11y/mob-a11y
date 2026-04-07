@@ -1,5 +1,5 @@
 import { test, expect } from '@playwright/test';
-import { expectNoAxeViolations } from './utils';
+import { expectNoAxeViolations, expectNoAxeViolationsWithId } from './utils';
 
 // Definition of done
 //-----------------
@@ -12,12 +12,6 @@ test.describe('Exercice 1 : Niveaux de titres', () => {
     await page.goto('http://localhost:5173/produits');
   });
 
-  test("Le titre principal ne doit pas présenter de violations d'accessibilité détectables.", async ({
-    page,
-  }) => {
-    await expectNoAxeViolations(page, '#hero-title');
-  });
-
   test("Le titre principal est visible et joue le rôle d'en-tête.", async ({
     page,
   }) => {
@@ -26,5 +20,14 @@ test.describe('Exercice 1 : Niveaux de titres', () => {
     });
 
     await expect(title).toBeVisible();
+  });
+
+  test("Le titre principal ne doit pas présenter de violations d'accessibilité détectables.", async ({
+    page,
+  }) => {
+    await expectNoAxeViolationsWithId(page, [
+      'page-has-heading-one',
+      'heading-order',
+    ]);
   });
 });

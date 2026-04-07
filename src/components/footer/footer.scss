@@ -7,6 +7,14 @@
   position: relative;
   width: 100%;
 
+  .title {
+    font-family: var(--font-display), sans-serif;
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--foreground);
+    margin: 0;
+  }
+
   .shodo-white,
   .shodo-black {
     display: none;
@@ -73,8 +81,7 @@
     text-decoration: none;
     border: 0.1em solid transparent;
     padding: 0 0.5em;
-
-    &:hover {
+    F &:hover {
       border-color: var(--color);
     }
 

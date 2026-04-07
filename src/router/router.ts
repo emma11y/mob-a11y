@@ -5,6 +5,12 @@ export interface Route {
   ts?: string | null;
 }
 
+type RouteModule = {
+  init?: () => void;
+};
+
+const routeScriptModules = import.meta.glob<RouteModule>('../pages/**/*.ts');
+
 export const routes: Route[] = [
   {
     path: '/',
@@ -71,8 +77,14 @@ export class Router {
 
   private async loadScript(scriptPath: string): Promise<void> {
     try {
-      const moduleUrl = new URL(scriptPath, import.meta.url).href;
-      const module = await import(moduleUrl);
+      const loadModule = routeScriptModules[scriptPath];
+
+      if (!loadModule) {
+        console.error(`Script not found: ${scriptPath}`);
+        return;
+      }
+
+      const module = await loadModule();
       // Call init function if it exists
       if (module.init && typeof module.init === 'function') {
         module.init();

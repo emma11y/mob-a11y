@@ -1,9 +1,4 @@
 import { test, expect, Locator } from '@playwright/test';
-import {
-  expectNoAxeViolations,
-  expectNoColorContrastViolations,
-  printButtonLinkViolations,
-} from './utils';
 
 // Definition of done
 // ------------------
@@ -77,4 +72,6 @@ test.describe('Exercice 4 : Boutons et liens', () => {
   async function checkTagHtml(locator: Locator, expected: string) {
     await expect(await locator.evaluate((node) => node.tagName)).toBe(expected);
   }
+
+  // TODO à réfléchir si je dois mettre un test avec div role=button
 });

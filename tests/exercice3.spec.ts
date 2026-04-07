@@ -1,8 +1,5 @@
-import { test, expect } from '@playwright/test';
-import {
-  expectNoAxeViolations,
-  expectNoColorContrastViolations,
-} from './utils';
+import { test, expect, ElementHandle } from '@playwright/test';
+import { getElementSelector, logElementInfos } from './utils';
 
 // Definition of done
 // ------------------
@@ -11,7 +8,6 @@ import {
 // 3: Navigation clavier
 // 4: Lecteur d'écran
 
-// TODO : fix tests, they should not work
 test.describe('Exercice 3 : Navigation au clavier', () => {
   test.beforeEach(async ({ page }) => {
     await page.goto('http://localhost:5173/produits');
@@ -35,20 +31,36 @@ test.describe('Exercice 3 : Navigation au clavier', () => {
     }
   });
 
-  test('Focus clavier applique le style :focus-visible', async ({ page }) => {
+  test('Focus clavier visible sur les éléments interactifs', async ({
+    page,
+  }) => {
     const interactiveElements = await page
-      .locator('button, a')
-      .elementHandles();
+      .locator('button:visible, a:visible')
+      .all();
 
     for (const el of interactiveElements) {
-      await el.focus();
+      await page.keyboard.press('Tab');
 
-      const hasFocusVisible = await el.evaluate((element: Element) => {
-        const style = window.getComputedStyle(element, ':focus-visible');
+      await logElementInfos(el);
+
+      const isFocused = await el.evaluate(
+        (element) => element === document.activeElement,
+      );
+
+      if (!isFocused) continue;
+
+      const hasVisibleFocus = await el.evaluate((element) => {
+        const style = window.getComputedStyle(element);
+
         return style.outlineStyle !== 'none' && style.outlineWidth !== '0px';
       });
 
-      expect(hasFocusVisible).toBe(true);
+      expect(
+        hasVisibleFocus,
+        `L'élément "${(await el.innerText()).trim()}" avec sélecteur ${await getElementSelector(
+          el,
+        )} ne possède pas de focus visible`,
+      ).toBe(true);
     }
   });
 });

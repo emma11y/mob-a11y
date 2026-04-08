@@ -58,22 +58,24 @@ test.describe('Exercice 6 : Les boutons doivent avoir des labels explicites', ()
     await expect(toggleLabel).toHaveClass('sr-only');
   });
 
-  test('Le bouton "Ajouter dans le panier" doit être explicite', async ({
-    page,
-  }) => {
-    const productCards = await page.locator('.product-card');
+  test('Le bouton "Ajouter dans le panier" doit être explicite', async ({ page }) => {
+    const productCards = page.locator('.product-card');
+
+    await expect(productCards).not.toHaveCount(0);
+
+    await expect(page.locator('.add-to-cart').first()).toContainText('Ajouter');
 
     const count = await productCards.count();
+
     for (let i = 0; i < count; i++) {
-      const product = await productCards.nth(i);
+      const product = productCards.nth(i);
 
-      const title = await product.locator('.title');
-      const button = await product.locator('.add-to-cart');
+      const title = product.locator('.title');
+      const button = product.locator('.add-to-cart');
 
-      console.log('title', title);
-      console.log('button', button);
+      const titleText = (await title.innerText()).trim();
 
-      await expect(button).toHaveText(`Ajouter ${title} dans le panier`);
+      await expect(button).toContainText(titleText);
     }
   });
 

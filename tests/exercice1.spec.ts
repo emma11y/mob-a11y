@@ -3,8 +3,8 @@ import { expectNoAxeViolationsWithId } from './utils/axe-utils';
 
 // Definition of done
 //-----------------
-// 1: Détection d'erreurs automatiques avec Axe
-// 2: Détection d'erreur HTML 5
+// 1: Détection d'erreur HTML 5
+// 2: Détection d'erreurs automatiques avec Axe
 // 3: Lecteur d'écran
 
 test.describe('Exercice 1 : Niveaux de titres', () => {

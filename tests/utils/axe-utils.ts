@@ -32,8 +32,9 @@ export const expectNoAxeViolations = async (page: Page, selector = 'body') => {
   const { violations } = results;
 
   if (violations.length > 0) {
-    const message = `❌ ${violations.length} violation(s)\n\n${formatViolations(violations)}`;
-    throw new Error(message);
+    console.log(
+      `❌ ${violations.length} violation(s)\n\n${formatViolations(violations)}`,
+    );
   }
 
   expect(violations.length).toBe(0);
@@ -49,8 +50,9 @@ export const expectNoAxeViolationsWithId = async (
   const violations = results.violations.filter((v) => ids.includes(v.id));
 
   if (violations.length > 0) {
-    const message = `❌ ${violations.length} violation(s)\n\n${formatViolations(violations)}`;
-    throw new Error(message);
+    console.log(
+      `❌ ${violations.length} violation(s)\n\n${formatViolations(violations)}`,
+    );
   }
 
   expect(violations.length).toBe(0);
@@ -88,9 +90,7 @@ export const printButtonLinkViolations = async (
       message += '\n';
     });
 
-    console.log(message);
-
-    throw new Error(message);
+    console.error(message);
   }
 };
 

@@ -11,4 +11,4 @@ Avant de lancer le test avec Playwright, naviguez la page avec les flèches Haut
 
 Lancer la commande `npx playwright test exercice8`
 
-[Voir le test](../../tests/exercice7.spec.ts)
+[Voir le test](../../tests/exercice8.spec.ts)

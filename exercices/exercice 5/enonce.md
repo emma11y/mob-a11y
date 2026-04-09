@@ -8,6 +8,8 @@ Selon votre système d'exploitation, voici un lecteur d'écran que vous pouvez u
 - [VoiceOver](https://support.apple.com/fr-fr/guide/voiceover/vo2682/mac) (IOS)
 - [Orca](https://orca.gnome.org/) (Linux/Ubuntu)
 
+Vous pouvez également consulter le [guide sur les lecteurs d'écran](https://disic.github.io/guide-lecteurs_ecran/).
+
 Avant de lancer le test avec Playwright, lancez le lecteur d'écran et naviguez sur le site.
 
 ## Corriger le test avec Playwright

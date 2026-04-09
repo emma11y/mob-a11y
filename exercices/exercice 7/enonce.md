@@ -7,6 +7,8 @@ Est-ce que chaque erreur est correctement restituée et associée au champ ?
 
 Avant de lancer le test avec Playwright, soumettez le formulaire et voyez ce que le lecteur d'écran restitue.
 
+**Astuce :** pour corriger, aller sur le [fichier](../../src/pages/checkout/checkout.ts) sur la fonction `showError` appelée depuis la fonction `checkRequiredError`.
+
 ## Corriger le test avec Playwright
 
 Lancer la commande `npx playwright test exercice7`

@@ -1,18 +1,55 @@
-# Réponses à l'exercice 9 : Structure de la page
+# Réponse à l'exercice 9 : Structure de la page
 
 ## Solution
 
-L'en-tête doit être intégré dans la balise `<header role="banner"></header>`.
+Structurer la page à l’aide des éléments sémantiques HTML5 (**landmarks**) :
 
-Le menu principal doit être dans la balise `<nav role="navigation"></nav>`. On peut avoir plusieurs balises de navigation.
+- En-tête : `<header>`
+- Navigation : `<nav>`
+- Contenu principal : `<main>`
+- Pied de page : `<footer>`
 
-Le contenu principal est englobé sur la balise `<main role="main"></main>` et la `<main>` doit être unique.
+Exemple :
 
-Pour en savoir plus sur le pattern : [Landmarks Pattern](https://www.w3.org/WAI/ARIA/apg/patterns/landmarks/) (EN)
+```html
+<header role="banner"></header>
 
-## Pourquoi la structure de la page est importante ?
+<nav role="navigation"></nav>
 
-Grâce aux landmarks, les personnes utilisant le lecteur d'écran peuvent aller directement à la zone concernée en utilisant des raccourcis : l'en-tête, la navigation, la page principale (main) ou le pied de page.
+<main role="main"></main>
+
+<footer role="contentinfo"></footer>
+```
+
+Chaque rôle correspond à une zone de navigation pour les technologies d’assistance.
+
+## Ce que vérifiaient les tests
+
+Les tests vérifiaient que :
+
+- il existe exactement un `<header>` (banner)
+- il existe au moins une navigation (`nav`)
+- il existe exactement un `<main>`
+- il existe un footer (`contentinfo`)
+- la structure respecte les [règles de landmarks](https://www.w3.org/WAI/ARIA/apg/patterns/landmarks/) sans duplication ni conflit
+
+## Pourquoi c’est important
+
+Les landmarks permettent aux personnes utilisant un lecteur d’écran de :
+
+- comprendre rapidement la structure de la page
+- naviguer directement à une zone spécifique
+- éviter de parcourir tout le contenu linéairement
+
+Sans structure claire, la navigation devient beaucoup plus lente et confuse.
+
+## Bonnes pratiques
+
+- Utiliser les balises HTML5 natives (`header`, `nav`, `main`, `footer`)
+- Ne pas multiplier les rôles identiques inutilement
+- S’assurer qu’il n’y a qu’un seul `<main>`
+- Structurer la page de façon cohérente et stable
+- Ne pas utiliser `role` si la balise HTML sémantique existe déjà
 
 ### Toolbox
 

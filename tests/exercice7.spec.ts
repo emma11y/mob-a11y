@@ -7,8 +7,6 @@ import { expectNoAxeViolationsWithId } from './utils/axe-utils';
 // 2: Détection d'erreur HTML 5
 // 3: Lecteur d'écran
 
-// TODO : debug 3 first tests on mac os : they should not pass
-
 test.describe('Exercice 7 : Formulaire', () => {
   test.beforeEach(async ({ page }) => {
     await page.goto('http://localhost:5173/produits');
@@ -30,6 +28,8 @@ test.describe('Exercice 7 : Formulaire', () => {
       'select-name',
       'textarea-name',
       'aria-input-field-name',
+      'aria-valid-attr',
+      'aria-valid-attr-value',
     ]);
   });
 
@@ -48,9 +48,8 @@ test.describe('Exercice 7 : Formulaire', () => {
 
     const count = await labels.count();
     for (let i = 0; i < count; i++) {
-
-      const labelFor = await labels.nth(i).getAttribute('for')
-      const inputId = inputs.nth(i).getAttribute('id')
+      const labelFor = await labels.nth(i).getAttribute('for');
+      const inputId = inputs.nth(i).getAttribute('id');
 
       console.log('for', await labels.nth(i).getAttribute('for'));
       console.log('id', await inputs.nth(i).getAttribute('id'));

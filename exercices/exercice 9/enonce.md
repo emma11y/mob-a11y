@@ -27,7 +27,7 @@ Attention :
 
 ## Avant de coder
 
-Essayez de naviguer avec un lecteur d’écran
+Essayez de naviguer avec un lecteur d’écran sur cette page : [http://localhost:5173/produits-avec-cookies](http://localhost:5173/produits-avec-cookies)
 
 On peut naviguer de région en région grâce aux raccourcis :
 

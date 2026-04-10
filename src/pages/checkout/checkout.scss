@@ -173,6 +173,7 @@
 .cart-item-price {
   font-weight: 600;
   color: var(--foreground);
+  margin-right: 1em;
 }
 
 .summary-divider {
@@ -210,7 +211,7 @@
   font-size: 1rem;
 
   &:hover {
-    background-color: var(--background);
+    background-color: var(--card);
     color: var(--primary);
     outline-color: var(--primary);
   }

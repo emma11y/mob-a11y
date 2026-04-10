@@ -1,18 +1,47 @@
-# Réponses à l'exercice 8 : Images
+# Réponse à l'exercice 8 : Images
 
-## L'attribut ALT
+## Solution
 
-L'attribut `alt` sur les `<img>` permet de décrire les images. Grâce à cet attribut, les personnes aveugles et malvoyantes peuvent identifier le produit en fonction des descriptions qui leur sont données.
+Ajouter un attribut `alt` pertinent sur chaque image :
 
-Les descriptions doivent être les plus précises possibles.
+```html
+<img src="produit.jpg" alt="Autocollant en forme de chat noir" />
+```
 
-**Tout visuel contenant des informations doit avoir une alternative textuelle.**
+Le texte alternatif doit décrire l’information utile portée par l’image.
 
-### Exception
+Pour les images décoratives, utiliser un `alt` vide :
 
-L'exception concerne les éléments graphiques purement décoratifs, comme les logos par exemple.
+```html
+<img src="decoration.png" alt="" />
+```
 
-Si un élément ne porte aucune information pertinente, on met l'attribut `alt` vide : `<img alt="">`. Le lecteur d'écran va dire que c'est un élément décoratif.
+## Ce que vérifiaient les tests
+
+Les tests vérifiaient que :
+
+- chaque image possède un attribut `alt`
+- les alternatives textuelles ne sont pas redondantes ou inutiles
+- aucune violation Axe sur les règles liées aux images
+
+## Pourquoi c’est important
+
+Les personnes aveugles ou malvoyantes utilisent des lecteurs d’écran pour comprendre le contenu.
+
+Sans texte alternatif :
+
+- l’image est ignorée ou mal interprétée
+- une information importante peut être perdue
+
+Le `alt` permet de transmettre cette information sous forme textuelle.
+
+## Bonnes pratiques
+
+- Décrire l’information utile, pas nécessairement l’image en détail
+- Adapter la description au contexte (produit, illustration, contenu)
+- Éviter les formulations inutiles comme "image de..."
+- Utiliser `alt=""` pour les images purement décoratives
+- Ne pas répéter un texte déjà présent à proximité
 
 ## Toolbox
 

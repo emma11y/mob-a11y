@@ -116,16 +116,6 @@ fieldset {
   outline: none;
 }
 
-a {
-  color: var(--color);
-
-  &:hover {
-    text-decoration: none;
-    outline: 0.2em solid var(--color);
-    outline-offset: 0.2em;
-  }
-}
-
 button,
 .button {
   color: var(--color);
@@ -142,4 +132,27 @@ button,
     outline: 0.15em solid var(--color);
     outline-offset: 0.15em;
   }
+}
+
+a,
+.link {
+  color: var(--color);
+
+  &:hover {
+    text-decoration: none;
+    outline: 0.2em solid var(--color);
+    outline-offset: 0.2em;
+  }
+}
+
+.link {
+  display: flex;
+  font-family: var(--main-family);
+  width: auto;
+  display: inline;
+  text-decoration: underline;
+  height: auto;
+  border-radius: 0;
+  font-size: 1em;
+  padding: 0;
 }

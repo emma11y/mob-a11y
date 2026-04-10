@@ -1,10 +1,14 @@
-import '../../assets/styles/products/main.scss';
 import '../../assets/styles/products/Index.scss';
 import '../../assets/styles/products/components/ProductCard.scss';
 import '../../assets/styles/products/components/CartDrawer.scss';
 import { products } from '../../data/products';
+import {
+  createFocusTrap,
+  FocusTrapController,
+} from '../../utils.ts/focus-trap';
 
-// Simple cart state
+let trap: FocusTrapController | null = null;
+
 type CartItem = { product: (typeof products)[number]; quantity: number };
 
 // Store cart in localStorage for persistence across pages
@@ -72,10 +76,15 @@ function totalPrice() {
 function drawCart(open: boolean) {
   state.isCartOpen = open;
 
-  const cartElement = document.querySelector('#cart');
+  const cartElement = document.querySelector('#cart') as HTMLElement;
   if (cartElement) {
     if (open) {
       cartElement.innerHTML = cartDrawerHTML();
+
+      const modal = document.querySelector('.cart-drawer') as HTMLElement;
+
+      trap = createFocusTrap(modal, ['.cart-drawer button', '.cart-drawer a']);
+      trap.activate();
 
       document
         .querySelectorAll<HTMLElement>('[data-close-drawer]')
@@ -161,7 +170,7 @@ function cartDrawerHTML() {
       `;
 
   return `
-    <div class="cart-drawer" role="dialog" aria-modal="true" aria-labelledby="panel-title">
+    <div class="cart-drawer" tabindex="0" role="dialog" aria-modal="true" aria-labelledby="panel-title">
       <div class="overlay" data-close-drawer></div>
       <div class="panel">
         <div class="panel-content">

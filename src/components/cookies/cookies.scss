@@ -63,8 +63,9 @@
     }
 
     &-agree-button {
+      border: 0.1em solid var(--color);
       color: var(--color);
-      background-color: var(--background);
+      background-color: var(--bg-color);
     }
   }
 }

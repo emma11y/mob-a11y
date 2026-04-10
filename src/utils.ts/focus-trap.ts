@@ -3,15 +3,13 @@ export type FocusTrapController = {
   deactivate: () => void;
 };
 
-export function createFocusTrap(modal: HTMLElement): FocusTrapController {
-  const FOCUSABLE_SELECTORS = [
-    '[tabindex]:not([tabindex="-1"]) button',
-    '[tabindex]:not([tabindex="-1"]) a',
-  ].join(',');
-
+export function createFocusTrap(
+  modal: HTMLElement,
+  selectors: string[],
+): FocusTrapController {
   const getFocusable = (): HTMLElement[] => {
     return Array.from(
-      modal.querySelectorAll<HTMLElement>(FOCUSABLE_SELECTORS),
+      modal.querySelectorAll<HTMLElement>(selectors.join(',')),
     ).filter((el) => {
       const style = window.getComputedStyle(el);
       return (
@@ -60,7 +58,7 @@ export function createFocusTrap(modal: HTMLElement): FocusTrapController {
 
   const activate = () => {
     if (!modal.hasAttribute('tabindex')) {
-      modal.setAttribute('tabindex', '-1');
+      modal.setAttribute('tabindex', '0');
     }
 
     const focusable = getFocusable();
@@ -71,6 +69,10 @@ export function createFocusTrap(modal: HTMLElement): FocusTrapController {
   };
 
   const deactivate = () => {
+    if (modal.hasAttribute('tabindex')) {
+      modal.setAttribute('tabindex', '-1');
+    }
+
     document.removeEventListener('keydown', onKeyDown, true);
     document.removeEventListener('focusin', onFocusIn, true);
   };

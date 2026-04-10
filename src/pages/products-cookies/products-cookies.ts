@@ -45,7 +45,10 @@ function load() {
   });
 
   const modal = document.querySelector('.popup') as HTMLElement;
-  trap = createFocusTrap(modal);
+  trap = createFocusTrap(modal, [
+    '[tabindex]:not([tabindex="-1"]) button',
+    '[tabindex]:not([tabindex="-1"]) a',
+  ]);
   trap.activate();
 }
 

@@ -34,6 +34,16 @@ Pour prévisualiser la build :
 npm run preview
 ```
 
+## Deploiement GitHub Pages
+
+Le projet est configure pour etre deployee automatiquement sur GitHub Pages via GitHub Actions.
+
+1. Push les changements sur la branche `main`.
+2. Le workflow `Deploy to GitHub Pages` build le projet et publie le dossier `dist`.
+3. Dans GitHub, verifier `Settings > Pages` : la source doit etre `GitHub Actions`.
+
+La base URL est definie automatiquement en build CI pour le depot `mob-a11y`.
+
 ## Structure du projet
 
 - `index.html` - Point d'entrée HTML

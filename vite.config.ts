@@ -2,6 +2,7 @@ import { defineConfig } from 'vite';
 import FullReload from 'vite-plugin-full-reload';
 
 export default defineConfig({
+  base: process.env.GITHUB_PAGES === 'true' ? '/mob-a11y/' : '/',
   appType: 'spa',
   css: {
     preprocessorOptions: {

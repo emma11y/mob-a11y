@@ -17,9 +17,9 @@ Le RGAA lui-même l'impose : certains critères exigent des **« tests de restit
 
 Source : [Accessibilité numérique : le contrôle automatisé change la donne](https://www.urbilog.com/blog-des-experts/accessibilite-numerique-le-controle-automatise-change-la-donne) - Urbilog
 
-C'est pourquoi il est nécessaire de faire des tests utilisateurs avec le lecteur d'écran et le clavier pour s'assurer que c'est conforme.
+C'est pourquoi il est nécessaire de faire des tests utilisateurices avec le lecteur d'écran et le clavier pour s'assurer que ça fonctionne correctement.
 
-Certains tests que nous avons créés sont sur mesure et non gérés par l'outil Axe. Ecrire ces tests nous a pris du temps.
+Certains tests que nous avons créés sont sur mesure et non gérés par l'outil Axe. **Ecrire ces tests nous a pris du temps**.
 
 ## Playwright
 

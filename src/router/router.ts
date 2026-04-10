@@ -24,6 +24,12 @@ export const routes: Route[] = [
     ts: '../pages/products/products.ts',
   },
   {
+    path: '/produits-avec-cookies',
+    name: 'Produits avec les cookies',
+    component: '../pages/products-cookies/products-cookies.html',
+    ts: '../pages/products-cookies/products-cookies.ts',
+  },
+  {
     path: '/finaliser-votre-commande',
     name: 'Finaliser votre commande',
     component: '../pages/checkout/checkout.html',

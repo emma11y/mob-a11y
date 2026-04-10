@@ -14,12 +14,27 @@ Pour en savoir plus sur le pattern : [Landmarks Pattern](https://www.w3.org/WAI/
 
 Grâce aux landmarks, les personnes utilisant le lecteur d'écran peuvent aller directement à la zone concernée en utilisant des raccourcis : l'en-tête, la navigation, la page principale (main) ou le pied de page.
 
-Avec les lecteurs d'écran NVDA et VoiceOver, on peut naviguer de titre en titre grâce aux raccourcis :
+### Toolbox
 
-- Pour passer d'une zone à la suivante, appuyer sur la touche `D`
-- Pour revenir à la zone précédente : appuyer sur les touches `Maj + D`
+**Lecteur d'écran**
 
-Sur NVDA, on peut afficher la liste de toutes les régions de la page :
+Avec les lecteurs d'écran NVDA et VoiceOver, on peut entendre naviguer entre les régions.
 
-- avec le raccourci `NVDA + F7`
-- Puis choisir l'onglet **Repères** (ou Landmarks)
+**Tests automatisés :**
+
+Sur la règle avec les id `region`, `landmark-one-main`, `landmark-no-duplicate-banner`, `landmark-no-duplicate-contentinfo`, `landmark-unique`
+
+- [axe-core](https://github.com/dequelabs/axe-core)
+- [Playwright with axe-core](https://playwright.dev/docs/accessibility-testing)
+
+**Extensions de navigateur web :**
+
+Landmark Navigation sur
+
+- [Chrome](https://chromewebstore.google.com/detail/landmark-navigation-via-k/ddpokpbjopmeeiiolheejjpkonlkklgp)
+- [Firefox](https://addons.mozilla.org/en-US/firefox/addon/landmarks/)
+
+**Bookmarklets :**
+
+- [Landmarks booktmarklet](https://accessibility-bookmarklets.org/install.html)
+- [A11y audit bookmarklets](https://a11y-tools.com/bookmarklets/)

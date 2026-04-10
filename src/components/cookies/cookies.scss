@@ -1,0 +1,70 @@
+.popup {
+  max-width: 50em;
+  border-radius: 0.5em;
+  padding: 2em;
+  color: var(--color);
+  border: 0.1em solid var(--color);
+  background-color: var(--bg-color);
+  position: fixed;
+  top: 30%;
+  left: 28%;
+  padding-bottom: 5em;
+
+  &.hide {
+    display: none;
+  }
+
+  &-view {
+    width: 100%;
+    display: flex;
+  }
+
+  &-text-container {
+    clear: both;
+    margin-right: 1em;
+
+    &-text {
+      text-align: left;
+    }
+
+    svg {
+      vertical-align: sub;
+    }
+  }
+
+  &-buttons {
+    font-family: var(--main-family);
+    margin: auto;
+
+    button {
+      width: 15em;
+      font-family: var(--main-family);
+      border-radius: 0.25em;
+    }
+
+    &-disagree-button {
+      width: 15em;
+      position: absolute;
+      left: 2em;
+      bottom: 2em;
+      display: flex;
+
+      padding: 0.5em;
+
+      svg {
+        vertical-align: middle;
+      }
+    }
+
+    &-more-button {
+      color: var(--bg-color);
+      background-color: var(--color);
+      margin-bottom: 1em;
+    }
+
+    &-agree-button {
+      color: var(--color);
+      background-color: var(--background);
+    }
+  }
+}

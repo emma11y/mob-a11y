@@ -1,16 +1,21 @@
 # Exercice 5 : La langue
 
-Vous devez utiliser le lecteur d'écran pour tester la vocalisation et vérifier si le site est vocalisable dans la bonne langue.
+Utiliser le lecteur d'écran pour tester la vocalisation et vérifier si le site est vocalisable dans la bonne langue : vous aurez des surprises !
 
-Selon votre système d'exploitation, voici un lecteur d'écran que vous pouvez utiliser :
+Le problème vient de la langue de la page.
 
-- [NVDA](https://www.nvda.fr/) (Windows)
-- [VoiceOver](https://support.apple.com/fr-fr/guide/voiceover/vo2682/mac) (IOS)
-- [Orca](https://orca.gnome.org/) (Linux/Ubuntu)
+## Votre mission
 
-Vous pouvez également consulter le [guide sur les lecteurs d'écran](https://disic.github.io/guide-lecteurs_ecran/).
+Faire en sorte que le contenu soit vocalisé dans la bonne langue.
 
-Avant de lancer le test avec Playwright, lancez le lecteur d'écran et naviguez sur le site.
+## Avant de coder
+
+Activez un lecteur d’écran et écoutez attentivement la lecture de la page.
+
+## À observer
+
+- La langue est-elle correctement définie ?
+- La lecture est-elle fluide et compréhensible ?
 
 ## Corriger le test avec Playwright
 

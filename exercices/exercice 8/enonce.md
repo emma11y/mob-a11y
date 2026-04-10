@@ -3,9 +3,19 @@
 Sur un site e-commerce, les libellés ne suffisent pas. Chaque fiche contient des photos et images qui
 donnent envie d'acheter.
 
-Avec le lecteur d'écran, vérifiez si les images ont une alternative textuelle.
+## Votre mission
 
-Avant de lancer le test avec Playwright, naviguez la page avec les flèches Haut et Bas et voyez ce que le lecteur d'écran vocalise au fur et à mesure.
+Vérifier et corriger les alternatives textuelles des images.
+
+- Les images ont-elles une alternative textuelle ?
+- Cette alternative est-elle pertinente ?
+- Apporte-t-elle une information utile ?
+
+## Avant de coder
+
+- Naviguez avec un lecteur d’écran
+- Parcourez la page avec les flèches **Haut** et **Bas**
+- Écoutez ce qui est vocalisé pour chaque image
 
 ## Corriger le test avec Playwright
 

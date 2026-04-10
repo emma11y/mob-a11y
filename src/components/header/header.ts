@@ -1,12 +1,9 @@
 import './header.scss';
+import headerTemplate from './header.html?raw';
 
 export class CustomHeader extends HTMLElement {
   async connectedCallback() {
-    const html = await fetch(new URL('./header.html', import.meta.url)).then(
-      (res) => res.text(),
-    );
-
-    this.innerHTML = html;
+    this.innerHTML = headerTemplate;
 
     this.initTheme();
   }

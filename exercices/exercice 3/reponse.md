@@ -1,25 +1,51 @@
-# Réponses à l'exercice 3 : navigation au clavier
+# Réponse à l'exercice 3 : Navigation au clavier
 
-## Première solution
+## Solution 1
 
-Désactiver `outline:none` qui empêche de rendre les liens et boutons visibles à la navigation au clavier
+Supprimer `outline: none` qui empêche de visualiser le focus sur les éléments interactifs.
 
-## Deuxième solution
+Par défaut, les navigateurs affichent un contour (outline) lorsqu’un élément reçoit le focus. Le retirer sans alternative rend la navigation au clavier très difficile, voire impossible.
 
-Comme l'`outline:none` rend souvent les liens et boutons "moches", il existe un petit hack CSS.
+## Solution 2
 
-Quand on style les liens et boutons avec la pseudo-classe `:hover`, on les voit souligné quand on y passe avec la souris.
-Mais pour les voir avec la navigation au clavier, on va utiliser la pseudo-classe `:focus-visible`.
+Si le style par défaut du focus ne convient pas visuellement, il est préférable de le personnaliser plutôt que de le supprimer.
 
-Sur chaque lien (`a`) ou bouton (`button`) ayant `:hover`, mettre `:focus-visible`.
+On peut utiliser la pseudo-classe `:focus-visible` pour afficher un style de focus uniquement lors de la navigation au clavier.
 
-## Good To know
+Par exemple, si un élément possède un style au `:hover`, il est recommandé d’ajouter un équivalent pour le focus :
 
-Il existe plusieurs pseudo-classes CSS :
+```css
+a:hover,
+a:focus-visible {
+  text-decoration: underline;
+}
+```
 
-- `:focus` : sert à appliquer le style sur l'élément qui reçoit le focus que ce soit par le clavier ou par la souris.
-- `:focus-visible`: permet d'appliquer le style de focus uniquement lorsque le focus est obtenu à l'aide du clavier, et non de la souris.
-- `:focus-within`: s'applique à un élément lorsque celui-ci ou l'un de ses descendants reçoit le focus.
+Cela permet d’assurer une cohérence entre navigation souris et clavier.
+
+## Ce que vérifiaient les tests
+
+Les tests vérifiaient que :
+
+- les éléments interactifs sont accessibles au clavier
+- le focus est visible lors de la navigation avec la touche **Tab**
+
+Sans focus visible, il devient impossible de savoir où l’on se trouve dans la page.
+
+## Bonnes pratiques
+
+- Ne jamais supprimer le focus sans proposer une alternative visible
+- Utiliser `:focus-visible` pour adapter l’affichage au clavier
+- S’assurer que tous les éléments interactifs sont atteignables avec **Tab**
+- Vérifier l’ordre de tabulation
+
+## Good to know
+
+Il existe plusieurs pseudo-classes CSS liées au focus :
+
+- `:focus` : s’applique lorsque l’élément reçoit le focus (souris ou clavier)
+- `:focus-visible` : s’applique uniquement lors d’une navigation au clavier
+- `:focus-within` : s’applique à un élément lorsqu’un de ses descendants a le focus
 
 ## Toolbox
 

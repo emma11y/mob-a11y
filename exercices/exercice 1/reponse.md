@@ -2,22 +2,56 @@
 
 ## Solution
 
-On met l'attribut `<h2>` sur le titre **Des autocollants qui vous collent à la peau.** car nous avons déjà un titre de niveau 1 : **STICKR**.
+Le titre **“Des autocollants qui vous collent à la peau.”** doit être un `<h2>`.
 
-## Pourquoi la hiérarchie des titres est importante ?
+Pourquoi ?  
+Parce qu’il existe déjà un titre principal `<h1>` sur la page : **STICKR**.  
+Ce sous-titre vient donc logiquement au niveau inférieur.
 
-Une hiérarchie de titres structurée est fondamentale pour l'accessibilité et le SEO, car elle permet aux personnes utilisant le lecteur d'écran de naviguer efficacement : au lieu d'écouter le contenu linéairement, elles peuvent passer directement d'un titre à l'autre pour se repérer et accéder rapidement à l'information qui les intéresse.
+## Ce que vérifiaient les tests
 
-- Pensez à la hiérarchie des titres comme une table des matières ou à un sommaire : `h1` > `h2` > `h3` > `h4` > `h5` > `h6`
-- Il ne peut y avoir un trou entre `h1` et `h3` car cela casse la navigation de titres en titres.
-- N'utilisez pas le heading pour styler le titre.
+Les tests validaient plusieurs choses :
 
-**Lecteurs d'écrans**
+- Le texte est bien exposé comme un **heading** (via son rôle)
+- Il est **visible**
+- La page respecte :
+  - la présence d’un `<h1>`
+  - une **hiérarchie cohérente des titres** (pas de saut de niveau)
 
-Avec les lecteurs d'écran NVDA et VoiceOver, on peut naviguer de titre en titre grâce aux raccourcis :
+Si vous aviez mis un `<h3>` ou un `<div>`, le test (et Axe) aurait échoué.
 
-- Pour passer d'un titre au suivant, appuyer sur la touche `H` comme _heading_
-- Pour revenir au titre précédent : appuyer sur les touches `Maj + H`.
+## Pourquoi c’est important
+
+Les titres ne servent pas qu’au design : ils structurent l’information.
+
+Pour une personne utilisant un lecteur d’écran :
+
+- la page peut être parcourue **par titres uniquement**
+- cela permet de comprendre rapidement :
+  - le sujet de la page
+  - son organisation
+  - où se trouve l’information recherchée
+
+Sans hiérarchie correcte, la navigation devient confuse, voire inutilisable.
+
+## Bonnes pratiques
+
+- Respecter l’ordre logique :  
+  `h1 → h2 → h3 → ...`
+- Éviter les sauts de niveau (`h1 → h3`)
+- Utiliser les headings pour **structurer**, pas pour styliser
+- Il doit y avoir **au moins un `<h1>`** sur la page
+
+Pensez “table des matières” plutôt que “taille de texte”.
+
+## Tester avec un lecteur d’écran
+
+Avec NVDA ou VoiceOver :
+
+- `H` → titre suivant
+- `Maj + H` → titre précédent
+
+Vous devriez pouvoir comprendre la page sans lire tout le contenu.
 
 ## Toolbox
 
@@ -34,3 +68,5 @@ Lorsqu'un lien de type bookmarklet est activé, le navigateur exécute le code J
 Mettez les en favori dans votre navigateur préféré :
 
 - [Headings booktmarklet](https://accessibility-bookmarklets.org/install.html)
+
+Ces outils permettent de visualiser instantanément la hiérarchie des titres.

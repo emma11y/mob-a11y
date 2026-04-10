@@ -1,25 +1,55 @@
 # Axe
 
-Une fois que vous avez fini les exercices, lancez le test final `final-axe` qui permet de vérifier si les tests d'accessibilité définis par Axe passent.
+Vous avez terminé les exercices. Bravo !
 
-A noter que les tests Axe couvrent qu'entre 30% et 40% des critères d'accessibilité.
+Il est maintenant temps de lancer le test final : `final-axe`.
 
-En effet, les outils automatiques ne peuvent pas évaluer :
+Ce test exécute une suite de règles automatisées d’accessibilité via Axe pour vérifier si les problèmes identifiés ont été corrigés.
 
-- la pertinence d'une alternative textuelle (une image peut avoir un attribut alt mais inadéquat) ;
-- la navigation au clavier dans des contextes complexes ;
-- la restitution par les lecteurs d'écran (NVDA, JAWS, VoiceOver) ;
-- la compréhensibilité réelle du contenu ;
-- l'ordre de lecture logique ;
-- la gestion du focus dans les interactions riches.
+## Ce qu'il couvre (et ses limites)
 
-Le RGAA lui-même l'impose : certains critères exigent des **« tests de restitution à effectuer sur des technologies d'assistance »**. C'est obligatoirement le travail d'un expert humain.
+Les outils d’analyse automatique comme Axe sont très utiles pour détecter rapidement des erreurs courantes.
 
-Source : [Accessibilité numérique : le contrôle automatisé change la donne](https://www.urbilog.com/blog-des-experts/accessibilite-numerique-le-controle-automatise-change-la-donne) - Urbilog
+Mais ils ne couvrent qu’environ 30 à 40 % des critères d’accessibilité.
 
-C'est pourquoi il est nécessaire de faire des tests utilisateurices avec le lecteur d'écran et le clavier pour s'assurer que ça fonctionne correctement.
+Cela signifie qu’une application peut passer tous les tests automatisés… tout en restant difficile voire impossible à utiliser.
 
-Certains tests que nous avons créés sont sur mesure et non gérés par l'outil Axe. **Ecrire ces tests nous a pris du temps**.
+## Ce que les outils automatiques ne peuvent pas vérifier
+
+Les tests automatisés ne peuvent pas évaluer :
+
+- la pertinence réelle d’un texte alternatif sur une image
+- la navigation au clavier dans des interfaces complexes
+- la restitution par les lecteurs d’écran (NVDA, JAWS, VoiceOver)
+- la compréhension globale du contenu
+- l’ordre de lecture logique dans des mises en page riches
+- la gestion du focus dans les interactions avancées (modales, menus, dialogs)
+
+## Ce que dit le RGAA
+
+Le RGAA impose explicitement que certains critères nécessitent des tests réalisés avec des technologies d’assistance.
+
+Ces vérifications ne peuvent pas être automatisées.
+
+Elles reposent sur des tests utilisateurs et des experts en accessibilité.
+
+## Pourquoi c’est important
+
+Une interface peut être techniquement valide… sans être réellement utilisable.
+
+C’est pour cela que les tests automatisés ne sont qu’une première étape.
+
+## À propos de ce projet
+
+Certains tests que vous avez rencontrés ont été conçus spécifiquement pour cet atelier.
+
+Ils ne proviennent pas tous de règles standardisées d’outils comme Axe.
+
+Les écrire a demandé du temps, car ils simulent des situations réelles d’usage.
+
+## Source
+
+https://www.urbilog.com/blog-des-experts/accessibilite-numerique-le-controle-automatise-change-la-donne
 
 ## Playwright
 

@@ -12,9 +12,7 @@ test.describe('Exercice 6 : Les boutons doivent avoir des labels explicites', ()
     await page.goto('http://localhost:5173/produits');
   });
 
-  test('Les boutons et liens doivent être explicites', async ({
-    page,
-  }) => {
+  test('Les boutons et liens doivent être explicites', async ({ page }) => {
     await page.waitForLoadState('networkidle');
 
     const main = page.locator('.main');
@@ -44,7 +42,7 @@ test.describe('Exercice 6 : Les boutons doivent avoir des labels explicites', ()
     page,
   }) => {
     const toggle = page.getByTestId('cart-toggle');
-    const toggleLabel = toggle.locator('span');
+    const toggleLabel = toggle.getByText('Afficher le panier');
     await expect(toggleLabel).toHaveClass('sr-only');
   });
 
@@ -68,7 +66,9 @@ test.describe('Exercice 6 : Les boutons doivent avoir des labels explicites', ()
     await expect(toggleLabel).toHaveClass('sr-only');
   });
 
-  test('Le bouton "Ajouter dans le panier" ne doit pas être générique', async ({ page }) => {
+  test('Le bouton "Ajouter dans le panier" ne doit pas être générique', async ({
+    page,
+  }) => {
     await page.waitForLoadState('networkidle');
 
     const productCards = page.locator('.product-card');

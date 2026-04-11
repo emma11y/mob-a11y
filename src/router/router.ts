@@ -49,21 +49,6 @@ export const routes: Route[] = [
 ];
 
 const titlePage = `Mob & Accessibilité`;
-const basePath = import.meta.env.BASE_URL.replace(/\/$/, '');
-
-function withBasePath(path: string): string {
-  if (!basePath) return path;
-  return path === '/' ? `${basePath}/` : `${basePath}${path}`;
-}
-
-function withoutBasePath(path: string): string {
-  if (!basePath) return path || '/';
-  if (path === `${basePath}/` || path === basePath) return '/';
-  if (path.startsWith(`${basePath}/`)) {
-    return path.slice(basePath.length) || '/';
-  }
-  return path || '/';
-}
 
 export class Router {
   private routes: Route[];
@@ -73,16 +58,15 @@ export class Router {
     this.routes = routes;
   }
 
-  async navigate(path: string, updateHistory: boolean = true): Promise<void> {
-    const appPath = withoutBasePath(path);
-    const route = this.routes.find((r) => r.path === appPath);
+  async navigate(path: string): Promise<void> {
+    const route = this.routes.find((r) => r.path === path);
 
     if (!route) {
-      console.warn(`Route not found: ${appPath}`);
+      console.warn(`Route not found: ${path}`);
       return;
     }
 
-    this.currentPath = appPath;
+    this.currentPath = path;
     await this.loadComponent(route.component);
 
     // Load route-specific TypeScript if provided
@@ -91,9 +75,7 @@ export class Router {
     }
 
     // Update browser history
-    if (updateHistory) {
-      history.pushState({ path: appPath }, route.name, withBasePath(appPath));
-    }
+    history.pushState({ path }, route.name, path);
 
     // Set title
     document.title = `${route.name} - ${titlePage}`;

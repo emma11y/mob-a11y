@@ -5,6 +5,16 @@ import './components/footer/footer.ts';
 import { Router, routes } from './router/router.ts';
 
 const router = new Router(routes);
+const basePath = import.meta.env.BASE_URL.replace(/\/$/, '');
+
+function withoutBasePath(path: string): string {
+  if (!basePath) return path || '/';
+  if (path === `${basePath}/` || path === basePath) return '/';
+  if (path.startsWith(`${basePath}/`)) {
+    return path.slice(basePath.length) || '/';
+  }
+  return path || '/';
+}
 
 async function initApp() {
   const appContainer = document.getElementById('app');
@@ -20,7 +30,7 @@ async function initApp() {
   setupNavigation();
 
   // Load the current URL path
-  const currentPath = window.location.pathname || '/';
+  const currentPath = withoutBasePath(window.location.pathname || '/');
   await router.navigate(currentPath);
 }
 
@@ -32,7 +42,7 @@ function setupNavigation() {
 
     if (link && link.href.startsWith(window.location.origin)) {
       e.preventDefault();
-      const path = link.pathname;
+      const path = withoutBasePath(link.pathname);
       router.navigate(path);
     }
   });
@@ -40,7 +50,7 @@ function setupNavigation() {
   // Handle browser back/forward buttons
   window.addEventListener('popstate', (e) => {
     const path = e.state?.path || '/';
-    router.navigate(path);
+    router.navigate(path, false);
   });
 }
 

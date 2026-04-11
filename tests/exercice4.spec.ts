@@ -22,7 +22,7 @@ test.describe('Exercice 4 : Boutons et liens', () => {
   test("Les boutons d'ajout dans le panier doivent être des <button>", async ({
     page,
   }) => {
-    const buttons = await page.locator('.add-to-cart');
+    const buttons = await page.getByTestId('add-to-cart');
 
     await expect(buttons).toHaveCount(6);
 
@@ -46,11 +46,11 @@ test.describe('Exercice 4 : Boutons et liens', () => {
   test('Les boutons de suppression d\élément dans le panier doivent être des <button>', async ({
     page,
   }) => {
-    await page.locator('.add-to-cart').first().click();
+    await page.getByTestId('add-to-cart').first().click();
     await page.getByTestId('cart-toggle').click();
 
     const cart = page.locator('id=cart');
-    const buttons = cart.locator('.remove');
+    const buttons = cart.getByTestId('cart-remove');
 
     await expect(buttons).toHaveCount(1);
 
@@ -61,7 +61,7 @@ test.describe('Exercice 4 : Boutons et liens', () => {
   });
 
   test('Le lien pour payer doit être un <a>', async ({ page }) => {
-    await page.locator('.add-to-cart').first().click();
+    await page.getByTestId('add-to-cart').first().click();
     await page.getByTestId('cart-toggle').click();
 
     const cart = await page.locator('id=cart');

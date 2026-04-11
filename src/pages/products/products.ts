@@ -124,7 +124,7 @@ function productCardHTML(product: (typeof products)[number], index: number) {
             </div>
             <div class="price">${product.price.toFixed(2)} €</div>
           </div>
-          <div class="add-to-cart" data-add-to-cart="${product.id}">Ajouter dans le panier</div>
+          <div class="add-to-cart" data-testId="add-to-cart" data-add-to-cart="${product.id}">Ajouter dans le panier</div>
         </div>
       </div>
     </div>
@@ -143,7 +143,7 @@ function cartDrawerHTML() {
           <div class="qty">Quantité : ${item.quantity}</div>
         </div>
         <div class="row-price">${(item.product.price * item.quantity).toFixed(2)} €</div>
-        <div class="button remove" data-remove="${item.product.id}">
+        <div class="button remove" data-testId="cart-remove" data-remove="${item.product.id}">
            <svg aria-hidden="true" aria-hidden="true" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
                 <line x1="18" y1="6" x2="6" y2="18" />
                 <line x1="6" y1="6" x2="18" y2="18" />

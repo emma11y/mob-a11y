@@ -82,7 +82,7 @@ test.describe('Exercice 6 : Les boutons doivent avoir des labels explicites', ()
       const button = product.locator('.add-to-cart');
 
       const titleText = (await title.innerText()).trim();
-      const textButton = await button.textContent();
+      const textButton = (await button.textContent())?.trim();
 
       await expect(textButton).toBe(`Ajouter ${titleText} dans le panier`);
     }
@@ -100,7 +100,7 @@ test.describe('Exercice 6 : Les boutons doivent avoir des labels explicites', ()
 
     await page.getByTestId('cart-toggle').click();
 
-    const items = await page.locator('cart-drawer .item');
+    const items = await page.locator('.cart-drawer .item');
 
     const count = await items.count();
     for (let i = 0; i < count; i++) {
@@ -110,7 +110,7 @@ test.describe('Exercice 6 : Les boutons doivent avoir des labels explicites', ()
       const button = item.locator('.remove');
 
       const textName = (await name.innerText()).trim();
-      const textButton = await button.textContent();
+      const textButton = (await button.textContent())?.trim();
 
       expect(textButton).toBe(`Supprimer le produit ${textName} du panier`);
     }

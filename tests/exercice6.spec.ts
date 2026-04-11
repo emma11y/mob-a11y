@@ -102,8 +102,6 @@ test.describe('Exercice 6 : Les boutons doivent avoir des labels explicites', ()
 
     const items = await page.locator('cart-drawer .item');
 
-    //const buttonsToRemove = await page.locator('.remove span');
-
     const count = await items.count();
     for (let i = 0; i < count; i++) {
       const item = items.nth(i);

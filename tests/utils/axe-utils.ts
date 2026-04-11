@@ -51,7 +51,7 @@ export const expectNoAxeViolationsWithId = async (
 
   if (violations.length > 0) {
     console.log(
-      `❌ ${violations.length} violation(s)\n\n${formatViolations(violations)}`,
+      `\n❌  Axe ${violations.length} violation(s)\n\n${formatViolations(violations)}`,
     );
   }
 
@@ -98,9 +98,9 @@ const formatViolations = (violations: any[]) => {
   return violations
     .map((v) => {
       const nodes = v.nodes
-        .map((n: any) => `   → ${n.target.join(', ')}`)
+        .map((n: any) => `   on → ${n.target.join(', ')}`)
         .join('\n');
-      return `🔎 ${v.id} (${v.impact})\n   ${v.help}\n${nodes}`;
+      return `🔎 ${v.id} (${v.impact})\n   details: ${v.help}\n${nodes}\n`;
     })
     .join('\n\n');
 };

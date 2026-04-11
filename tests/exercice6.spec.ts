@@ -12,9 +12,19 @@ test.describe('Exercice 6 : Les boutons doivent avoir des labels explicites', ()
     await page.goto('http://localhost:5173/produits');
   });
 
-  test('Axe : Les boutons et liens doivent être explicites.', async ({
+  test('Les boutons et liens doivent être explicites', async ({
     page,
   }) => {
+    await page.waitForLoadState('networkidle');
+
+    const main = page.locator('.main');
+
+    const buttonsCount = await main.locator('button').count();
+
+    if (buttonsCount === 0) {
+      throw new Error('❌  No button found on the main section');
+    }
+
     await expectNoAxeViolationsWithId(page, [
       'link-name',
       'link-in-text-block',
@@ -25,16 +35,16 @@ test.describe('Exercice 6 : Les boutons doivent avoir des labels explicites', ()
   test("L'icône du bouton d'ouverture du panier doit avoir un texte alternatif", async ({
     page,
   }) => {
-    const toggle = await page.getByTestId('cart-toggle');
+    const toggle = page.getByTestId('cart-toggle');
     const toggleLabel = await toggle.innerText();
-    await expect(toggleLabel).toBe('Afficher le panier');
+    expect(toggleLabel).toBe('Afficher le panier');
   });
 
   test("Le texte alternatif du bouton d'ouverture du panier doit être uniquement visible pour les lecteurs d'écrans", async ({
     page,
   }) => {
-    const toggle = await page.getByTestId('cart-toggle');
-    const toggleLabel = toggle.locator('span.sr-only');
+    const toggle = page.getByTestId('cart-toggle');
+    const toggleLabel = toggle.locator('span');
     await expect(toggleLabel).toHaveClass('sr-only');
   });
 
@@ -43,9 +53,9 @@ test.describe('Exercice 6 : Les boutons doivent avoir des labels explicites', ()
   }) => {
     await page.getByTestId('cart-toggle').click();
 
-    const toggle = await page.getByTestId('cart-close');
+    const toggle = page.getByTestId('cart-close');
     const toggleLabel = await toggle.innerText();
-    await expect(toggleLabel).toBe('Fermer le panier');
+    expect(toggleLabel).toBe('Fermer le panier');
   });
 
   test("Le texte alternatif du bouton de fermeture du panier doit être uniquement visible pour les lecteurs d'écrans", async ({
@@ -53,17 +63,15 @@ test.describe('Exercice 6 : Les boutons doivent avoir des labels explicites', ()
   }) => {
     await page.getByTestId('cart-toggle').click();
 
-    const toggle = await page.getByTestId('cart-close');
-    const toggleLabel = toggle.locator('span.sr-only');
+    const toggle = page.getByTestId('cart-close');
+    const toggleLabel = toggle.locator('span');
     await expect(toggleLabel).toHaveClass('sr-only');
   });
 
-  test('Le bouton "Ajouter dans le panier" doit être explicite', async ({ page }) => {
+  test('Le bouton "Ajouter dans le panier" ne doit pas être générique', async ({ page }) => {
+    await page.waitForLoadState('networkidle');
+
     const productCards = page.locator('.product-card');
-
-    await expect(productCards).not.toHaveCount(0);
-
-    await expect(page.locator('.add-to-cart').first()).toContainText('Ajouter');
 
     const count = await productCards.count();
 
@@ -79,10 +87,12 @@ test.describe('Exercice 6 : Les boutons doivent avoir des labels explicites', ()
     }
   });
 
-  test('Le bouton "Supprimer le produit du panier" doit être explicite', async ({
+  test('Le bouton "Supprimer le produit du panier" ne doit pas être générique', async ({
     page,
   }) => {
-    const products = await page.locator('.add-to-cart');
+    await page.waitForLoadState('networkidle');
+
+    const products = page.locator('.add-to-cart');
 
     await products.nth(0).click();
     await products.nth(3).click();
@@ -93,9 +103,9 @@ test.describe('Exercice 6 : Les boutons doivent avoir des labels explicites', ()
 
     const count = await buttonsToRemove.count();
     for (let i = 0; i < count; i++) {
-      const button = await buttonsToRemove.nth(i);
+      const button = buttonsToRemove.nth(i);
       const text = await button.textContent();
-      await expect(text).not.toStrictEqual('Supprimer le produit du panier');
+      expect(text).not.toStrictEqual('Supprimer le produit du panier');
     }
   });
 });

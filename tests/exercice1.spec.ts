@@ -1,6 +1,5 @@
 import { test, expect } from '@playwright/test';
 import { expectNoAxeViolationsWithId } from './utils/axe-utils';
-import { getElementInfos } from './utils/debug-utils';
 
 // Definition of done
 //-----------------
@@ -29,6 +28,11 @@ test.describe('Exercice 1 : Niveaux de titres', () => {
     await page.waitForLoadState('networkidle');
 
     const headings = page.getByRole('heading');
+    const headingsCount = await headings.count();
+
+    if (headingsCount < 2) {
+      throw new Error('❌  No headings found on the main section');
+    }
 
     const texts = await headings.allTextContents();
     console.log('Titres trouvés :', texts);

@@ -62,7 +62,7 @@ test.describe('Exercice 6 : Les boutons doivent avoir des labels explicites', ()
     await page.getByTestId('cart-toggle').click();
 
     const toggle = page.getByTestId('cart-close');
-    const toggleLabel = toggle.locator('span');
+    const toggleLabel = toggle.getByText('Fermer le panier');
     await expect(toggleLabel).toHaveClass('sr-only');
   });
 
@@ -82,8 +82,9 @@ test.describe('Exercice 6 : Les boutons doivent avoir des labels explicites', ()
       const button = product.locator('.add-to-cart');
 
       const titleText = (await title.innerText()).trim();
+      const textButton = await button.textContent();
 
-      await expect(button).toContainText(titleText);
+      await expect(textButton).toBe(`Ajouter ${titleText} dans le panier`);
     }
   });
 
@@ -99,13 +100,21 @@ test.describe('Exercice 6 : Les boutons doivent avoir des labels explicites', ()
 
     await page.getByTestId('cart-toggle').click();
 
-    const buttonsToRemove = await page.locator('.remove span');
+    const items = await page.locator('cart-drawer .item');
 
-    const count = await buttonsToRemove.count();
+    //const buttonsToRemove = await page.locator('.remove span');
+
+    const count = await items.count();
     for (let i = 0; i < count; i++) {
-      const button = buttonsToRemove.nth(i);
-      const text = await button.textContent();
-      expect(text).not.toStrictEqual('Supprimer le produit du panier');
+      const item = items.nth(i);
+
+      const name = item.locator('.name');
+      const button = item.locator('.remove');
+
+      const textName = (await name.innerText()).trim();
+      const textButton = await button.textContent();
+
+      expect(textButton).toBe(`Supprimer le produit ${textName} du panier`);
     }
   });
 });

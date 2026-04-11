@@ -1,6 +1,29 @@
 # Réponse à l'exercice 7 : Formulaire
 
-## Solution
+## Solutions
+
+### Liste déroulante
+
+Vous avez pu le constater la liste déroulante sous forme de `<div>` n'est pas du tout accessible au clavier.
+Il faut connaître les attributs ARIA pour le rendre accessible comme le montre le [pattern W3C](https://www.w3.org/WAI/ARIA/apg/patterns/combobox/examples/combobox-select-only/)
+
+Ce qui peut être fastidieux quand on ne maîtrise pas du tout ARIA. Si on utilise mal les attributs ARIA, cela peut dégrader l'expérience utilisatrice. (Explication plus bas)
+
+La solution la plus facile est d'utiliser la solution native : la balise HTML `<select></select>` qui est accessible par défaut !
+
+```html
+<select id="country" name="country" required>
+  <option value=""></option>
+  <option value="france">France</option>
+  <option value="belgique">Belgique</option>
+  <option value="suisse">Suisse</option>
+  <option value="luxembourg">Luxembourg</option>
+</select>
+```
+
+Pour mieux comprendre l'usage du select sur [MDN](https://developer.mozilla.org/fr/docs/Web/HTML/Reference/Elements/select)
+
+### Gestion des étiquettes et des erreurs
 
 Associer correctement chaque champ de formulaire à son libellé grâce à l’attribut `for` :
 
@@ -55,19 +78,21 @@ Exemple à éviter :
 
 ```html
 <div role="button">Mon faux bouton</div>
+<div role="listbox">Ma fausse liste déroulante</div>
 ```
 
-Si vous ajoutez un `role` pour indiquer que c'est un bouton, il ne sera quand même pas accessible, car un `<div>` n'est pas _focusable_ naturellement.
+Si vous ajoutez un `role` pour indiquer que c'est un bouton ou une liste déroulante, il ne sera quand même pas accessible, car un `<div>` n'est pas _focusable_ naturellement.
 
 Préférer :
 
 ```html
 <button type="button">Mon vrai bouton</button>
+<select></select>
 ```
 
-Cet élément HTML est naturellement accessible et focusable.
+Ces éléments HTML sont naturellement accessibles et focusables.
 
-Cet exemple applique les deux règles ARIA citées plus haut.
+Ces exemples appliquent les deux règles ARIA citées plus haut.
 
 ### Gestion des erreurs
 

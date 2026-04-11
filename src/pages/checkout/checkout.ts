@@ -160,12 +160,25 @@ function checkRequiredError(element: Element) {
   const field = document.getElementById(fieldId);
   if (!field) return;
 
-  if (field.hasAttribute('required') && !(field as HTMLInputElement).value) {
-    const label = element.parentElement?.querySelector('label');
-    if (label) {
-      const title = label.textContent.replace(' *', '');
+  if (field.hasAttribute('required')) {
+    let isEmpty = false;
+    if (
+      element instanceof HTMLInputElement ||
+      element instanceof HTMLSelectElement
+    ) {
+      isEmpty = !element.value;
+    } else if (element instanceof HTMLDivElement) {
+      const selected = document.querySelector('.country-selected');
+      isEmpty = !selected?.textContent;
+    }
 
-      showError(fieldId, `Le champ ${title} est obligatoire`);
+    if (isEmpty) {
+      const label = element.parentElement?.querySelector('label');
+      if (label) {
+        const title = label.textContent.replace(' *', '');
+
+        showError(fieldId, `Le champ ${title} est obligatoire`);
+      }
     }
   }
 }
@@ -188,6 +201,8 @@ function showError(fieldId: string, message: string): void {
   errorEl.className = 'form-error';
   errorEl.textContent = message;
   parent.appendChild(errorEl);
+
+  // TODO add aria-describedBy and aria-invalid with field element
 }
 
 function clearErrors(): void {
@@ -362,5 +377,19 @@ export function init(): void {
 
     firstNameInput.addEventListener('input', updateCardName);
     lastNameInput.addEventListener('input', updateCardName);
+  }
+
+  const listboxOptions = document.querySelectorAll('.country-option');
+  listboxOptions.forEach((item) =>
+    item.addEventListener('click', onListBoxChange),
+  );
+}
+
+function onListBoxChange(event: any) {
+  const value = event.target.innerText;
+
+  const optionSelected = document.querySelector('.country-selected');
+  if (optionSelected) {
+    optionSelected.textContent = value;
   }
 }

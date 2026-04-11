@@ -52,14 +52,16 @@
             </div>
           </div>
           <div class="form-field">
-            <label>Pays</label>
-            <input
-              type="text"
-              id="country"
-              name="country"
-              value="France"
-              required
-            />
+            <label for="country">Pays</label>
+            <div class="country-dropdown" id="country" role="listbox" required>
+              <div class="country-selected"></div>
+              <div class="country-options">
+                <div role="option" class="country-option">France</div>
+                <div role="option" class="country-option">Belgique</div>
+                <div role="option" class="country-option">Suisse</div>
+                <div role="option" class="country-option">Luxembourg</div>
+              </div>
+            </div>
           </div>
         </form>
       </section>

@@ -13,13 +13,14 @@ Rendre le formulaire compréhensible et utilisable avec un lecteur d’écran.
 
 ### À vérifier
 
+- Est-ce que la liste déroulante est accessible au clavier ? Et ses options restituées par le lecteur d'écran ?
 - Chaque champ est-il associé à un libellé ?
 - Chaque erreur est-elle liée au bon champ ?
 - Les messages sont-ils annoncés au bon moment ?
 
 ### Indice
 
-Regardez le fichier : [../../src/pages/checkout/checkout.ts](../../src/pages/checkout/checkout.ts)
+Pour les messages d'erreur, regardez le fichier : [../../src/pages/checkout/checkout.ts](../../src/pages/checkout/checkout.ts)
 
 Fonctions à explorer :
 

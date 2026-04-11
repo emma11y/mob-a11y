@@ -165,7 +165,7 @@ function cartDrawerHTML() {
             <span class="total-label">Total</span>
             <span class="total-value">${totalPrice().toFixed(2)} €</span>
           </div>
-          <div role="link" class="checkout">Payer</div>
+          <div role="link" class="checkout link">Payer</div>
         </div>
       `;
 

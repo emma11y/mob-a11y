@@ -46,7 +46,7 @@ function renderCartItems(cart: CartProduct[]): void {
     .map(
       (item) => `
     <div class="cart-item">
-      <img src="${item.product.image}" class="cart-item-image" />
+      <img src="${item.product.image}" alt="" class="cart-item-image" />
       <div class="cart-item-details">
         <div class="cart-item-name">${item.product.name}</div>
         <div class="cart-item-qty">Quantité : ${item.quantity}</div>
@@ -209,7 +209,14 @@ function clearErrors(): void {
   document.querySelectorAll('.has-error').forEach((el) => {
     el.classList.remove('has-error');
     const errorMsg = el.querySelector('.form-error');
-    if (errorMsg) errorMsg.remove();
+    if (errorMsg) {
+      errorMsg.remove();
+    }
+
+    const input = el.querySelector('input');
+    if (input) {
+      input.setAttribute('aria-invalid', 'false');
+    }
   });
 }
 

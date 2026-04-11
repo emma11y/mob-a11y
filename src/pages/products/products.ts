@@ -88,7 +88,18 @@ function drawCart(open: boolean) {
 
       document
         .querySelectorAll<HTMLElement>('[data-close-drawer]')
-        .forEach((elt) => elt.addEventListener('click', () => drawCart(false)));
+        .forEach((elt) =>
+          elt.addEventListener('click', () => {
+            drawCart(false);
+
+            const elt = document.querySelector('#cart-toggle') as HTMLElement;
+            if (elt) {
+              elt.focus();
+            }
+
+            trap?.deactivate();
+          }),
+        );
 
       // Remove from cart
       document.querySelectorAll<HTMLElement>('[data-remove]').forEach((el) => {
@@ -97,12 +108,6 @@ function drawCart(open: boolean) {
           removeFromCart(id);
         });
       });
-
-      const checkoutElement = document.querySelector('.checkout');
-      checkoutElement?.addEventListener(
-        'click',
-        () => (window.location.href = '/finaliser-votre-commande'),
-      );
     } else {
       cartElement.innerHTML = '';
     }
@@ -165,7 +170,7 @@ function cartDrawerHTML() {
             <span class="total-label">Total</span>
             <span class="total-value">${totalPrice().toFixed(2)} €</span>
           </div>
-          <div role="link" class="checkout link">Payer</div>
+          <div role="link" onclick="javascript:window.location.href = '/finaliser-votre-commande'" class="checkout link">Payer</div>
         </div>
       `;
 

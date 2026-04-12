@@ -17,7 +17,6 @@ const routeHtmlModules = import.meta.glob('../pages/**/*.html', {
   import: 'default',
 }) as Record<string, HtmlModuleLoader>;
 
-export const baseUrl = import.meta.env.BASE_URL;
 const appBasePath = normalizeBasePath(import.meta.env.BASE_URL);
 
 function normalizeBasePath(basePath: string): string {

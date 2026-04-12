@@ -6,7 +6,6 @@ import {
   createFocusTrap,
   FocusTrapController,
 } from '../../utils.ts/focus-trap';
-import { baseUrl } from '../../router/router';
 
 let trap: FocusTrapController | null = null;
 
@@ -171,7 +170,7 @@ function cartDrawerHTML() {
             <span class="total-label">Total</span>
             <span class="total-value">${totalPrice().toFixed(2)} €</span>
           </div>
-          <a href="${baseUrl}finaliser-votre-commande" class="checkout link">Payer</a>
+          <div role="link" onclick="javascript:window.location.href = '/finaliser-votre-commande'" class="checkout link">Payer</div>
         </div>
       `;
 

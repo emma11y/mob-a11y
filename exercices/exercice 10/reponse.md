@@ -16,6 +16,8 @@ Certaines personnes utilisant les technologies d'assistance ne peuvent pas « vo
 
 L'attribut `aria-relevant` sert à décrire quels types de changements ont eu lieu dans une région aria-live, et lesquels sont pertinents et doivent être annoncés.
 
+Grâce à ces trois attributs, on peut restituer le message vocalement grâce à ce code :
+
 ```html
 <div
   role="alert"

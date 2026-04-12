@@ -1,33 +1,27 @@
-# Exercice 10 : Conditions RGPD
+# Exercice 10 : Notifications (ou messages d'alertes)
 
-Comme dans chaque site de e-commerce, on trouve des modales pour accepter les conditions RGPD.
-Mais souvent, les personnes utilisatrices naviguant au clavier se retrouvent bloquées.
+Souvent, les personnes aveugles et malvoyantes ne reçoivent pas les messages d'alerte.
 
-Essayez de naviguer au clavier :
-
-- le focus ne semble pas contrôlé
-- vous ne pouvez pas sortir de la modale
-- certaines actions sont inaccessibles
-
-Ce type de problème est courant et peut bloquer complètement l’accès à un service.
-
-Cet exemple est inspiré d’un témoignage de [Luca CHAPITEAU](https://www.linkedin.com/posts/lucaenlive_accessibilitaeznumaezrique-inclusion-ux-activity-7447936694957486080-2Wq_/), une personne aveugle confrontée à ce type de blocage et n'a pas pu prendre RDV chez le coiffeur.
-
-Nous avons repris le code HTML qui existait sur le site dénoncé par Luca.
+Comment peuvent-elles savoir que le produit a bien été ajouté dans le panier, retiré du panier ou encore si le formulaire a été correctement soumis ou non ?
 
 ## Votre mission
 
-Rendre cette modale accessible :
-
-- navigation clavier fonctionnelle
-- focus correctement géré
-- actions compréhensibles
+Rendre les notifications accessibles par le lecteur d'écran
 
 ## Avant de coder
 
-- Testez avec le clavier uniquement
-- Testez avec un lecteur d’écran
-- Essayez d’ouvrir, parcourir et fermer la modale
+- Testez avec un lecteur d'écran
+
+Il y a, sur ce site, quatre notifications :
+
+- lorsqu'on ajoute le produit dans le panier
+- lorsqu'on retire le produit du panier
+- lorsqu'on soumet le formulaire en erreur
+- lorsqu'on soumet le formulaire avec succès
+
+## Astuce
+
+Le composant alert se trouve dans le fichier [layout](../../src/layout.html)
 
 ## Corriger le test avec Playwright
 

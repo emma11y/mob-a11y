@@ -1,50 +1,39 @@
-# Réponses à l'exercice 10 : Conditions RGPD
+# Réponses à l'exercice 10 : Les notifications
 
-## Solutions
+## Solution
 
-### TabIndex
+Pour rendre les notifications accessibles, on doit ajouter trois attributs ARIA.
 
-Les erreurs communes sur les fenêtres modales sont à cause du `tabindex="-1"`.
+L'attribut `role` va définir que le div est une alerte.
 
-L'attribut `tabindex` a deux valeurs :
+L'attribut `aria-live` décrit le type de mise à jour.
 
-- la valeur 0 permet de rendre l'élément focusable
-- la valeur -1 enlève le focus de l'élément
+Certaines personnes utilisant les technologies d'assistance ne peuvent pas « voir » les mises à jour dynamiques, l'attribut `aria-live` sert à définir quelles informations mises à jour doivent être :
 
-Du coup, si votre modale a un `tabindex="-1"`, il y a des chances que vous soyez bloqués dans votre navigation.
+- Signalées immédiatement,
+- Annoncées si l'occasion se présente,
+- Annoncées de façon proactive mais lues lorsque l'utilisateur·ice choisit de se concentrer sur la zone mise à jour.
 
-Vous devez corriger de cette façon :
-`<div role="dialog" tabindex="0">Ma fenêtre modale</div>`
+L'attribut `aria-relevant` sert à décrire quels types de changements ont eu lieu dans une région aria-live, et lesquels sont pertinents et doivent être annoncés.
 
-En ajoutant `tabindex`, vous pouvez rendre focusable la fenêtre modale. Mais si vous mettez une mauvaise valeur comme `tabindex="-1"`, on va juste ignorer les boutons de la modale aussi bien par le clavier que par le lecteur d'écran. Si vous attribuez des chiffres comme `tabindex="3"`, vous pertubez l'ordre naturel de la navigation au clavier.
+```html
+<div
+  role="alert"
+  class="alert"
+  aria-live="polite"
+  aria-relevant="additions text"
+></div>
+```
 
-Nous le savons un `<div>` n'est pas focusable par défaut. On peut le remplacer par un élément natif HTML `<dialog></dialog>`.
+Pour en savoir plus sur ces attributs et ses valeurs sur MDN :
 
-### Le bouton nos 6 partenaires
+- [aria-live](https://developer.mozilla.org/fr/docs/Web/Accessibility/ARIA/Reference/Attributes/aria-live)
+- [aria-relevant](https://developer.mozilla.org/fr/docs/Web/Accessibility/ARIA/Reference/Attributes/aria-relevant)
 
-Un bouton n'est pas un lien et un lien n'est pas un bouton. :)
+## Ce que vérifiait le test
 
-Pourquoi créer un `<a role="button" href="javascript:alert('Voici la liste de nos 6 partenaires')"></a>` ?
+Le test vérifiait que le composant alert avait bien ces attributs ARIA et le message associé.
 
-Il suffit de créer un même style que le lien et lui attribuer une classe au bouton :
-`<button type="button" class="link" onclick="javascript:alert('Voici la liste de nos 6 partenaires')"`
+## Bonne pratique
 
-### Le bouton Continuer sans accepter
-
-Deux erreurs à ne pas faire :
-
-- mettre le code `SVG` dans `aria-label` sinon le lecteur d'écran **va vocaliser** tout le code SVG
-- dupliquer le contenu du bouton dans l'`aria-label` : si le bouton est déjà explicite, on ne va pas mettre un `aria-label`
-
-### Les icônes
-
-On n'a pas besoin que le lecteur d'écran vocalise les icônes qui sont purement décoratifs. On va donc les cacher grâce à l'attribut `aria-hidden="true"` sur le `<svg>`
-
-## Toolbox
-
-**Tests automatisés :**
-
-Sur la règle avec l'id `??`.
-
-- [axe-core](https://github.com/dequelabs/axe-core)
-- [Playwright with axe-core](https://playwright.dev/docs/accessibility-testing)
+Il est essentiel de restituer vocalement le message d'alerte afin d'informer la personne que l'action qu'elle a effectué a été correctement effectuée.

@@ -1,8 +1,8 @@
 import { defineConfig } from 'vite';
 import FullReload from 'vite-plugin-full-reload';
 
-export default defineConfig(({ mode }) => ({
-  base: mode === 'github-pages' ? '/mob-a11y/' : '/',
+export default defineConfig({
+  base: process.env.GITHUB_PAGES === 'true' ? '/mob-a11y/' : '/',
   appType: 'spa',
   css: {
     preprocessorOptions: {
@@ -34,4 +34,4 @@ export default defineConfig(({ mode }) => ({
       { delay: 100 },
     ),
   ],
-}));
+});

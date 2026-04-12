@@ -8,10 +8,10 @@ test.describe('Exercice 10 : Notifications', () => {
   test(`Les notifications (ou messages d'alertes) doivent être vocalisés au lecteur d'écran`, async ({
     page,
   }) => {
-    const alert = await page.locator('.alert');
+    const alert = page.locator('.alert');
 
-    const products = await page.locator('.add-to-cart');
-    const titles = await page.locator('.card .title');
+    const products = page.locator('.add-to-cart');
+    const titles = page.locator('.card .title');
 
     await products.nth(0).click();
 
@@ -19,7 +19,7 @@ test.describe('Exercice 10 : Notifications', () => {
     await expect(alert).toHaveAttribute('aria-live', 'polite');
     await expect(alert).toHaveAttribute('aria-relevant', 'additions text');
 
-    await expect(await alert.textContent()).toBe(
+    expect(await alert.textContent()).toBe(
       `Vous avez ajouté le produit ${await titles.nth(0).textContent()} dans votre panier`,
     );
   });

@@ -31,12 +31,10 @@ Essayez de naviguer avec un lecteur d’écran sur cette page : [http://localhos
 
 On peut naviguer de région en région grâce aux raccourcis :
 
-- NVDA
-  -- Pour passer d'une zone à la suivante, appuyer sur la touche `D`
-  -- Pour revenir à la zone précédente : appuyer sur les touches `Maj + D`
-- VoiceOver
-  -- Pour passer d'une zone à la suivante, appuyer sur la touche `W`
-  -- Pour revenir à la zone précédente : appuyer sur les touches `Maj + W`
+| Outil     | Zone suivante | Zone précédente |
+|-----------|---------------|-----------------|
+| NVDA      | `D`           | `Maj + D`       |
+| VoiceOver | `W`           | `Maj + W`       |
 
 On peut afficher la liste de toutes les régions de la page :
 

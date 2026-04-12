@@ -350,24 +350,6 @@
   border-color: var(--destructive);
 }
 
-.alert {
-  position: fixed;
-  top: 0;
-  right: 0;
-  padding: 0 5em;
-  background-color: transparent;
-
-  &.error {
-    background-color: var(--destructive);
-    color: var(--background);
-  }
-
-  &.success {
-    background-color: var(--accent);
-    color: var(--background);
-  }
-}
-
 /* Responsive Design */
 @media (max-width: vars.$md) {
   .checkout-content {

@@ -114,6 +114,31 @@ fieldset {
   border: 0;
 }
 
+.alert {
+  position: fixed;
+  top: 0;
+  right: 0;
+  padding: 0 5em;
+  background-color: transparent;
+  z-index: 999;
+
+  &.error {
+    background-color: var(--destructive);
+    color: var(--background);
+  }
+
+  &.success {
+    background-color: var(--accent);
+    color: var(--background);
+  }
+
+  &.info {
+    background-color: var(--bg-color);
+    color: var(--color);
+    border: 0.1em solid var(--color);
+  }
+}
+
 * {
   outline: none;
 }

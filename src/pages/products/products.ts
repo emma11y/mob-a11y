@@ -6,6 +6,7 @@ import {
   createFocusTrap,
   FocusTrapController,
 } from '../../utils.ts/focus-trap';
+import { showAlert } from '../../utils.ts/alert';
 
 let trap: FocusTrapController | null = null;
 
@@ -55,12 +56,23 @@ function addToCart(productId: number) {
     state.items.push({ product, quantity: 1 });
   }
 
+  showAlert(
+    `Vous avez ajouté le produit ${product.name} dans votre panier`,
+    'info',
+  );
+
   saveCart(state.items);
   refreshCart();
 }
 
 function removeFromCart(productId: number) {
   state.items = state.items.filter((i) => i.product.id !== productId);
+
+  const product = products.find((x) => x.id === productId);
+  showAlert(
+    `Vous avez retiré le produit ${product?.name} de votre panier`,
+    'info',
+  );
   saveCart(state.items);
   refreshCart();
 }

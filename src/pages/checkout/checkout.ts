@@ -1,5 +1,6 @@
 import './checkout.scss';
 import { products } from '../../data/products';
+import { showAlert } from '../../utils.ts/alert';
 
 interface CartItem {
   productId: number;
@@ -321,22 +322,6 @@ function handlePaymentSubmit(e: Event): void {
   setTimeout(() => {
     window.location.href = '/produits';
   }, 2000);
-}
-
-function showAlert(message: string, type: string) {
-  const alert = document.querySelector('.alert');
-  if (alert) {
-    const text = document.createElement('p');
-    text.innerHTML = message;
-    alert.appendChild(text);
-    alert.classList.add(type);
-
-    setTimeout(() => {
-      alert.classList.remove(type);
-      alert.removeChild(text);
-      alert.textContent = '';
-    }, 5000);
-  }
 }
 
 export function init(): void {

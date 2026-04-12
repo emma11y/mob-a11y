@@ -9,7 +9,13 @@ type RouteModule = {
   init?: () => void;
 };
 
+type HtmlModuleLoader = () => Promise<string>;
+
 const routeScriptModules = import.meta.glob<RouteModule>('../pages/**/*.ts');
+const routeHtmlModules = import.meta.glob('../pages/**/*.html', {
+  query: '?raw',
+  import: 'default',
+}) as Record<string, HtmlModuleLoader>;
 
 export const routes: Route[] = [
   {
@@ -108,9 +114,14 @@ export class Router {
     }
 
     try {
-      const html = await fetch(new URL(componentPath, import.meta.url)).then(
-        (res) => res.text(),
-      );
+      const loadHtml = routeHtmlModules[componentPath];
+
+      if (!loadHtml) {
+        console.error(`Component not found: ${componentPath}`);
+        return;
+      }
+
+      const html = await loadHtml();
       outlet.innerHTML = html;
     } catch (error) {
       console.error(`Failed to load component: ${componentPath}`, error);

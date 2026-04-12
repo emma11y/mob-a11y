@@ -1,5 +1,6 @@
 import './checkout.scss';
 import { products } from '../../data/products';
+import { baseUrl } from '../../router/router';
 
 interface CartItem {
   productId: number;
@@ -319,7 +320,7 @@ function handlePaymentSubmit(e: Event): void {
 
   // Redirect to products
   setTimeout(() => {
-    window.location.href = '/produits';
+    window.location.href = `${baseUrl}produits`;
   }, 2000);
 }
 

@@ -17,6 +17,49 @@ const routeHtmlModules = import.meta.glob('../pages/**/*.html', {
   import: 'default',
 }) as Record<string, HtmlModuleLoader>;
 
+export const baseUrl = import.meta.env.BASE_URL;
+const appBasePath = normalizeBasePath(import.meta.env.BASE_URL);
+
+function normalizeBasePath(basePath: string): string {
+  if (!basePath || basePath === '/') {
+    return '';
+  }
+
+  return basePath.endsWith('/') ? basePath.slice(0, -1) : basePath;
+}
+
+export function getAppPath(pathname: string): string {
+  if (!pathname) {
+    return '/';
+  }
+
+  if (!appBasePath) {
+    return pathname;
+  }
+
+  if (pathname === appBasePath) {
+    return '/';
+  }
+
+  if (pathname.startsWith(`${appBasePath}/`)) {
+    return pathname.slice(appBasePath.length) || '/';
+  }
+
+  return pathname;
+}
+
+export function withBasePath(path: string): string {
+  const normalizedPath = path.startsWith('/') ? path : `/${path}`;
+
+  if (!appBasePath) {
+    return normalizedPath;
+  }
+
+  return normalizedPath === '/'
+    ? `${appBasePath}/`
+    : `${appBasePath}${normalizedPath}`;
+}
+
 export const routes: Route[] = [
   {
     path: '/',
@@ -64,15 +107,16 @@ export class Router {
     this.routes = routes;
   }
 
-  async navigate(path: string): Promise<void> {
-    const route = this.routes.find((r) => r.path === path);
+  async navigate(path: string, updateHistory: boolean = true): Promise<void> {
+    const appPath = getAppPath(path);
+    const route = this.routes.find((r) => r.path === appPath);
 
     if (!route) {
-      console.warn(`Route not found: ${path}`);
+      console.warn(`Route not found: ${appPath}`);
       return;
     }
 
-    this.currentPath = path;
+    this.currentPath = appPath;
     await this.loadComponent(route.component);
 
     // Load route-specific TypeScript if provided
@@ -80,8 +124,9 @@ export class Router {
       await this.loadScript(route.ts);
     }
 
-    // Update browser history
-    history.pushState({ path }, route.name, path);
+    if (updateHistory) {
+      history.pushState({ path: appPath }, route.name, withBasePath(appPath));
+    }
 
     // Set title
     document.title = `${route.name} - ${titlePage}`;

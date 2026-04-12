@@ -10,39 +10,38 @@ type RouteModule = {
 };
 
 const routeScriptModules = import.meta.glob<RouteModule>('../pages/**/*.ts');
-const baseUrl = import.meta.env.BASE_URL;
 
 export const routes: Route[] = [
   {
-    path: baseUrl,
+    path: '/',
     name: 'Accueil',
     component: '../pages/home.html',
   },
   {
-    path: `${baseUrl}produits`,
+    path: '/produits',
     name: 'Produits',
     component: '../pages/products/products.html',
     ts: '../pages/products/products.ts',
   },
   {
-    path: `${baseUrl}produits-avec-cookies`,
+    path: '/produits-avec-cookies',
     name: 'Produits avec les cookies',
     component: '../pages/products-cookies/products-cookies.html',
     ts: '../pages/products-cookies/products-cookies.ts',
   },
   {
-    path: `${baseUrl}finaliser-votre-commande`,
+    path: '/finaliser-votre-commande',
     name: 'Finaliser votre commande',
     component: '../pages/checkout/checkout.html',
     ts: '../pages/checkout/checkout.ts',
   },
   {
-    path: `${baseUrl}ressources`,
+    path: '/ressources',
     name: 'Ressources',
     component: '../pages/ressources.html',
   },
   {
-    path: `${baseUrl}a-propos`,
+    path: '/a-propos',
     name: 'A propos',
     component: '../pages/about/about.html',
     ts: '../pages/about/about.ts',
@@ -53,7 +52,7 @@ const titlePage = `Mob & Accessibilité`;
 
 export class Router {
   private routes: Route[];
-  private currentPath: string = baseUrl;
+  private currentPath: string = '/';
 
   constructor(routes: Route[]) {
     this.routes = routes;

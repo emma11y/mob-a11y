@@ -2,7 +2,7 @@
 import '../style.scss';
 import './components/header/header.ts';
 import './components/footer/footer.ts';
-import { Router, routes } from './router/router.ts';
+import { getAppPath, Router, routes, withBasePath } from './router/router.ts';
 
 const router = new Router(routes);
 
@@ -15,32 +15,44 @@ async function initApp() {
   );
 
   appContainer.innerHTML = layout;
+  syncInternalLinks();
 
   // Setup navigation intercept for links
   setupNavigation();
 
   // Load the current URL path
-  const currentPath = window.location.pathname || '/';
-  await router.navigate(currentPath);
+  const currentPath = getAppPath(window.location.pathname || '/');
+  await router.navigate(currentPath, false);
+  syncInternalLinks();
 }
 
 function setupNavigation() {
   // Handle link clicks
-  document.addEventListener('click', (e) => {
+  document.addEventListener('click', async (e) => {
     const target = e.target as HTMLElement;
     const link = target.closest('a[href]') as HTMLAnchorElement;
 
     if (link && link.href.startsWith(window.location.origin)) {
       e.preventDefault();
-      const path = link.pathname;
-      router.navigate(path);
+      const path = getAppPath(link.pathname);
+      await router.navigate(path);
+      syncInternalLinks();
     }
   });
 
   // Handle browser back/forward buttons
-  window.addEventListener('popstate', (e) => {
+  window.addEventListener('popstate', async (e) => {
     const path = e.state?.path || '/';
-    router.navigate(path);
+    await router.navigate(path, false);
+    syncInternalLinks();
+  });
+}
+
+function syncInternalLinks() {
+  const links = document.querySelectorAll<HTMLAnchorElement>('a[href^="/"]');
+
+  links.forEach((link) => {
+    link.href = withBasePath(link.getAttribute('href') || '/');
   });
 }
 

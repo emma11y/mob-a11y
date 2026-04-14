@@ -100,7 +100,7 @@ test.describe('Exercice 6 : Les boutons doivent avoir des labels explicites', ()
 
     await page.getByTestId('cart-toggle').click();
 
-    const items = await page.locator('.cart-drawer .item');
+    const items = page.locator('.cart-drawer .item');
 
     const count = await items.count();
     for (let i = 0; i < count; i++) {

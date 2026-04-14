@@ -1,5 +1,11 @@
 import { expect, test } from '@playwright/test';
 
+// Definition of done
+// ------------------
+// 1: Détection d'erreur HTML 5
+// 2: Détection d'erreur WAI-ARIA
+// 3: Lecteur d'écran
+
 test.describe('Exercice 11 : Conditions RGPD', () => {
   test.beforeEach(async ({ page }) => {
     await page.goto('http://localhost:5173/produits-avec-cookies');
@@ -20,13 +26,14 @@ test.describe('Exercice 11 : Conditions RGPD', () => {
       await expect(element).toBeFocused();
     }
 
-    const consentement = await page.getByTestId('consentement');
+    const consentement = page.getByTestId('consentement');
     await expect(consentement).toHaveAttribute('tabindex', '0');
   });
 
   test('Le lien doit être un bouton', async ({ page }) => {
     const partner = page.getByTestId('partner');
-    await expect(await partner.evaluate((node) => node.tagName)).toBe('BUTTON');
+    const partnerTagName = await partner.evaluate((node) => node.tagName);
+    expect(partnerTagName).toBe('BUTTON');
   });
 
   test(`Les boutons ne doivent pas avoir d'aria-label`, async ({ page }) => {

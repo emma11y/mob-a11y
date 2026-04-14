@@ -14,15 +14,16 @@ test.describe('Exercice 4 : Boutons et liens', () => {
   test("Le bouton d'ouverture du panier doit être un <button>", async ({
     page,
   }) => {
-    const toggle = await page.getByTestId('cart-toggle');
+    const toggle = page.getByTestId('cart-toggle');
+    const tagName = await toggle.evaluate((node) => node.tagName);
 
-    await expect(await toggle.evaluate((node) => node.tagName)).toBe('BUTTON');
+    expect(tagName).toBe('BUTTON');
   });
 
   test("Les boutons d'ajout dans le panier doivent être des <button>", async ({
     page,
   }) => {
-    const buttons = await page.getByTestId('add-to-cart');
+    const buttons = page.getByTestId('add-to-cart');
 
     await expect(buttons).toHaveCount(6);
 
@@ -37,8 +38,8 @@ test.describe('Exercice 4 : Boutons et liens', () => {
   }) => {
     await page.getByTestId('cart-toggle').click();
 
-    const cart = await page.locator('id=cart');
-    const toggle = await cart.getByTestId('cart-close');
+    const cart = page.locator('id=cart');
+    const toggle = cart.getByTestId('cart-close');
 
     await checkTagHtml(toggle, 'BUTTON');
   });
@@ -64,14 +65,15 @@ test.describe('Exercice 4 : Boutons et liens', () => {
     await page.getByTestId('add-to-cart').first().click();
     await page.getByTestId('cart-toggle').click();
 
-    const cart = await page.locator('id=cart');
-    const cta = await cart.getByText('Payer');
+    const cart = page.locator('id=cart');
+    const cta = cart.getByText('Payer');
 
     await checkTagHtml(cta, 'A');
   });
 
   async function checkTagHtml(locator: Locator, expected: string) {
-    await expect(await locator.evaluate((node) => node.tagName)).toBe(expected);
+    const tagName = await locator.evaluate((node) => node.tagName);
+    expect(tagName).toBe(expected);
   }
 
   test('Pas de div role=button', async ({ page }) => {

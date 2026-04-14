@@ -10,7 +10,7 @@ Rendre les notifications accessibles par le lecteur d'écran
 
 ## Avant de coder
 
-- Testez avec un lecteur d'écran
+**Testez avec un lecteur d'écran**
 
 Il y a, sur ce site, quatre notifications :
 

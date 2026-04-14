@@ -1,5 +1,11 @@
 import { expect, test } from '@playwright/test';
 
+// Definition of done
+// ------------------
+// 1: Détection d'erreur HTML 5
+// 2: Détection d'erreur WAI-ARIA
+// 3: Lecteur d'écran
+
 test.describe('Exercice 10 : Notifications', () => {
   test.beforeEach(async ({ page }) => {
     await page.goto('http://localhost:5173/produits');

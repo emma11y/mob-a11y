@@ -34,8 +34,9 @@ test.describe('Exercice 9 : Formulaire', () => {
   });
 
   test('La liste déroulante doit être un select', async ({ page }) => {
-    const country = await page.locator('#country');
-    await expect(await country.evaluate((node) => node.tagName)).toBe('SELECT');
+    const country = page.locator('#country');
+    const countryTagName = await country.evaluate((node) => node.tagName);
+    expect(countryTagName).toBe('SELECT');
   });
 
   test('Chaque label doit avoir un attribut for', async ({ page }) => {
@@ -43,7 +44,7 @@ test.describe('Exercice 9 : Formulaire', () => {
 
     const count = await labels.count();
     for (let i = 0; i < count; i++) {
-      await expect(await labels.nth(i).getAttribute('for')).not.toBeNull();
+      expect(await labels.nth(i).getAttribute('for')).not.toBeNull();
     }
   });
 
@@ -68,14 +69,14 @@ test.describe('Exercice 9 : Formulaire', () => {
   }) => {
     await page.getByTestId('pay-button').click();
 
-    const errors = await page.locator('.has-error');
+    const errors = page.locator('.has-error');
 
     const count = await errors.count();
 
     expect(count).not.toBe(0);
 
     for (let i = 0; i < count; i++) {
-      const element = await errors.nth(i).locator('input, select');
+      const element = errors.nth(i).locator('input, select');
 
       expect(await element.getAttribute('aria-invalid')).toBe('true');
 

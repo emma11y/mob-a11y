@@ -1,6 +1,12 @@
 import { expect, test } from '@playwright/test';
 import { expectNoAxeViolationsWithId } from './utils/axe-utils';
 
+// Definition of done
+// ------------------
+// 1: Détection d'erreur HTML 5
+// 2: Détection d'erreurs automatiques avec Axe
+// 3: Lecteur d'écran
+
 test.describe('Exercice 8 : la page doit être structurée', () => {
   test.beforeEach(async ({ page }) => {
     await page.goto('http://localhost:5173/produits');

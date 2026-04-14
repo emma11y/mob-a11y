@@ -1,11 +1,12 @@
 @use '../../assets/styles/variables.scss' as vars;
 
 .footer {
-  padding: 1em 0;
+  box-sizing: border-box;
   border-top: 0.1em solid var(--border);
   clear: both;
   position: relative;
   width: 100%;
+  padding: 2em 3rem 0.5rem;
 
   .title {
     font-family: var(--font-display), sans-serif;

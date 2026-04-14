@@ -11,6 +11,10 @@
     &:hover {
       box-shadow: var(--shadow-card-hover);
     }
+
+    .header {
+      padding: 0;
+    }
   }
 
   .image {
@@ -62,7 +66,6 @@
 
   .add-to-cart {
     margin-top: 0.75rem;
-    width: 100%;
     cursor: pointer;
     border-radius: 0.125rem;
     background-color: var(--foreground);

@@ -39,6 +39,11 @@
     }
   }
 
+  pre {
+    white-space: pre-wrap;
+    word-break: break-word;
+  }
+
   code {
     font-family: 'Luciole', monospace;
     background-color: var(--muted);
@@ -48,6 +53,7 @@
     border: 1px solid var(--border);
     font-size: 0.9em;
     font-weight: bold;
+    word-break: break-word;
   }
 
   a {

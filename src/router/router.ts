@@ -3,6 +3,7 @@ export interface Route {
   name: string;
   component: string;
   ts?: string | null;
+  isNotFound?: boolean;
 }
 
 type RouteModule = {
@@ -17,7 +18,8 @@ const routeHtmlModules = import.meta.glob('../pages/**/*.html', {
   import: 'default',
 }) as Record<string, HtmlModuleLoader>;
 
-const appBasePath = normalizeBasePath(import.meta.env.BASE_URL);
+export const baseUrl = import.meta.env.BASE_URL;
+const appBasePath = normalizeBasePath(baseUrl);
 
 function normalizeBasePath(basePath: string): string {
   if (!basePath || basePath === '/') {
@@ -94,6 +96,12 @@ export const routes: Route[] = [
     component: '../pages/about/about.html',
     ts: '../pages/about/about.ts',
   },
+  {
+    path: '/404',
+    name: 'Erreur 404',
+    component: '../pages/404.html',
+    isNotFound: true,
+  },
 ];
 
 const titlePage = `Mob & Accessibilité`;
@@ -108,14 +116,16 @@ export class Router {
 
   async navigate(path: string, updateHistory: boolean = true): Promise<void> {
     const appPath = getAppPath(path);
-    const route = this.routes.find((r) => r.path === appPath);
+    const route =
+      this.routes.find((r) => r.path === appPath) ||
+      this.routes.find((r) => r.isNotFound);
 
     if (!route) {
       console.warn(`Route not found: ${appPath}`);
       return;
     }
 
-    this.currentPath = appPath;
+    this.currentPath = route.isNotFound ? '/404' : appPath;
     await this.loadComponent(route.component);
 
     // Load route-specific TypeScript if provided
@@ -124,11 +134,37 @@ export class Router {
     }
 
     if (updateHistory) {
-      history.pushState({ path: appPath }, route.name, withBasePath(appPath));
+      const historyPath = route.isNotFound ? appPath : route.path;
+      history.pushState(
+        { path: historyPath },
+        route.name,
+        withBasePath(historyPath),
+      );
     }
 
     // Set title
     document.title = `${route.name} - ${titlePage}`;
+
+    const titlePageElement = document.getElementById('title-page');
+    if (titlePageElement) {
+      titlePageElement.innerText = document.title;
+    }
+    this.setAriaCurrentPage(route);
+  }
+
+  private setAriaCurrentPage(route: Route) {
+    const links = document.querySelectorAll('.navigation a');
+
+    links.forEach((element: Element) => {
+      const link = element as HTMLAnchorElement;
+      if (link.pathname === route.path) {
+        link.setAttribute('aria-current', 'page');
+        link.classList.add('active');
+      } else {
+        link.removeAttribute('aria-current');
+        link.classList.remove('active');
+      }
+    });
   }
 
   private async loadScript(scriptPath: string): Promise<void> {

@@ -9,33 +9,41 @@
   </head>
   <body>
     <custom-header></custom-header>
-    <main role="main">
-      <div class="content text-center">
-        <i
-          class="fa-solid fa-triangle-exclamation"
-          aria-hidden="true"
-          style="font-size: 10em; color: var(--color-red)"
-        ></i>
+    <main role="main" class="main">
+      <div class="container">
+        <div class="error-404">
+          <i
+            class="fa-solid fa-triangle-exclamation"
+            aria-hidden="true"
+            style="font-size: 10em; color: var(--destructive)"
+          ></i>
 
-        <h1>Erreur 404</h1>
+          <h1>Erreur 404</h1>
 
-        <p>Retourner sur la page d'<a href="./">Accueil</a>.</p>
+          <p>Retourner sur la page d'<a href="./">Accueil</a>.</p>
+        </div>
       </div>
-
-      <custom-footer></custom-footer>
     </main>
+
+    <custom-footer></custom-footer>
 
     <script type="module" src="src/main.ts" defer></script>
 
     <!-- fix routing on github pages : https://gist.github.com/leonsilicon/1278d429d7c915a9866bc6ea73453d9a -->
     <script>
-      sessionStorage.redirect = location.href;
-      const projectPages = true; // If you're using the base .github.io domain without a path (i.e. <name>.github.io is your home page), set this to false
-      const l = window.location;
-      const repo = projectPages ? '/' + l.pathname.split('/')[1] : '';
-      l.replace(
-        l.protocol + '//' + l.hostname + (l.port ? ':' + l.port : '') + repo,
+      const isLocalhost = ['localhost', '127.0.0.1'].includes(
+        window.location.hostname,
       );
+
+      if (!isLocalhost) {
+        sessionStorage.redirect = location.href;
+        const projectPages = true; // If you're using the base .github.io domain without a path (i.e. <name>.github.io is your home page), set this to false
+        const l = window.location;
+        const repo = projectPages ? '/' + l.pathname.split('/')[1] : '';
+        l.replace(
+          l.protocol + '//' + l.hostname + (l.port ? ':' + l.port : '') + repo,
+        );
+      }
     </script>
   </body>
 </html>

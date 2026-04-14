@@ -1,37 +1,21 @@
-# Exercice 7 : Formulaire
+# Exercice 7 : Images
 
-Avec le lecteur d'écran, essayez de remplir le formulaire de paiement, et vérifiez que les libellés et les erreurs des champs du formulaire soient correctement vocalisés.
-
-- Est-ce que chaque champ est bien associé à son libellé ?
-- Est-ce que chaque erreur est correctement restituée et associée au champ ?
-
-En l'état, il est difficile de comprendre quoi corriger pour valider le formulaire.
+Sur un site e-commerce, les libellés ne suffisent pas. Chaque fiche contient des photos et images qui
+donnent envie d'acheter.
 
 ## Votre mission
 
-Rendre le formulaire compréhensible et utilisable avec un lecteur d’écran.
+Vérifier et corriger les alternatives textuelles des images.
 
-### À vérifier
-
-- Est-ce que la liste déroulante est accessible au clavier ? Et ses options restituées par le lecteur d'écran ?
-- Chaque champ est-il associé à un libellé ?
-- Chaque erreur est-elle liée au bon champ ?
-- Les messages sont-ils annoncés au bon moment ?
-
-### Indice
-
-Pour les messages d'erreur, regardez le fichier : [../../src/pages/checkout/checkout.ts](../../src/pages/checkout/checkout.ts)
-
-Fonctions à explorer :
-
-- `showError`
-- `checkRequiredError`
+- Les images ont-elles une alternative textuelle ?
+- Cette alternative est-elle pertinente ?
+- Apporte-t-elle une information utile ?
 
 ## Avant de coder
 
-- Naviguez dans le formulaire avec un lecteur d’écran
-- Soumettez-le sans le remplir
-- Écoutez comment les erreurs sont annoncées
+- Naviguez avec un lecteur d’écran
+- Parcourez la page avec les flèches **Haut** et **Bas**
+- Écoutez ce qui est vocalisé pour chaque image
 
 ## Corriger le test avec Playwright
 

@@ -1,61 +1,77 @@
-# Réponse à l'exercice 8 : Images
+# Réponse à l'exercice 8 : Structure de la page
 
 ## Solution
 
-Ajouter un attribut `alt` pertinent sur chaque image :
+Structurer la page à l’aide des éléments sémantiques HTML5 (**landmarks**) :
+
+- En-tête : `<header>`
+- Navigation : `<nav>`
+- Contenu principal : `<main>`
+- Pied de page : `<footer>`
+
+Exemple :
 
 ```html
-<img src="produit.jpg" alt="Autocollant en forme de chat noir" />
+<header role="banner"></header>
+
+<nav role="navigation"></nav>
+
+<main role="main"></main>
+
+<footer role="contentinfo"></footer>
 ```
 
-Le texte alternatif doit décrire l’information utile portée par l’image.
-
-Pour les images décoratives, utiliser un `alt` vide :
-
-```html
-<img src="decoration.png" alt="" />
-```
+Chaque rôle correspond à une zone de navigation pour les technologies d’assistance.
 
 ## Ce que vérifiaient les tests
 
 Les tests vérifiaient que :
 
-- chaque image possède un attribut `alt`
-- les alternatives textuelles ne sont pas redondantes ou inutiles
-- aucune violation Axe sur les règles liées aux images
+- il existe exactement un `<header>` (banner)
+- il existe au moins une navigation (`nav`)
+- il existe exactement un `<main>`
+- il existe un footer (`contentinfo`)
+- la structure respecte les [règles de landmarks](https://www.w3.org/WAI/ARIA/apg/patterns/landmarks/) sans duplication ni conflit
 
 ## Pourquoi c’est important
 
-Les personnes aveugles ou malvoyantes utilisent des lecteurs d’écran pour comprendre le contenu.
+Les landmarks permettent aux personnes utilisant un lecteur d’écran de :
 
-Sans texte alternatif :
+- comprendre rapidement la structure de la page
+- naviguer directement à une zone spécifique
+- éviter de parcourir tout le contenu linéairement
 
-- l’image est ignorée ou mal interprétée
-- une information importante peut être perdue
-
-Le `alt` permet de transmettre cette information sous forme textuelle.
+Sans structure claire, la navigation devient beaucoup plus lente et confuse.
 
 ## Bonnes pratiques
 
-- Décrire l’information utile, pas nécessairement l’image en détail
-- Adapter la description au contexte (produit, illustration, contenu)
-- Éviter les formulations inutiles comme "image de..."
-- Utiliser `alt=""` pour les images purement décoratives
-- Ne pas répéter un texte déjà présent à proximité
+- Utiliser les balises HTML5 natives (`header`, `nav`, `main`, `footer`)
+- Ne pas multiplier les rôles identiques inutilement
+- S’assurer qu’il n’y a qu’un seul `<main>`
+- Structurer la page de façon cohérente et stable
+- Ne pas utiliser `role` si la balise HTML sémantique existe déjà
 
-## Toolbox
+### Toolbox
 
 **Lecteur d'écran**
 
-Avec les lecteurs d'écran NVDA et VoiceOver, on peut entendre les alternatives textuelles aux images.
+Avec les lecteurs d'écran NVDA et VoiceOver, on peut entendre naviguer entre les régions.
 
 **Tests automatisés :**
 
-Sur la règle avec les id `image-alt`, `image-redundant-alt`
+Sur la règle avec les id `region`, `landmark-one-main`, `landmark-no-duplicate-banner`, `landmark-no-duplicate-contentinfo`, `landmark-unique`
 
 - [axe-core](https://github.com/dequelabs/axe-core)
 - [Playwright with axe-core](https://playwright.dev/docs/accessibility-testing)
 
+**Extensions de navigateur web :**
+
+Landmark Navigation sur
+
+- [Chrome](https://chromewebstore.google.com/detail/landmark-navigation-via-k/ddpokpbjopmeeiiolheejjpkonlkklgp)
+- [Firefox](https://addons.mozilla.org/en-US/firefox/addon/landmarks/)
+
 **Bookmarklets :**
 
-- [Images booktmarklet](https://accessibility-bookmarklets.org/install.html)
+- [Landmarks booktmarklet](https://accessibility-bookmarklets.org/install.html)
+- [A11y audit bookmarklets](https://a11y-tools.com/bookmarklets/)

@@ -1,18 +1,106 @@
-.about-section {
-  padding-top: 6rem;
-  padding-bottom: 4rem;
-  //height: 67.5vh;
+@use '../../assets/styles/variables.scss' as vars;
 
-  .title {
-    font-family: var(--font-display), sans-serif;
-    font-size: 2.25rem;
-    font-weight: 700;
-    line-height: 1.25;
-    letter-spacing: -0.025em;
-    color: var(--foreground);
-  }
-
+.about {
   .footer {
     margin-top: 2rem;
+  }
+
+  &-row {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+
+    @media screen and (max-width: vars.$sm) {
+      flex-direction: column;
+    }
+
+    .col {
+      padding: 1em;
+    }
+  }
+
+  .social-media {
+    ul {
+      list-style: none;
+      padding: 0;
+    }
+  }
+
+  .avatar {
+    border-radius: 50%;
+    width: 20rem;
+    height: 20rem;
+    object-fit: cover;
+
+    @media screen and (max-width: vars.$md) {
+      width: 15rem;
+      height: 15rem;
+    }
+  }
+
+  .logo-shodo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .logo {
+      margin: 0;
+
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .wrap-shodo {
+      padding: 0.5em 1em;
+
+      .shodo-white,
+      .shodo-black {
+        display: none;
+      }
+    }
+
+    .wrap-logo {
+      color: var(--bg-color);
+      text-align: center;
+    }
+
+    p {
+      color: var(--white);
+      margin: 0;
+    }
+
+    .brand {
+      text-transform: uppercase;
+      width: 9em;
+      padding-left: 1em;
+
+      span {
+        display: flex;
+      }
+    }
+  }
+
+  .yeeso {
+    text-align: center;
+    img {
+      width: 25vw;
+      @media screen and (max-width: vars.$sm) {
+        width: 45vw;
+      }
+    }
+  }
+}
+
+html[data-selected-theme='dark'] {
+  .shodo-white {
+    display: block !important;
+  }
+}
+
+html[data-selected-theme='light'] {
+  .shodo-black {
+    display: block !important;
   }
 }

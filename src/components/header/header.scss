@@ -57,6 +57,13 @@
       li {
         padding-right: 1em;
       }
+
+      a {
+        &.active {
+          text-decoration: none;
+          border-bottom: 0.25em solid var(--primary);
+        }
+      }
     }
   }
 }

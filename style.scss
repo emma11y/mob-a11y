@@ -1,4 +1,5 @@
 @use './src/assets/styles/font.scss';
+@use './src/assets/styles/text-pages.scss';
 
 :root {
   --main-family: 'Luciole', Helvetica, Arial, sans-serif;
@@ -14,6 +15,7 @@
 
   --card: #f4f3f0;
 
+  --primary: #d33d17;
   --primary-foreground: #f9f8f6;
 
   --secondary: #e8e6e3;
@@ -22,6 +24,7 @@
 
   --accent: #2c684e;
   --destructive: #c63f3f;
+  --white: #fafafa;
 
   --border: #656261;
 
@@ -32,7 +35,6 @@
   --shadow-card-hover: 0 8px 24px rgba(30, 5, 15, 0.08);
 
   // COLORS TO CHANGE
-  --primary: #e85530;
   --muted-foreground: #928c87;
   --muted-foreground-50: #c3bfbb;
   --muted-foreground-60: #bbb7b3;
@@ -48,6 +50,7 @@
 
   --card: #201f1d;
 
+  --primary: #00bcff;
   --primary-foreground: #f9f8f6;
 
   --secondary: #2b2927;
@@ -56,6 +59,7 @@
 
   --accent: #31af31;
   --destructive: #f04c4c;
+  --white: #fafafa;
 
   --border: #979787;
 
@@ -63,7 +67,6 @@
   --shadow-card-hover: 0 8px 24px rgba(0, 0, 0, 0.3);
 
   // COLORS TO CHANGE
-  --primary: #e85530;
   --muted-foreground: #868079;
   --muted-foreground-50: #534f4b;
   --muted-foreground-60: #585450;
@@ -86,32 +89,21 @@ body {
   margin: auto;
   padding-right: 1.5rem;
   padding-left: 1.5rem;
-  display: inline-block;
+  display: block;
   padding-bottom: 1.5rem;
-
-  @media (min-width: 640px) {
-    max-width: 640px;
-  }
-
-  @media (min-width: 768px) {
-    max-width: 768px;
-  }
-
-  @media (min-width: 1024px) {
-    max-width: 1024px;
-  }
+  box-sizing: border-box;
 
   @media (min-width: 1280px) {
     max-width: 1280px;
-  }
-
-  @media (min-width: 1536px) {
-    max-width: 1536px;
   }
 }
 
 fieldset {
   border: 0;
+}
+
+ul li {
+  margin-bottom: 0.5em;
 }
 
 .alert {
@@ -137,6 +129,11 @@ fieldset {
     color: var(--color);
     border: 0.1em solid var(--color);
   }
+}
+
+.error-404 {
+  text-align: center;
+  padding: 5em;
 }
 
 * {

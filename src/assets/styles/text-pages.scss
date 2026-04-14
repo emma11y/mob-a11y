@@ -1,0 +1,56 @@
+.text-section {
+  line-height: 1.6;
+  padding-top: 4rem;
+  padding-bottom: 4rem;
+
+  .row {
+    margin-bottom: 2rem;
+    padding: 1.5rem;
+    background-color: var(--card);
+    border-radius: 8px;
+    border: 1px solid var(--border);
+    box-shadow: var(--shadow-card);
+
+    &:hover {
+      box-shadow: var(--shadow-card-hover);
+    }
+  }
+
+  h3 {
+    margin-top: 0;
+    color: var(--primary);
+    border-bottom: 2px solid var(--primary);
+    padding-bottom: 0.5rem;
+    margin-bottom: 1.5rem;
+    font-size: 20px;
+  }
+
+  h4 {
+    margin-top: 1.5rem;
+    color: var(--foreground);
+    font-weight: bold;
+  }
+
+  ul {
+    padding-left: 1.2rem;
+
+    li {
+      margin-bottom: 0.5rem;
+    }
+  }
+
+  code {
+    font-family: 'Luciole', monospace;
+    background-color: var(--muted);
+    color: var(--foreground);
+    padding: 0.2rem 0.4rem;
+    border-radius: 4px;
+    border: 1px solid var(--border);
+    font-size: 0.9em;
+    font-weight: bold;
+  }
+
+  a {
+    transition: all 0.2s ease-in-out;
+  }
+}

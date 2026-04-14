@@ -1,9 +1,9 @@
-<div class="container about-section">
+<div class="container text-section">
   <h2 class="title">Ressources</h2>
+
   <div class="row">
     <h3>Lecteurs d'écran</h3>
     <p>Selon votre système d'exploitation vous pouvez utiliser :</p>
-
     <ul>
       <li><a href="https://www.nvda.fr/">NVDA (Windows)</a></li>
       <li>
@@ -13,8 +13,161 @@
       </li>
       <li><a href="https://orca.gnome.org/">Orca (Linux)</a></li>
     </ul>
+
+    <h4>Raccourcis de navigation</h4>
+    <p>
+      Utilisez ces touches pour naviguer rapidement avec votre lecteur d'écran :
+    </p>
+    <ul>
+      <li>
+        <strong>Navigation générale :</strong> <code>TAB</code> pour passer d'un
+        élément interactif à l'autre.
+      </li>
+      <li>
+        <strong>Titres :</strong> <code>H</code> (suivant) ou
+        <code>Maj + H</code> (précédent).
+      </li>
+      <li>
+        <strong>Régions (Landmarks) :</strong>
+        <ul>
+          <li>
+            NVDA : <code>D</code> (suivante) ou
+            <code>Maj + D</code> (précédente).
+          </li>
+          <li>
+            VoiceOver : <code>W</code> (suivante) ou
+            <code>Maj + W</code> (précédente).
+          </li>
+        </ul>
+      </li>
+      <li>
+        <strong>Afficher la liste des éléments :</strong>
+        <ul>
+          <li>
+            NVDA : <code>NVDA + F7</code> (permet de choisir l'onglet Repères).
+          </li>
+          <li>
+            VoiceOver : <code>CTRL + Option + U</code> (ouvre le rotor pour
+            naviguer entre les repères).
+          </li>
+        </ul>
+      </li>
+    </ul>
     <a href="https://disic.github.io/guide-lecteurs_ecran/"
       >Guide complémentaire</a
     >
+  </div>
+
+  <div class="row">
+    <h3>Extensions de navigateur</h3>
+    <ul>
+      <li>
+        <a
+          href="https://www.accessibility-developer-guide.com/setup/helper-tools/browser-extensions/headingsmap/"
+          >HeadingsMap</a
+        >
+        : visualiser la hiérarchie des titres.
+      </li>
+      <li>
+        WCAG Color contrast checker : vérifier les contrastes de couleur. (<a
+          href="https://chromewebstore.google.com/detail/wcag-color-contrast-check/plnahcmalebffmaghcpcmpaciebdhgdf"
+          >Chrome</a
+        >
+        /
+        <a
+          href="https://addons.mozilla.org/fr/firefox/addon/wcag-contrast-checker/"
+          >Firefox</a
+        >)
+      </li>
+      <li>
+        Landmark Navigation : naviguer entre les régions (landmarks) de la page.
+        (<a
+          href="https://chromewebstore.google.com/detail/landmark-navigation-via-k/ddpokpbjopmeeiiolheejjpkonlkklgp"
+          >Chrome</a
+        >
+        /
+        <a href="https://addons.mozilla.org/en-US/firefox/addon/landmarks/"
+          >Firefox</a
+        >)
+      </li>
+    </ul>
+  </div>
+
+  <div class="row">
+    <h3>Bookmarklets</h3>
+    <p>
+      Un bookmarklet est un favori contenant du JavaScript qui s'exécute sur la
+      page courante.
+    </p>
+    <ul>
+      <li>
+        <a href="https://accessibility-bookmarklets.org/install.html"
+          >Accessibility Bookmarklets</a
+        >
+        (Headings, Forms, Images, Landmarks...)
+      </li>
+      <li>
+        <a href="https://a11y-tools.com/bookmarklets/"
+          >A11y audit bookmarklets</a
+        >
+      </li>
+    </ul>
+  </div>
+
+  <div class="row">
+    <h3>Outils de design et de contraste</h3>
+    <ul>
+      <li>
+        <a href="https://contrast-finder.tanaguru.com/"
+          >Tanaguru contrast finder</a
+        >
+      </li>
+      <li>
+        <a href="https://webaim.org/resources/contrastchecker/"
+          >WebAIM Contrast checker</a
+        >
+      </li>
+    </ul>
+  </div>
+
+  <div class="row">
+    <h3>Tests automatisés</h3>
+    <ul>
+      <li>
+        <a href="https://github.com/dequelabs/axe-core">axe-core</a> : le moteur
+        de test d'accessibilité standard.
+      </li>
+      <li>
+        <a href="https://playwright.dev/docs/accessibility-testing"
+          >Playwright with axe-core</a
+        >
+        : intégrer les tests d'accessibilité dans vos tests de bout en bout.
+      </li>
+    </ul>
+  </div>
+
+  <div class="row">
+    <h3>Ressources complémentaires</h3>
+    <ul>
+      <li>
+        <a href="https://www.w3.org/WAI/ARIA/apg/patterns/"
+          >WAI-ARIA Authoring Practices (APG) Patterns</a
+        >
+        : modèles de conception pour les composants riches.
+      </li>
+      <li>
+        <a href="https://developer.mozilla.org/fr/docs/Web/Accessibility/ARIA"
+          >MDN - ARIA</a
+        >
+        : documentation sur les attributs ARIA.
+      </li>
+      <li>
+        <a
+          href="https://www.24joursdeweb.fr/2025/title-ce-faux-ami-de-l-accessibilite"
+          >Title, ce faux ami de l’accessibilité</a
+        >
+        (Article).
+      </li>
+    </ul>
   </div>
 </div>

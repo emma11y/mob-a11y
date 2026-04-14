@@ -1,1 +1,106 @@
-<h2>Accueil</h2>
+<section class="container text-section">
+    <h2>Prérequis</h2>
+    <div class="row">
+        <p>Avant de commencer l’atelier, il faut préparer votre environnement.</p>
+
+        <h3>1. Cloner le projet</h3>
+        <p>Récupérez le dépôt du <span lang="en">workshop</span> :</p>
+        <pre><code>git clone https://github.com/emma11y/mob-a11y</code></pre>
+
+        <p>Puis suivez les instructions du fichier <code>README.md</code>.</p>
+
+        <h3>2. Installer les dépendances</h3>
+        <p>Dans le dossier du projet :</p>
+        <pre><code>npm install</code></pre>
+
+        <h3>3. Installer un lecteur d’écran</h3>
+        <p>
+            Cet atelier repose sur l’usage d’un lecteur d’écran. Installez-en un selon
+            votre système :
+        </p>
+
+        <ul>
+            <li>Windows : NVDA</li>
+            <li>macOS : VoiceOver (déjà intégré)</li>
+        </ul>
+
+        <p>
+            Les raccourcis utiles sont disponibles dans la page
+            <a href="/ressources">ressources</a>.
+        </p>
+
+        <h3>4. Prévoir des écouteurs</h3>
+        <p>
+            Le lecteur d’écran vocalise en continu. Pour le confort de tout le monde,
+            merci d’utiliser des écouteurs.
+        </p>
+
+        <h3>5. Vérifier que tout fonctionne</h3>
+        <p>Avant l’atelier, assurez-vous que :</p>
+
+        <ul>
+            <li>
+            le projet se lance correctement
+            <pre><code>npm run dev</code></pre>
+            </li>
+            <li>
+            les tests Playwright peuvent être exécutés
+            <pre><code>npm run tests</code></pre>
+            </li>
+            <li>le lecteur d’écran est fonctionnel</li>
+        </ul>
+
+        <p>
+            Si vous avez un doute, pas d’inquiétude : nous prendrons quelques minutes en
+            début d’atelier pour vérifier ensemble.
+        </p>
+    </div>
+
+    <div class="row">
+        <h3>Cadre de l’atelier</h3>
+        <p>L’atelier est conçu pour être réalisé en <strong lang="en">mob programming</strong> (groupes de 3 à 4 personnes) ou en <strong lang="en">pair programming</strong> (binômes).</p>
+        <p>Il est tout à fait possible de faire les exercices en solo, mais nous vous recommandons de vous regrouper pour :</p>
+        <ul>
+            <li>partager vos connaissances</li>
+            <li>confronter vos points de vue</li>
+            <li>découvrir des compétences que vous ne pensiez pas avoir</li>
+        <p>Nous serons présentes pour faciliter, répondre à vos questions et vous accompagner.</p>
+        </div>
+        <div class="row">
+            <h3>Déroulé</h3>
+            <p>Les exercices suivent une <strong lang="en">timebox</strong>.</p>
+            <p>À la fin de chaque <span lang="en">timebox</span> :</p>
+            <ul>
+                <li>nous vérifierons la <span lang="en">Definition of Done</span></li>
+                <li>nous corrigerons ensemble</li>
+                <li>nous rejouerons les tests</li>
+                <li>nous testerons avec un lecteur d’écran en live</li>
+            </ul>
+            <p>Nous serons présentes pour faciliter, répondre à vos questions et vous accompagner.</p>
+        </div>
+        <div class="row">
+        <h3 lang="en">Definition of Done</h3>
+            <p>Chaque étape du site doit remplir les critères suivants pour être valide :</p>
+            <ul>
+                <li>Être navigable au clavier</li>
+                <li>Être lisible par un lecteur d'écran</li>
+                <li>Ne faire remonter aucune erreur dans Axe / Playwright</li>
+            </ul>
+        </div>
+        <div class="row">
+        <h3>Déroulé de des exercices</h3>
+        <p>
+            Vous avez le dossier <code>tests</code> qui vous permet de lancer les tests Playwright.
+        </p>
+        <p>
+            Chaque test correspond à un exercice.
+        </p>
+        <p>
+            Sur chaque exercice, vous devez résoudre les tests pour qu'il passe au vert avant de passer à l'exercice suivant.
+        </p>
+        <p>Des exercices bonus sont disponibles pour les groupes les plus rapides.</p>
+        <div class="footer">
+        <small>Des questions ? Levez la main !</small>
+        </div>
+    </div>
+</section>

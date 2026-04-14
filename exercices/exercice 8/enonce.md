@@ -1,21 +1,50 @@
-# Exercice 8 : Images
+# Exercice 8 : La page doit être structurée grâce aux régions
 
-Sur un site e-commerce, les libellés ne suffisent pas. Chaque fiche contient des photos et images qui
-donnent envie d'acheter.
+Imaginez naviguer sur ce site sans voir l’écran.
+
+Vous utilisez un lecteur d’écran pour vous déplacer rapidement entre les grandes zones de la page :
+
+- le header
+- la navigation
+- le contenu principal
+- le footer
+
+Mais ici… quelque chose ne va pas.
+
+Impossible de comprendre la structure de la page.
+Les repères sont absents ou mal définis.
+
+Résultat : les régions sont introuvables.
 
 ## Votre mission
 
-Vérifier et corriger les alternatives textuelles des images.
+Rendre la structure de la page compréhensible grâce aux **landmarks**.
 
-- Les images ont-elles une alternative textuelle ?
-- Cette alternative est-elle pertinente ?
-- Apporte-t-elle une information utile ?
+Attention :
+
+- certaines régions doivent être **uniques**
+- d'autres peuvent être **multiples** mais bien utilisées
 
 ## Avant de coder
 
-- Naviguez avec un lecteur d’écran
-- Parcourez la page avec les flèches **Haut** et **Bas**
-- Écoutez ce qui est vocalisé pour chaque image
+Essayez de naviguer avec un lecteur d’écran sur cette page : [http://localhost:5173/produits-avec-cookies](http://localhost:5173/produits-avec-cookies)
+
+On peut naviguer de région en région grâce aux raccourcis :
+
+| Outil     | Zone suivante | Zone précédente |
+| --------- | ------------- | --------------- |
+| NVDA      | `D`           | `Maj + D`       |
+| VoiceOver | `W`           | `Maj + W`       |
+
+On peut afficher la liste de toutes les régions de la page :
+
+- NVDA
+  -- avec le raccourci `NVDA + F7`
+  -- Puis choisir l'onglet **Repères** (ou Landmarks)
+- VoiceOver
+  -- avec le raccourci `CTRL + Option + U`, ouvrir le rotor
+  -- choisir **Repères**
+  -- flèches bas et haut pour naviguer
 
 ## Corriger le test avec Playwright
 

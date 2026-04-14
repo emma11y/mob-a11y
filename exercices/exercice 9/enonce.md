@@ -1,50 +1,37 @@
-# Exercice 9 : La page doit être structurée grâce aux régions
+# Exercice 9 : Formulaire
 
-Imaginez naviguer sur ce site sans voir l’écran.
+Avec le lecteur d'écran, essayez de remplir le formulaire de paiement, et vérifiez que les libellés et les erreurs des champs du formulaire soient correctement vocalisés.
 
-Vous utilisez un lecteur d’écran pour vous déplacer rapidement entre les grandes zones de la page :
+- Est-ce que chaque champ est bien associé à son libellé ?
+- Est-ce que chaque erreur est correctement restituée et associée au champ ?
 
-- le header
-- la navigation
-- le contenu principal
-- le footer
-
-Mais ici… quelque chose ne va pas.
-
-Impossible de comprendre la structure de la page.
-Les repères sont absents ou mal définis.
-
-Résultat : les régions sont introuvables.
+En l'état, il est difficile de comprendre quoi corriger pour valider le formulaire.
 
 ## Votre mission
 
-Rendre la structure de la page compréhensible grâce aux **landmarks**.
+Rendre le formulaire compréhensible et utilisable avec un lecteur d’écran.
 
-Attention :
+### À vérifier
 
-- certaines régions doivent être **uniques**
-- d'autres peuvent être **multiples** mais bien utilisées
+- Est-ce que la liste déroulante est accessible au clavier ? Et ses options restituées par le lecteur d'écran ?
+- Chaque champ est-il associé à un libellé ?
+- Chaque erreur est-elle liée au bon champ ?
+- Les messages sont-ils annoncés au bon moment ?
+
+### Indice
+
+Pour les messages d'erreur, regardez le fichier : [../../src/pages/checkout/checkout.ts](../../src/pages/checkout/checkout.ts)
+
+Fonctions à explorer :
+
+- `showError`
+- `checkRequiredError`
 
 ## Avant de coder
 
-Essayez de naviguer avec un lecteur d’écran sur cette page : [http://localhost:5173/produits-avec-cookies](http://localhost:5173/produits-avec-cookies)
-
-On peut naviguer de région en région grâce aux raccourcis :
-
-| Outil     | Zone suivante | Zone précédente |
-|-----------|---------------|-----------------|
-| NVDA      | `D`           | `Maj + D`       |
-| VoiceOver | `W`           | `Maj + W`       |
-
-On peut afficher la liste de toutes les régions de la page :
-
-- NVDA
-  -- avec le raccourci `NVDA + F7`
-  -- Puis choisir l'onglet **Repères** (ou Landmarks)
-- VoiceOver
-  -- avec le raccourci `CTRL + Option + U`, ouvrir le rotor
-  -- choisir **Repères**
-  -- flèches bas et haut pour naviguer
+- Naviguez dans le formulaire avec un lecteur d’écran
+- Soumettez-le sans le remplir
+- Écoutez comment les erreurs sont annoncées
 
 ## Corriger le test avec Playwright
 

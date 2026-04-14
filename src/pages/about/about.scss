@@ -55,8 +55,8 @@
     .wrap-shodo {
       padding: 0.5em 1em;
 
-      .shodo-white,
-      .shodo-black {
+      #img-shodo-white,
+      #img-shodo-black {
         display: none;
       }
     }
@@ -67,7 +67,7 @@
     }
 
     p {
-      color: var(--white);
+      color: var(--color);
       margin: 0;
     }
 
@@ -94,13 +94,13 @@
 }
 
 html[data-selected-theme='dark'] {
-  .shodo-white {
+  #img-shodo-white {
     display: block !important;
   }
 }
 
 html[data-selected-theme='light'] {
-  .shodo-black {
-    display: block !important;
+  #img-shodo-black {
+    display: block;
   }
 }

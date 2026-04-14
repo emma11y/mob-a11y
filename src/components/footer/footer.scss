@@ -15,8 +15,8 @@
     margin: 0;
   }
 
-  .shodo-white,
-  .shodo-black {
+  #img-shodo-white,
+  #img-shodo-black {
     display: none;
   }
 
@@ -91,13 +91,13 @@
 }
 
 html[data-selected-theme='dark'] {
-  .shodo-white {
-    display: block;
+  #img-shodo-white {
+    display: block !important;
   }
 }
 
 html[data-selected-theme='light'] {
-  .shodo-black {
-    display: block;
+  #img-shodo-black {
+    display: block !important;
   }
 }

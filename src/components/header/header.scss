@@ -1,6 +1,12 @@
+@use '../../assets/styles/variables.scss' as vars;
+
 .header {
   border-bottom: 0.1em solid var(--border);
   padding: 1em 3rem 0;
+
+  @media screen and (max-width: vars.$sm) {
+    padding: 1em;
+  }
 
   .banner {
     display: flex;

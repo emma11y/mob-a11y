@@ -1,5 +1,6 @@
 @use './src/assets/styles/font.scss';
 @use './src/assets/styles/text-pages.scss';
+@use './src/assets/styles/variables.scss' as vars;
 
 :root {
   --main-family: 'Luciole', Helvetica, Arial, sans-serif;
@@ -93,8 +94,12 @@ body {
   padding-bottom: 1.5rem;
   box-sizing: border-box;
 
-  @media (min-width: 1280px) {
+  @media (min-width: vars.$lg) {
     max-width: 1280px;
+  }
+
+  @media screen and (max-width: vars.$sm) {
+    padding: 0 1em;
   }
 }
 

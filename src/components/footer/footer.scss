@@ -8,12 +8,17 @@
   width: 100%;
   padding: 2em 3rem 0.5rem;
 
+  @media screen and (max-width: vars.$sm) {
+    padding: 1em;
+  }
+
   .title {
     font-family: var(--font-display), sans-serif;
     font-size: 1.2rem;
     font-weight: 700;
     color: var(--foreground);
     margin: 0;
+    text-align: left;
   }
 
   #img-shodo-white,
@@ -29,6 +34,7 @@
 
     .subtitle {
       color: var(--muted-foreground-80);
+      text-align: left;
     }
   }
 

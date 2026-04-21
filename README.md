@@ -28,6 +28,18 @@ Cet atelier repose sur l’usage d’un lecteur d’écran. Installez-en un selo
 
 Les raccourcis utiles sont disponibles dans la page [ressources](https://emma11y.github.io/mob-a11y/ressources).
 
+#### Comment utiliser NVDA ?
+
+Pour paramétrer la voix : allez dans `Préférences > Parole`. Vous pouvez choisir la voix, le débit de parole et le volume. Faites appliquer pour que les changements se fassent.
+
+Pour afficher la visionneuse de paroles (le sous-titrage) : allez dans `Outils > Visionneuse de paroles`.
+
+#### Comment utiliser VoiceOver ?
+
+Pour paramétrer la voix : allez dans `Paramètres > Accessibilité > VoiceOver > Ouvrir l'utilitaire VoiceOver > Parole`. Vous pouvez choisir la voix, le débit de parole et le volume.
+
+Les raccourcis utiles sont disponibles dans la page ressources.
+
 ### 4. Prévoir des écouteurs
 
 Le lecteur d’écran vocalise en continu. Pour le confort de tout le monde, merci d’utiliser des écouteurs.
@@ -45,7 +57,8 @@ Avant l’atelier, assurez-vous que :
   `npm run tests`
 
 - le lecteur d’écran est fonctionnel
-  Si vous avez un doute, pas d’inquiétude : nous prendrons quelques minutes en début d’atelier pour vérifier ensemble.
+
+Si vous avez un doute, pas d’inquiétude : nous prendrons quelques minutes en début d’atelier pour vérifier ensemble.
 
 ## Cadre de l’atelier
 
@@ -53,22 +66,31 @@ L’atelier est conçu pour être réalisé en **mob programming** (groupes de 3
 
 Il est tout à fait possible de faire les exercices en solo, mais nous vous recommandons de vous regrouper pour :
 
-partager vos connaissances
-confronter vos points de vue
-découvrir des compétences que vous ne pensiez pas avoir
+- partager vos connaissances
+- confronter vos points de vue
+- découvrir des compétences que vous ne pensiez pas avoir
+
+Échangez-vous le clavier régulièrement : la personne au clavier ne fait que ce qu'on lui dit et ne prend pas de décision, afin d'assurer la participation de tout le groupe. Si ce n'est pas possible, demandez les idées du groupe avant de donner les vôtres.
+
 Nous serons présentes pour faciliter, répondre à vos questions et vous accompagner.
 
-### Déroulé
+### Déroulé de l'atelier
 
-Les exercices suivent une timebox.
+Les exercices suivent une **timebox** indicative mais non bloquante.
 
-À la fin de chaque timebox :
+Des exercices bonus (10 et 11) sont disponibles pour les groupes les plus
+rapides.
+
+Ce n'est pas grave si vous n'arrivez pas à tout faire, l'important c'est d'apprendre des choses à votre rythme.
+
+À la fin de chaque timebox, si vous en avez besoin :
 
 - nous vérifierons la Definition of Done
-- nous corrigerons ensemble
+- nous corrigerons ensemble le code
 - nous rejouerons les tests
 - nous testerons avec un lecteur d’écran en live
-- Nous serons présentes pour faciliter, répondre à vos questions et vous accompagner.
+
+**Des questions ? Levez la main !**
 
 ### Definition of Done
 
@@ -78,14 +100,11 @@ Chaque étape du site doit remplir les critères suivants pour être valide :
 - Être lisible par un lecteur d'écran
 - Ne faire remonter aucune erreur dans Axe / Playwright
 
-### Déroulé de des exercices
+### Comment faire les exercices ?
 
 Vous avez le dossier `tests` qui vous permet de lancer les tests Playwright.
 
-Chaque test correspond à un exercice.
+A chaque exercice, correspond un fichier de tests que nous avons préparé
+pour vous.
 
-Sur chaque exercice, vous devez résoudre les tests pour qu'il passe au vert avant de passer à l'exercice suivant.
-
-Des exercices bonus sont disponibles pour les groupes les plus rapides.
-
-**Des questions ? Levez la main !**
+Pour chaque exercice, vous devez résoudre les tests pour qu'ils passent au vert, avant de passer à l'exercice suivant.

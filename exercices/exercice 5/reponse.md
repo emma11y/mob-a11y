@@ -6,7 +6,9 @@ Lorsqu'on créé un nouveau projet avec Angular, React, VueJS ou autre framework
 
 ## Solution
 
-Définir correctement la langue principale du document sur la balise `<html>` :
+L'attribut `lang` permet de définir la langue d'une page ou d'un élément pour que le lecteur d'écran vocalise la page dans la bonne langue. Sinon, celui-ci ne sera pas compris.
+
+C'est pourquoi il faut définir correctement la langue principale du document sur la balise `<html>` :
 
 ```html
 <html lang="fr"></html>
@@ -14,7 +16,11 @@ Définir correctement la langue principale du document sur la balise `<html>` :
 
 Et préciser la langue des contenus ponctuels lorsqu’ils diffèrent de celle de la page :
 
+```html
 <span lang="en">Stickers</span>
+```
+
+Pour en savoir plus sur cet attribut sur [MDN](https://developer.mozilla.org/fr/docs/Web/HTML/Reference/Global_attributes/lang)
 
 ## Ce que vérifiaient les tests
 

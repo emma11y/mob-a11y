@@ -16,6 +16,10 @@ Pour les images décoratives, utiliser un `alt` vide :
 <img src="decoration.png" alt="" />
 ```
 
+Une image décorative est une image qui n’apporte aucune information utile au contenu : elle sert uniquement à l’illustration visuelle et sa suppression ne change rien à la compréhension de la page (par exemple : motifs, séparateurs, photos d’ambiance). Dans ce cas, on utilise `alt=""` pour qu’elle soit ignorée par les lecteurs d’écran.
+
+Pour en savoir plus sur l'attribut alt sur [MDN](https://developer.mozilla.org/fr/docs/Web/API/HTMLImageElement/alt)
+
 ## Ce que vérifiaient les tests
 
 Les tests vérifiaient que :

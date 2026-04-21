@@ -19,7 +19,7 @@ Votre mission est de trouver pourquoi.
 
 ### Indice
 
-Regardez du côté des styles : [styles.scss](../style.scss)
+Regardez du côté des styles : [styles.scss](../../../style.scss)
 
 ### Attention
 

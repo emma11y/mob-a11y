@@ -71,14 +71,18 @@
     background-color: var(--foreground);
     padding: 0.5rem 0.75rem;
     text-align: center;
-    font-family: var(--font-body);
-    font-size: 0.75rem;
+    font-family: var(--main-family);
+    font-size: 0.8rem;
     font-weight: 500;
     color: var(--background);
     width: 100%;
 
-    &:hover {
+    &:hover,
+    &:focus-visible {
+      outline-width: 0.25em;
       outline-color: var(--foreground);
+      background-color: var(--background);
+      color: var(--foreground);
     }
   }
 }

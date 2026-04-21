@@ -12,24 +12,6 @@ test.describe('Exercice 6 : Les boutons doivent avoir des labels explicites', ()
     await page.goto('http://localhost:5173/produits');
   });
 
-  test('Les boutons et liens doivent être explicites', async ({ page }) => {
-    await page.waitForLoadState('networkidle');
-
-    const main = page.locator('.main');
-
-    const buttonsCount = await main.locator('button').count();
-
-    if (buttonsCount === 0) {
-      throw new Error('❌  No button found on the main section');
-    }
-
-    await expectNoAxeViolationsWithId(page, [
-      'link-name',
-      'link-in-text-block',
-      'button-name',
-    ]);
-  });
-
   test("L'icône du bouton d'ouverture du panier doit avoir un texte alternatif", async ({
     page,
   }) => {
@@ -114,5 +96,25 @@ test.describe('Exercice 6 : Les boutons doivent avoir des labels explicites', ()
 
       expect(textButton).toBe(`Supprimer le produit ${textName} du panier`);
     }
+  });
+
+  test('Axe : Les boutons et liens doivent être explicites', async ({
+    page,
+  }) => {
+    await page.waitForLoadState('networkidle');
+
+    const main = page.locator('.main');
+
+    const buttonsCount = await main.locator('button').count();
+
+    if (buttonsCount === 0) {
+      throw new Error('❌  No button found on the main section');
+    }
+
+    await expectNoAxeViolationsWithId(page, [
+      'link-name',
+      'link-in-text-block',
+      'button-name',
+    ]);
   });
 });

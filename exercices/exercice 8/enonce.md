@@ -31,10 +31,11 @@ Essayez de naviguer avec un lecteur d’écran sur cette page : [http://localhos
 
 On peut naviguer de région en région grâce aux raccourcis :
 
-| Outil     | Zone suivante | Zone précédente |
-| --------- | ------------- | --------------- |
-| NVDA      | `D`           | `Maj + D`       |
-| VoiceOver | `W`           | `Maj + W`       |
+| Outil     | Zone suivante       | Zone précédente |
+| --------- | ------------------- | --------------- |
+| NVDA      | `D`                 | `Shift + D`     |
+| VoiceOver | `Ctrl + Option + U` |                 |
+| Orca      | `M`                 | `Shift + M`     |
 
 On peut afficher la liste de toutes les régions de la page :
 

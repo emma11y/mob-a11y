@@ -66,7 +66,9 @@ test.describe('Exercice 6 : Les boutons doivent avoir des labels explicites', ()
       const titleText = (await title.innerText()).trim();
       const textButton = (await button.textContent())?.trim();
 
-      await expect(textButton).toBe(`Ajouter ${titleText} dans le panier`);
+      await expect(textButton).toBe(
+        `Ajouter dans le panier le produit ${titleText}`,
+      );
     }
   });
 
@@ -94,7 +96,7 @@ test.describe('Exercice 6 : Les boutons doivent avoir des labels explicites', ()
       const textName = (await name.innerText()).trim();
       const textButton = (await button.textContent())?.trim();
 
-      expect(textButton).toBe(`Supprimer le produit ${textName} du panier`);
+      expect(textButton).toBe(`Supprimer du panier le produit ${textName}`);
     }
   });
 

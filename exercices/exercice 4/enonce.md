@@ -26,6 +26,27 @@ Identifier les éléments interactifs et leur attribuer le bon élément HTML :
 - Essayez d’activer les éléments avec **Entrée**
 - Observez ce qui ne fonctionne pas
 
+### Raccourcis
+
+Avec les lecteurs d'écran NVDA, VoiceOver ou Orca, on peut naviguer de boutons en boutons et de liens en liens grâce aux raccourcis :
+
+#### Boutons
+
+| Outil       | Zone suivante             | Zone précédente |
+| ----------- | ------------------------- | --------------- |
+| NVDA / Orca | `B`                       | `Shift + B`     |
+| VoiceOver   | `Ctrl + Option + Cmd + L` |                 |
+
+#### Liens
+
+- Pour passer d'un lien au suivant, appuyer sur la touche `K` comme _link_
+- Pour revenir au lien précédent : appuyer sur les touches `Shift + K`.
+
+| Outil       | Zone suivante             | Zone précédente |
+| ----------- | ------------------------- | --------------- |
+| NVDA / Orca | `K`                       | `Shift + K`     |
+| VoiceOver   | `Ctrl + Option + Cmd + L` |                 |
+
 ## Corriger le test avec Playwright
 
 Lancer la commande `npx playwright test exercice4`

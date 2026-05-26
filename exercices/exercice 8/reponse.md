@@ -55,7 +55,7 @@ Sans structure claire, la navigation devient beaucoup plus lente et confuse.
 
 **Lecteur d'écran**
 
-Avec les lecteurs d'écran NVDA et VoiceOver, on peut entendre naviguer entre les régions.
+Avec les lecteurs d'écran Orca, NVDA et VoiceOver, on peut entendre naviguer entre les régions.
 
 **Tests automatisés :**
 

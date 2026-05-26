@@ -46,12 +46,16 @@ Pensez “table des matières” plutôt que “taille de texte”.
 
 ## Tester avec un lecteur d’écran
 
-Avec NVDA ou VoiceOver :
+Avec NVDA ou Orca :
 
 - `H` → titre suivant
-- `Maj + H` → titre précédent
+- `Shift + H` → titre précédent
 
-Vous devriez pouvoir comprendre la page sans lire tout le contenu.
+Avec Voice Over :
+
+- `Ctrl + Option + H`
+
+Vous devriez pouvoir comprendre accéder direcrement aux titres sans lire tout le contenu.
 
 ## Toolbox
 

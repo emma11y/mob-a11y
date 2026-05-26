@@ -47,6 +47,20 @@ Un `<div>` ou un `<span>` :
 - Ne pas utiliser `role=""` pour compenser un mauvais choix d’élément
 - S’appuyer sur les comportements natifs plutôt que de les recréer
 
+## Tester avec un lecteur d’écran
+
+Avec NVDA et Orca :
+
+- `B` → bouton suivant
+- `Shift + B` → bouton précédent
+
+- `K` → lien suivant
+- `Shift + K` → lien précédent
+
+Avec VoiceOver : `Ctrl + Option + Command + L`
+
+Vous devriez pouvoir comprendre accéder direcrement aux boutons et liens sans lire tout le contenu.
+
 ### À noter
 
 Un bouton peut être stylé pour ressembler à un lien, et inversement.

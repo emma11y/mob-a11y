@@ -75,6 +75,26 @@ Si tous les boutons ont le même libellé, comment savoir quel produit ajouter d
 - Rendre les libellés spécifiques au contexte (ex : inclure le nom du produit)
 - Éviter les libellés génériques répétés
 
+### Nom accessible
+
+Selon le [critère 6.1 du RGAA](https://accessibilite.numerique.gouv.fr/methode/criteres-et-tests/#6), catégorie **Notes techniques**, lorsque l’intitulé visible est complété par une autre expression dans le nom accessible :
+
+- WCAG insiste sur le placement de l’intitulé visible au début du nom accessible sans toutefois réserver l’exclusivité de cet emplacement ;
+- WCAG considère comme un cas d’échec une correspondance non exacte de la chaîne de caractères de l’intitulé visible au sein du nom accessible.
+
+Par exemple, si l’on considère l’intitulé visible « Commander maintenant » complété dans le nom accessible par l’expression « produit X », on peut avoir les différents cas suivants :
+
+- « Commander maintenant produit X » est valide (bonne pratique) ;
+- « Produit X : commander maintenant » est valide ;
+- « Commander produit X maintenant » est **non valide**.
+
+C'est pourquoi il est déconseillé de mettre les libellés suivants :
+
+- Ajouter Chat mignon dans le panier
+- Supprimer Chat mignon du panier
+
+Le nom accessible est crucial pour les commandes vocales. Des personnes à mobilité réduite, qui ne peuvent pas naviguer avec le clavier, peuvent utiliser par exemple les logiciels comme `Voice Control` avec Apple ou `Nuance Dragon` sur Windows pour naviguer **avec leurs voix**.
+
 ### À noter
 
 Les attributs `title` et `aria-label` peuvent être utilisés, mais présentent certaines limites en accessibilité.

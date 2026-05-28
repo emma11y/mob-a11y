@@ -1,4 +1,4 @@
-# Exercice 9 : Formulaire
+# Exercice 09 : Formulaire
 
 Avec le lecteur d'écran, essayez de remplir le formulaire de paiement, et vérifiez que les libellés et les erreurs des champs du formulaire soient correctement vocalisés.
 
@@ -35,6 +35,6 @@ Fonctions à explorer :
 
 ## Corriger le test avec Playwright
 
-Lancer la commande `npx playwright test exercice9`
+Lancer la commande `npx playwright test exercice09`
 
-[Voir le test](../../tests/exercice9.spec.ts)
+[Voir le test](../../tests/exercice09.spec.ts)

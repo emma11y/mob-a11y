@@ -1,4 +1,4 @@
-# Réponse à l'exercice 1
+# Réponse à l'exercice 01
 
 ## Solution
 

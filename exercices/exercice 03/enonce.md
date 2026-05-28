@@ -1,4 +1,4 @@
-# Exercice 3 : Navigation au clavier
+# Exercice 03 : Navigation au clavier
 
 Essayez de naviguer sur cette page… sans souris / trackpad :
 
@@ -35,6 +35,6 @@ Ne supprimez jamais le focus sans proposer une alternative visible.
 
 Lancer la commande :
 
-`npx playwright test exercice3`
+`npx playwright test exercice03`
 
-[Voir le test](../../tests/exercice3.spec.ts)
+[Voir le test](../../tests/exercice03.spec.ts)

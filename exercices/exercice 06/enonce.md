@@ -1,4 +1,4 @@
-# Exercice 6 : Les boutons et leurs labels sont-ils explicites ?
+# Exercice 06 : Les boutons et leurs labels sont-ils explicites ?
 
 Avec un lecteur d’écran, vous parcourez les boutons de la page.
 
@@ -26,6 +26,6 @@ Rendre les boutons suivants accessibles et explicites :
 
 ## Corriger le test avec Playwright
 
-Lancer la commande `npx playwright test exercice6`
+Lancer la commande `npx playwright test exercice06`
 
-[Voir le test](../../tests/exercice6.spec.ts)
+[Voir le test](../../tests/exercice06.spec.ts)

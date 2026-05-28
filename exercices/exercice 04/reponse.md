@@ -1,4 +1,4 @@
-# Réponse à l'exercice 4 : Boutons et liens
+# Réponse à l'exercice 04 : Boutons et liens
 
 ## Solution
 

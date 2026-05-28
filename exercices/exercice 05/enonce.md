@@ -1,4 +1,4 @@
-# Exercice 5 : La langue
+# Exercice 05 : La langue
 
 Utiliser le lecteur d'écran pour tester la vocalisation et vérifier si le site est vocalisable dans la bonne langue : vous aurez des surprises !
 
@@ -19,6 +19,6 @@ Activez un lecteur d’écran et écoutez attentivement la lecture de la page.
 
 ## Corriger le test avec Playwright
 
-Lancer la commande `npx playwright test exercice5`
+Lancer la commande `npx playwright test exercice05`
 
-[Voir le test](../../tests/exercice5.spec.ts)
+[Voir le test](../../tests/exercice05.spec.ts)

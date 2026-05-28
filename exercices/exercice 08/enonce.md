@@ -1,4 +1,4 @@
-# Exercice 8 : La page doit être structurée grâce aux régions
+# Exercice 08 : La page doit être structurée grâce aux régions
 
 Imaginez naviguer sur ce site sans voir l’écran.
 
@@ -49,6 +49,6 @@ On peut afficher la liste de toutes les régions de la page :
 
 ## Corriger le test avec Playwright
 
-Lancer la commande `npx playwright test exercice8`
+Lancer la commande `npx playwright test exercice08`
 
-[Voir le test](../../tests/exercice8.spec.ts)
+[Voir le test](../../tests/exercice08.spec.ts)

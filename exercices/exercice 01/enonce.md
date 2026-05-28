@@ -1,4 +1,4 @@
-# Exercice 1 : Pour commencer doucement : Titres
+# Exercice 01 : Pour commencer doucement : Titres
 
 Imaginez arriver sur cette page avec un lecteur d’écran.
 
@@ -36,9 +36,9 @@ Avec VoiceOver : `Ctrl + Option + H`
 
 Lancer la commande :
 
-`npx playwright test exercice1`
+`npx playwright test exercice01`
 
-[Voir le test](../../tests/exercice1.spec.ts)
+[Voir le test](../../tests/exercice01.spec.ts)
 
 ### Playwright
 

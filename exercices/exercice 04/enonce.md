@@ -1,4 +1,4 @@
-# Exercice 4 : Bouton ou lien ?
+# Exercice 04 : Bouton ou lien ?
 
 Avant de procéder à la navigation au clavier et à l'usage du lecteur d'écran, nous devons nous assurer que les boutons et les liens respectent la sémantique HTML.
 
@@ -49,6 +49,6 @@ Avec les lecteurs d'écran NVDA, VoiceOver ou Orca, on peut naviguer de boutons 
 
 ## Corriger le test avec Playwright
 
-Lancer la commande `npx playwright test exercice4`
+Lancer la commande `npx playwright test exercice04`
 
-[Voir le test](../../tests/exercice4.spec.ts)
+[Voir le test](../../tests/exercice04.spec.ts)

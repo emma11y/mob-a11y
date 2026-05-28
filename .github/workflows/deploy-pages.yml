@@ -37,6 +37,7 @@ jobs:
         run: npm run build
         env:
           GITHUB_PAGES: 'true'
+          APP_BASE_PATH: ${{ vars.APP_BASE_PATH }}
 
       - name: Verify 404 fallback output
         run: test -f dist/404.html

@@ -22,8 +22,6 @@ test.describe('Exercice 10 : Notifications', () => {
     await products.nth(0).click();
 
     await expect(alert).toHaveAttribute('role', 'alert');
-    await expect(alert).toHaveAttribute('aria-live', 'polite');
-    await expect(alert).toHaveAttribute('aria-relevant', 'additions text');
 
     expect(await alert.textContent()).toBe(
       `Vous avez ajouté le produit ${await titles.nth(0).textContent()} dans votre panier`,

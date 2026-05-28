@@ -1,4 +1,4 @@
-# Exercice 7 : Images
+# Exercice 07 : Images
 
 Sur un site e-commerce, les libellés ne suffisent pas. Chaque fiche contient des photos et images qui
 donnent envie d'acheter.
@@ -19,6 +19,6 @@ Vérifier et corriger les alternatives textuelles des images.
 
 ## Corriger le test avec Playwright
 
-Lancer la commande `npx playwright test exercice7`
+Lancer la commande `npx playwright test exercice07`
 
-[Voir le test](../../tests/exercice7.spec.ts)
+[Voir le test](../../tests/exercice07.spec.ts)

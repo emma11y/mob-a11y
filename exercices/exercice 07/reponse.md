@@ -1,4 +1,4 @@
-# Réponse à l'exercice 7 : Images
+# Réponse à l'exercice 07 : Images
 
 ## Solution
 

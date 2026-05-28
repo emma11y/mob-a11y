@@ -1,4 +1,4 @@
-# Exercice 2 : Contrastes
+# Exercice 02 : Contrastes
 
 Vous êtes sur votre téléphone, en plein soleil.
 
@@ -57,6 +57,6 @@ Plus la différence est grande, plus le contraste est fort et la lecture est cla
 
 Lancer la commande :
 
-`npx playwright test exercice2`
+`npx playwright test exercice02`
 
-[Voir le test](../../tests/exercice2.spec.ts)
+[Voir le test](../../tests/exercice02.spec.ts)

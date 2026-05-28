@@ -1,6 +1,6 @@
 # Exercice 01 : Pour commencer doucement : Titres
 
-Imaginez arriver sur cette page avec un lecteur d’écran.
+Imaginez arriver sur la page **Produits** avec un lecteur d’écran.
 
 Vous cherchez à comprendre rapidement : “De quoi parle cette page ?”
 

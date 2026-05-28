@@ -122,4 +122,6 @@ Pour chaque exercice, vous devez résoudre les tests pour qu'ils passent au vert
 En bonus :
 
 - [Exercice 10 : Notifications (ou messages d'alertes)](exercices/exercice%2010/enonce.md)
-- [Exercice 11 : Conditions RGPD](exercices/exercice%2011/enonce.md) Pour conclure : [le boss final](exercices/final-axe/final.md).
+- [Exercice 11 : Conditions RGPD](exercices/exercice%2011/enonce.md)
+
+Pour conclure : [le boss final](exercices/final-axe/final.md).

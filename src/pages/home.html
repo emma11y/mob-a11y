@@ -10,8 +10,31 @@
     <p>Puis suivez les instructions du fichier <code>README.md</code>.</p>
 
     <h3>2. Installer les dépendances</h3>
-    <p>Dans le dossier du projet :</p>
+    <p>
+      Dans un terminal, dans le dossier du projet, lancer la commande suivante :
+    </p>
     <pre><code>npm install</code></pre>
+
+    <h4>Installer Playwright</h4>
+
+    <p>Ensuite, lancer les commandes suivantes sur le terminal :</p>
+
+    <pre><code>npm install -D @playwright/test@latest</code></pre>
+    <pre><code>npx playwright install --with-deps</code></pre>
+
+    <p>
+      Pour lancer les tests avec <span lang="en">Playwright</span> dans VS Code,
+      vous pouvez aussi installer l'extension
+      <a
+        href="https://marketplace.visualstudio.com/items?itemName=ms-playwright.playwright"
+        target="_blank"
+        rel="noreferrer noopener"
+      >
+        <span lang="en">Playwright Test for VSCode</span>
+        <span class="sr-only">(Nouvelle fenêtre)</span>
+        <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i
+      ></a>
+    </p>
 
     <h3>3. Installer un lecteur d’écran</h3>
     <p>
@@ -125,8 +148,8 @@
 
     <p>Paramètrage Orca :</p>
     <ul>
-      <li>CapsLock + espace</li>
-      <li>Terminal : orca -s</li>
+      <li><code>CapsLock + espace</code></li>
+      <li>Terminal : <code>orca -s</code></li>
     </ul>
 
     <h3>4. Prévoir des écouteurs</h3>
@@ -152,26 +175,11 @@
         <pre><code>npm run dev</code></pre>
       </li>
       <li>
-        les tests Playwright peuvent être exécutés
+        les tests <span lang="en">Playwright</span> peuvent être exécutés
         <pre><code>npm run tests</code></pre>
       </li>
       <li>le lecteur d’écran est fonctionnel</li>
     </ul>
-
-    <h4>Extension <span lang="en">Playwright</span> sur VS Code</h4>
-    <p>
-      Pour lancer les tests avec <span lang="en">Playwright</span>, vous pouvez
-      installer l'extension
-      <a
-        href="https://marketplace.visualstudio.com/items?itemName=ms-playwright.playwright"
-        target="_blank"
-        rel="noreferrer noopener"
-      >
-        <span lang="en">Playwright Test for VSCode</span>
-        <span class="sr-only">(Nouvelle fenêtre)</span>
-        <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i
-      ></a>
-    </p>
 
     <p>
       Si vous avez un doute, pas d’inquiétude : nous prendrons quelques minutes
@@ -243,14 +251,17 @@
     <ul>
       <li>Être navigable au clavier</li>
       <li>Être lisible par un lecteur d'écran</li>
-      <li>Ne faire remonter aucune erreur dans Axe / Playwright</li>
+      <li>
+        Ne faire remonter aucune erreur dans Axe /
+        <span lang="en">Playwright</span>
+      </li>
     </ul>
   </div>
   <div class="row">
     <h3>Comment faire les exercices ?</h3>
     <p>
       Vous avez le dossier <code>tests</code> qui vous permet de lancer les
-      tests Playwright.
+      tests <span lang="en">Playwright</span>.
     </p>
     <p>
       À chaque exercice, correspond un fichier de tests que nous avons préparé
@@ -260,5 +271,36 @@
       Pour chaque exercice, vous devez résoudre les tests pour qu'ils passent au
       vert, avant de passer à l'exercice suivant.
     </p>
+
+    <ul>
+      <li><strong>Exercice 01 : </strong>Pour commencer doucement : Titres</li>
+      <li><strong>Exercice 02 : </strong>Contrastes</li>
+      <li><strong>Exercice 03 : </strong>Navigation au clavier</li>
+      <li><strong>Exercice 04 : </strong>Bouton ou lien</li>
+      <li><strong>Exercice 05 : </strong>La langue</li>
+      <li>
+        <strong>Exercice 06 : </strong>Les boutons et leurs labels sont-ils
+        explicites ?
+      </li>
+      <li><strong>Exercice 07 : </strong>Images</li>
+      <li>
+        <strong>Exercice 08 : </strong>La page doit être structurée grâce aux
+        régions
+      </li>
+      <li><strong>Exercice 09 : </strong>Formulaire</li>
+    </ul>
+
+    <p>En bonus :</p>
+    <ul>
+      <li>
+        <strong>Exercice 10 : </strong>Notifications (ou messages d'alertes)
+      </li>
+      <li><strong>Exercice 11 : </strong>Conditions RGPD</li>
+    </ul>
+
+    <p>Pour conclure :</p>
+    <ul>
+      <li><strong>Le boss final : </strong>Axe core</li>
+    </ul>
   </div>
 </section>

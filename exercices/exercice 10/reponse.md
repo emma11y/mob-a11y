@@ -1,4 +1,4 @@
-# Réponse à l'exercice 10 : Liste
+# Réponse à l'exercice 10 : Listes
 
 ## Solution
 

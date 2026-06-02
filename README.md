@@ -118,10 +118,11 @@ Pour chaque exercice, vous devez résoudre les tests pour qu'ils passent au vert
 - [Exercice 07 : Images](exercices/exercice%2007/enonce.md)
 - [Exercice 08 : La page doit être structurée grâce aux régions](exercices/exercice%2008/enonce.md)
 - [Exercice 09 : Formulaire](exercices/exercice%2009/enonce.md)
+- [Exercice 10 : Listes](exercices/exercice%2010/enonce.md)
 
 En bonus :
 
-- [Exercice 10 : Notifications (ou messages d'alertes)](exercices/exercice%2010/enonce.md)
-- [Exercice 11 : Conditions RGPD](exercices/exercice%2011/enonce.md)
+- [Exercice 11 : Notifications (ou messages d'alertes)](exercices/exercice%2011/enonce.md)
+- [Exercice 12 : Conditions RGPD](exercices/exercice%2012/enonce.md)
 
 Pour conclure : [le boss final](exercices/final-axe/final.md).

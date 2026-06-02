@@ -1,4 +1,4 @@
-# Exercice 10 : Liste
+# Exercice 10 : Listes
 
 Imaginez que vous avez une liste de produits mais que vous ne savez pas combien d'éléments il y a sans voir l'écran.
 

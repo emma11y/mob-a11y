@@ -1,30 +1,59 @@
-import { expect, test } from '@playwright/test';
+import { test, expect } from '@playwright/test';
 
-// Definition of done
-// ------------------
-// 1: Détection d'erreur HTML 5
-// 2: Détection d'erreur WAI-ARIA
-// 3: Lecteur d'écran
-
-test.describe('Exercice 10 : Notifications', () => {
+test.describe('Exercice 10 : Liste', () => {
   test.beforeEach(async ({ page }) => {
     await page.goto('http://localhost:5173/produits');
   });
 
-  test(`Les notifications (ou messages d'alertes) doivent être vocalisés au lecteur d'écran`, async ({
+  test('La liste de produits doit être structurée en liste', async ({
     page,
   }) => {
-    const alert = page.locator('.alert');
+    const productGrid = page.locator('.product-grid');
+    const productGridTagName = await productGrid.evaluate(
+      (node) => node.tagName,
+    );
+    expect(productGridTagName).toBe('UL');
 
-    const products = page.locator('.add-to-cart');
-    const titles = page.locator('.card .title');
+    const productCards = page.locator('.product-cards');
+    const count = await productCards.count();
+    expect(count).not.toBe(6);
+
+    for (let i = 0; i < count; i++) {
+      const productCard = productCards.nth(i);
+
+      const productCardTagName = await productCard.evaluate(
+        (node) => node.tagName,
+      );
+      expect(productCardTagName).toBe('LI');
+    }
+  });
+
+  test('La liste de produits dans le panier doit être structurée en liste', async ({
+    page,
+  }) => {
+    const products = await page.locator('.add-to-cart');
 
     await products.nth(0).click();
+    await products.nth(3).click();
 
-    await expect(alert).toHaveAttribute('role', 'alert');
+    await page.getByTestId('cart-toggle').click();
 
-    expect(await alert.textContent()).toBe(
-      `Vous avez ajouté le produit ${await titles.nth(0).textContent()} dans votre panier`,
-    );
+    const items = page.locator('.items');
+
+    const itemsRoleName = await items.evaluate((node) => node.role);
+    expect(itemsRoleName).toBe('list');
+
+    const productCards = page.locator('.item');
+    const count = await productCards.count();
+    expect(count).toBe(2);
+
+    for (let i = 0; i < count; i++) {
+      const productCard = productCards.nth(i);
+
+      const productCardTagName = await productCard.evaluate(
+        (node) => node.role,
+      );
+      expect(productCardTagName).toBe('listitem');
+    }
   });
 });

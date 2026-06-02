@@ -47,7 +47,7 @@ function renderCartItems(cart: CartProduct[]): void {
   const html = cart
     .map(
       (item) => `
-    <div class="cart-item">
+    <div class="cart-item" role="listitem">
       <img src="${item.product.image}" alt="" class="cart-item-image" />
       <div class="cart-item-details">
         <div class="cart-item-name">${item.product.name}</div>

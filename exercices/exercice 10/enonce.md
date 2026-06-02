@@ -1,27 +1,30 @@
-# Exercice 10 : Notifications (ou messages d'alertes)
+# Exercice 10 : Liste
 
-Souvent, les personnes aveugles et malvoyantes ne reçoivent pas les messages d'alerte.
+Imaginez que vous avez une liste de produits mais que vous ne savez pas combien d'éléments il y a sans voir l'écran.
 
-Comment peuvent-elles savoir que le produit a bien été ajouté dans le panier, retiré du panier ou encore si le formulaire a été correctement soumis ou non ?
+Vous utilisez un lecteur d'écran pour vous déplacer rapidement dans les listes de la page.
+
+Mais ici... sur la page produit, quelque chose ne va pas.
+
+Impossible de savoir combien de produits il y a.
+
+Résultat : on ne peut pas accéder directement à la liste de produits.
 
 ## Votre mission
 
-Rendre les notifications accessibles par le lecteur d'écran
+Tranformer une liste de produits en une vraie liste de produits en HTML.
 
-## Avant de coder
+### Avant de code
 
-**Testez avec un lecteur d'écran**
+Essayer de naviguer avec un lecteur d'écran sur cette page : [http://localhost:5173/produits](http://localhost:5173/produits)
 
-Il y a, sur ce site, quatre notifications :
+On peut naviguer de région en région grâce aux rassourcis :
 
-- lorsqu'on ajoute le produit dans le panier
-- lorsqu'on retire le produit du panier
-- lorsqu'on soumet le formulaire en erreur
-- lorsqu'on soumet le formulaire avec succès
-
-## Astuce
-
-Le composant alert se trouve dans le fichier [layout](../../src/layout.html)
+| Outil       | Zone suivante                     | Zone précédente |
+| ----------- | --------------------------------- | --------------- |
+| NVDA & Orca | `L`                               | `Shift + L`     |
+|             | `I` (Element suivant de la liste) | `Shift + I`     |
+| VoiceOver   | `Ctrl + Option + Command + X`     |                 |
 
 ## Corriger le test avec Playwright
 

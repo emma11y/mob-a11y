@@ -6,9 +6,7 @@ Vous utilisez un lecteur d'écran pour vous déplacer rapidement dans les listes
 
 Mais ici... sur la page produit, quelque chose ne va pas.
 
-Impossible de savoir combien de produits il y a.
-
-Résultat : on ne peut pas accéder directement à la liste de produits.
+On ne peut pas accéder directement à la liste de produits.
 
 ## Votre mission
 

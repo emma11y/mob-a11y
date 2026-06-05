@@ -14,11 +14,13 @@ Résultat :
 
 ## Votre mission
 
-Corriger le titre :
+- Corriger le titre :
 
 "Des autocollants qui vous collent à la peau."
 
 En lui attribuant le bon niveau de **heading**.
+
+- Ensuite, attribuer les titres aux noms des produits.
 
 ## Avant de coder
 

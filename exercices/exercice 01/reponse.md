@@ -3,22 +3,25 @@
 ## Solution
 
 Le titre **“Des autocollants qui vous collent à la peau.”** doit être un `<h2>`.
+Les noms des produits doivent être des `<h3>`.
 
 Pourquoi ?  
 Parce qu’il existe déjà un titre principal `<h1>` sur la page : **STICKR**.  
-Ce sous-titre vient donc logiquement au niveau inférieur.
+Le sous-titre h2 vient donc logiquement au niveau inférieur.
+Ensuite, les noms des produits suivent le sous-titre.
 
 ## Ce que vérifiaient les tests
 
 Les tests validaient plusieurs choses :
 
-- Le texte est bien exposé comme un **heading** (via son rôle)
+- Le sous-titre est bien exposé comme un **heading** (via son rôle)
 - Il est **visible**
+- Les noms des produits sont bien des **titres**
 - La page respecte :
   - la présence d’un `<h1>`
   - une **hiérarchie cohérente des titres** (pas de saut de niveau)
 
-Si vous aviez mis un `<h3>` ou un `<div>`, le test (et Axe) aurait échoué.
+Si vous aviez mis un `<h3>` ou un `<div>` sur le sous-titre, le test (et Axe) aurait échoué.
 
 ## Pourquoi c’est important
 

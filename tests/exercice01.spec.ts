@@ -22,6 +22,22 @@ test.describe('Exercice 1 : Niveaux de titres', () => {
     await expect(title).toBeVisible();
   });
 
+  test('Le nom des produits doivent être des titres', async ({ page }) => {
+    await page.waitForLoadState('networkidle');
+
+    const titles = page.locator('.product-card .title');
+
+    const count = await titles.count();
+    expect(count).toBe(6);
+
+    for (let i = 0; i < count; i++) {
+      const title = titles.nth(i);
+
+      const titleTagName = await title.evaluate((node) => node.tagName);
+      expect(titleTagName).toBe('H3');
+    }
+  });
+
   test("Axe : Le titre doit respecter l'ordre des niveaux de titres.", async ({
     page,
   }) => {

@@ -20,7 +20,7 @@ Résultat :
 
 En lui attribuant le bon niveau de **heading**.
 
-- Ensuite, attribuer les titres aux noms des produits.
+- Ensuite, attribuer les titres aux noms des produits (qui se trouvent dans la fonction [productCardHTML](../../src/pages/products/products.ts)).
 
 ## Avant de coder
 

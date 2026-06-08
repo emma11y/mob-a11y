@@ -58,4 +58,35 @@ test.describe('Exercice 1 : Niveaux de titres', () => {
       'heading-order',
     ]);
   });
+
+  test('Il ne doit y avoir qu’un seul titre h1 dans la page', async ({
+    page,
+  }) => {
+    await page.waitForLoadState('networkidle');
+    const titles = page.locator('h1');
+    console.log(titles);
+    const count = await titles.count();
+    expect(count, 'Il ne doit y avoir qu’un seul titre h1 par page').toBe(1);
+  });
+
+  test('L’ordre des titres ne doit pas être descendant (ex: h2 avant h1)', async ({
+    page,
+  }) => {
+    const headings = await page.evaluate(() => {
+      const elements = Array.from(
+        document.querySelectorAll('h1, h2, h3, h4, h5, h6'),
+      );
+      return elements.map((el) => parseInt(el.tagName.substring(1)));
+    });
+
+    let foundLowerLevel = false;
+    for (const level of headings) {
+      if (level > 1) foundLowerLevel = true;
+      if (level === 1 && foundLowerLevel) {
+        throw new Error(
+          '❌ Erreur d’ordre : Un titre h1 a été trouvé après un titre de niveau inférieur (h2-h6)',
+        );
+      }
+    }
+  });
 });

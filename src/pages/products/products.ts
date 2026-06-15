@@ -129,23 +129,23 @@ function drawCart(open: boolean) {
 
 function productCardHTML(product: (typeof products)[number], index: number) {
   return `
-    <li class="product-card" style="animation-delay: ${index * 80}ms">
+    <div class="product-card" style="animation-delay: ${index * 80}ms">
       <div class="card">
         <div class="image">
-          <img src="${product.image}" alt="${product.alt}" loading="lazy" />
+          <img src="${product.image}" loading="lazy" />
         </div>
         <div class="body">
           <div class="header">
             <div>
-              <h3 class="title">${product.name}</h3>
+              <div class="title">${product.name}</div>
               <div class="category">${product.category}</div>
             </div>
             <div class="price">${product.price.toFixed(2)} €</div>
           </div>
-          <button type="button" class="add-to-cart" data-testId="add-to-cart" data-add-to-cart="${product.id}">Ajouter dans le panier <span class="sr-only">&nbsp; le produit ${product.name}</span></button>
+          <div class="add-to-cart" data-testId="add-to-cart" data-add-to-cart="${product.id}">Ajouter dans le panier</div>
         </div>
       </div>
-    </li>
+    </div>
   `;
 }
 
@@ -161,13 +161,13 @@ function cartDrawerHTML() {
           <div class="qty">Quantité : ${item.quantity}</div>
         </div>
         <div class="row-price">${(item.product.price * item.quantity).toFixed(2)} €</div>
-        <button type="button" class="button remove" data-testId="cart-remove" data-remove="${item.product.id}">
+        <div class="button remove" data-testId="cart-remove" data-remove="${item.product.id}">
            <svg aria-hidden="true" aria-hidden="true" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
                 <line x1="18" y1="6" x2="6" y2="18" />
                 <line x1="6" y1="6" x2="18" y2="18" />
             </svg>
-            <span class="sr-only">Supprimer du panier le produit ${item.product.name}</span>
-        </button>
+            <span class="sr-only">Supprimer le produit du panier</span>
+        </div>
       </div>
     `,
     )
@@ -183,7 +183,7 @@ function cartDrawerHTML() {
             <span class="total-label">Total</span>
             <span class="total-value">${totalPrice().toFixed(2)} €</span>
           </div>
-          <a href="${baseUrl}finaliser-votre-commande" class="checkout link">Payer</a>
+          <div role="link" onclick="javascript:window.location.href = '${baseUrl}finaliser-votre-commande'" class="checkout link">Payer</div>
         </div>
       `;
 
@@ -194,13 +194,12 @@ function cartDrawerHTML() {
         <div class="panel-content">
           <div class="panel-header">
             <h1 id="panel-title">Votre panier</h1>
-            <button type="button" class="button" id="cart-close" data-testid="cart-close" data-close-drawer>
+            <div class="button" id="cart-close" data-testid="cart-close" data-close-drawer>
               <svg aria-hidden="true" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
                 <line x1="18" y1="6" x2="6" y2="18" />
                 <line x1="6" y1="6" x2="18" y2="18" />
               </svg>
-              <span class="sr-only">Fermer le panier</span>
-            </button>
+            </div>
           </div>
           ${content}
         </div>
@@ -216,7 +215,7 @@ function productsPageHTML() {
 
     <div class="index-container">
       <div class="container product-grid-section">
-        <ul class="product-grid">${grid}</ul>
+        <div class="product-grid">${grid}</div>
       </div>
     </div>
   `;
@@ -243,14 +242,13 @@ function render() {
   if (!root) return;
   root.innerHTML = router();
   attachEventHandlers(root);
-  refreshCart();
 }
 
 function refreshCart() {
   // Cart
   const cartBadge = document.querySelector('.cart-badge');
   if (cartBadge) {
-    cartBadge.textContent = ` ${totalItems().toString() ?? '0'}`;
+    cartBadge.textContent = totalItems().toString() ?? '';
   }
 
   drawCart(state.isCartOpen);

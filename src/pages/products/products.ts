@@ -142,7 +142,7 @@ function productCardHTML(product: (typeof products)[number], index: number) {
             </div>
             <div class="price">${product.price.toFixed(2)} €</div>
           </div>
-          <button type="button" class="add-to-cart" data-testId="add-to-cart" data-add-to-cart="${product.id}">Ajouter dans le panier <span class="sr-only">&nbsp; le produit ${product.name}</span></button>
+          <button type="button" class="add-to-cart" data-testId="add-to-cart" data-add-to-cart="${product.id}">Ajouter dans le panier <span class="sr-only">le produit ${product.name}</span></button>
         </div>
       </div>
     </li>

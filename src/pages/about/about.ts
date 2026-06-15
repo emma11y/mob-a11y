@@ -1,4 +1,6 @@
 import './about.scss';
+import '../../components/feedback/feedback.ts';
+
 import emmanuelleImg from '../../assets/img/emmanuelle.jpg';
 import manonImg from '../../assets/img/manon.jpg';
 import shodoWhiteImg from '../../assets/img/logo-shodo.svg';

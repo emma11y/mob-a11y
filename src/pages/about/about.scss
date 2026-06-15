@@ -91,6 +91,17 @@
       }
     }
   }
+
+  .feedback {
+    text-align: center;
+
+    svg {
+      width: 25vw;
+      @media screen and (max-width: vars.$sm) {
+        width: 45vw;
+      }
+    }
+  }
 }
 
 html[data-selected-theme='dark'] {

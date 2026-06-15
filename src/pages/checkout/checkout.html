@@ -9,16 +9,16 @@
         <form id="shipping-form" class="form-group">
           <div class="form-row">
             <div class="form-field">
-              <label>Prénom</label>
+              <label for="firstName">Prénom</label>
               <input type="text" id="firstName" name="firstName" required />
             </div>
             <div class="form-field">
-              <label>Nom</label>
+              <label for="lastName">Nom</label>
               <input type="text" id="lastName" name="lastName" required />
             </div>
           </div>
           <div class="form-field">
-            <label>Email</label>
+            <label for="email">Email</label>
             <input
               type="email"
               id="email"
@@ -28,16 +28,16 @@
             />
           </div>
           <div class="form-field">
-            <label>Téléphone</label>
+            <label for="phone">Téléphone</label>
             <input type="tel" id="phone" name="phone" required maxlength="10" />
           </div>
           <div class="form-field">
-            <label>Adresse</label>
+            <label for="address">Adresse</label>
             <input type="text" id="address" name="address" required />
           </div>
           <div class="form-row">
             <div class="form-field">
-              <label>Code postal</label>
+              <label for="zipcode">Code postal</label>
               <input
                 type="text"
                 id="zipcode"
@@ -47,21 +47,19 @@
               />
             </div>
             <div class="form-field">
-              <label>Ville</label>
+              <label for="city">Ville</label>
               <input type="text" id="city" name="city" required />
             </div>
           </div>
           <div class="form-field">
-            <label>Pays</label>
-            <div class="country-dropdown" id="country" role="listbox" required>
-              <div class="country-selected"></div>
-              <div class="country-options">
-                <div role="option" class="country-option">France</div>
-                <div role="option" class="country-option">Belgique</div>
-                <div role="option" class="country-option">Suisse</div>
-                <div role="option" class="country-option">Luxembourg</div>
-              </div>
-            </div>
+            <label for="country">Pays</label>
+            <select id="country" name="country" required>
+              <option value=""></option>
+              <option value="france">France</option>
+              <option value="belgique">Belgique</option>
+              <option value="suisse">Suisse</option>
+              <option value="luxembourg">Luxembourg</option>
+            </select>
           </div>
         </form>
       </section>
@@ -71,11 +69,11 @@
         <h3 class="section-title">Informations de paiement</h3>
         <form id="payment-form" class="form-group">
           <div class="form-field">
-            <label>Nom sur la carte</label>
+            <label for="cardName">Nom sur la carte</label>
             <input type="text" id="cardName" name="cardName" required />
           </div>
           <div class="form-field">
-            <label>Numéro de carte</label>
+            <label for="cardNumber">Numéro de carte</label>
             <input
               type="text"
               id="cardNumber"
@@ -87,7 +85,7 @@
           </div>
           <div class="form-row">
             <div class="form-field">
-              <label>Expiration (MM/YY)</label>
+              <label for="expiry">Expiration (MM/YY)</label>
               <input
                 type="text"
                 id="expiry"
@@ -98,7 +96,7 @@
               />
             </div>
             <div class="form-field">
-              <label>CVV</label>
+              <label for="cvv">CVV</label>
               <input
                 type="text"
                 id="cvv"

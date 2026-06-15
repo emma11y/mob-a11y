@@ -205,6 +205,8 @@ function showError(fieldId: string, message: string): void {
   parent.appendChild(errorEl);
 
   // TODO add aria-describedBy and aria-invalid with field element
+  field.setAttribute('aria-describedBy', errorEl.id);
+  field.setAttribute('aria-invalid', 'true');
 }
 
 function clearErrors(): void {

@@ -103,22 +103,19 @@ function drawCart(open: boolean) {
         .querySelectorAll<HTMLElement>('[data-close-drawer]')
         .forEach((elt) =>
           elt.addEventListener('click', () => {
-            drawCart(false);
+            closeCart();
 
             const elt = document.querySelector('#cart-toggle') as HTMLElement;
             if (elt) {
               elt.focus();
             }
-
-            trap?.deactivate();
           }),
         );
 
-      // Deactivate focus trap when navigating to checkout via "Payer"
       const checkoutLink = document.querySelector<HTMLElement>('.checkout');
       if (checkoutLink) {
         checkoutLink.addEventListener('click', () => {
-          trap?.deactivate();
+          closeCart();
         });
       }
 
@@ -133,6 +130,12 @@ function drawCart(open: boolean) {
       cartElement.innerHTML = '';
     }
   }
+}
+
+function closeCart() {
+  trap?.deactivate();
+
+  drawCart(false);
 }
 
 function productCardHTML(product: (typeof products)[number], index: number) {

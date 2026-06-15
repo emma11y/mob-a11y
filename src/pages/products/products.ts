@@ -243,13 +243,14 @@ function render() {
   if (!root) return;
   root.innerHTML = router();
   attachEventHandlers(root);
+  refreshCart();
 }
 
 function refreshCart() {
   // Cart
   const cartBadge = document.querySelector('.cart-badge');
   if (cartBadge) {
-    cartBadge.textContent = totalItems().toString() ?? '';
+    cartBadge.textContent = ` ${totalItems().toString() ?? '0'} `;
   }
 
   drawCart(state.isCartOpen);

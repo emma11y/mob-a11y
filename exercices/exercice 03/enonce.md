@@ -1,40 +1,51 @@
-# Exercice 03 : Navigation au clavier
+# Exercice 03 : Bouton ou lien ?
 
-Essayez de naviguer sur cette page… sans souris / trackpad :
+Avant de procéder à la navigation au clavier et à l'usage du lecteur d'écran, nous devons nous assurer que les boutons et les liens respectent la sémantique HTML.
 
-Essayez d'accéder aux boutons et liens et d'enclencher les actions avec la touche **Entrée**.
+Or sur cette page, certains éléments interactifs ne sont pas correctement définis.
 
-Les personnes malvoyantes ne peuvent pas utiliser la souris, pour la simple raison qu'elles ne peuvent pas voir le curseur.
+Ils ressemblent à des boutons ou à des liens, mais ne se comportent pas comme tels :
 
-## Comment naviguer au clavier ?
+- ils ne sont pas toujours accessibles au clavier
+- leur rôle n’est pas correctement interprété par les technologies d’assistance
 
-Vous devez utiliser la touche **TAB** pour aller sur chaque élément recevant le focus : lien, bouton, champ de formulaire, menu, fenêtre de dialog.
-
-Normalement, sur la page principale, vous devez voir tous les liens ou boutons se mettre en valeur.
-Mais en naviguant avec la touche **TAB**, vous constatez que vous ne savez pas où vous êtes.
+Un `<div>` n’est pas un élément interactif, ça n'est ni un bouton ni un lien.
 
 ## Votre mission
 
-Votre mission est de trouver pourquoi.
+A vous de leur attribuer le bon attribut `<button>` ou `<a>` sur les boutons et liens.
 
-### Indice
+Identifier les éléments interactifs et leur attribuer le bon élément HTML :
 
-Regardez du côté des styles : [styles.scss](../../style.scss)
-
-### Attention
-
-Ne supprimez jamais le focus sans proposer une alternative visible.
+- `<button>` pour déclencher une action
+- `<a>` pour naviguer vers une autre page
 
 ## Avant de coder
 
-- Naviguez avec TAB
-- Essayez d’activer des éléments avec Entrée
-- Observez ce qui ne va pas
+- Naviguez au clavier avec la touche **TAB**
+- Essayez d’activer les éléments avec **Entrée**
+- Observez ce qui ne fonctionne pas
+
+### Raccourcis
+
+Avec les lecteurs d'écran NVDA, VoiceOver ou Orca, on peut naviguer de boutons en boutons et de liens en liens grâce aux raccourcis :
+
+#### Boutons
+
+| Outil       | Zone suivante             | Zone précédente |
+| ----------- | ------------------------- | --------------- |
+| NVDA / Orca | `B`                       | `Shift + B`     |
+| VoiceOver   | `Ctrl + Option + Cmd + L` |                 |
+
+#### Liens
+
+| Outil       | Zone suivante             | Zone précédente |
+| ----------- | ------------------------- | --------------- |
+| NVDA / Orca | `K`                       | `Shift + K`     |
+| VoiceOver   | `Ctrl + Option + Cmd + L` |                 |
 
 ## Corriger le test avec Playwright
 
-Lancer la commande :
-
-`npx playwright test exercice03`
+Lancer la commande `npx playwright test exercice03`
 
 [Voir le test](../../tests/exercice03.spec.ts)

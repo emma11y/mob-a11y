@@ -18,6 +18,15 @@ Dans le dossier du projet :
 
 `npm install`
 
+#### Installer Playwright
+
+Ensuite, lancer les commandes suivantes sur le terminal :
+
+`npm install -D @playwright/test@latest`
+`npx playwright install --with-deps`
+
+Pour lancer les tests avec Playwright dans VS Code, vous pouvez aussi installer l'extension Playwright Test for VSCode (Nouvelle fenêtre)
+
 ### 3. Installer un lecteur d’écran
 
 Cet atelier repose sur l’usage d’un lecteur d’écran. Installez-en un selon votre système :
@@ -25,6 +34,18 @@ Cet atelier repose sur l’usage d’un lecteur d’écran. Installez-en un selo
 - Windows : [NVDA](https://www.nvda.fr/)
 - MacOS : VoiceOver (déjà intégré)
 - Linux : [Orca](https://orca.gnome.org/)
+
+Pour démarrer le lecteur d'écran :
+
+- NVDA : `Ctrl+Alt+N`
+- VoiceOver : `Command + F5`
+- Orca : `Super + alt + S`
+
+Pour quitter le lecteur d'écran
+
+- NVDA : `Ins + Q`
+- VoiceOver : `Command + F5`
+- Orca : `Super + alt + S`
 
 Les raccourcis utiles sont disponibles dans la page [ressources](https://emma11y.github.io/mob-a11y/ressources).
 
@@ -34,11 +55,24 @@ Pour paramétrer la voix : allez dans `Préférences > Parole`. Vous pouvez choi
 
 Pour afficher la visionneuse de paroles (le sous-titrage) : allez dans `Outils > Visionneuse de paroles`.
 
+Les raccourcis complètes sont disponibles sur Deque : [Quick Reference Guide: NVDA for Windows Keyboard Commands](https://media.dequeuniversity.com/en/docs/screen-readers-and-input-methods/nvda-guide.pdf) (EN - PDF)
+
 #### Comment utiliser VoiceOver ?
 
 Pour paramétrer la voix : allez dans `Paramètres > Accessibilité > VoiceOver > Ouvrir l'utilitaire VoiceOver > Parole`. Vous pouvez choisir la voix, le débit de parole et le volume.
 
-Les raccourcis utiles sont disponibles dans la page ressources.
+Les raccourcis complètes sont disponibles sur Deque : [Quick Reference Guide: VoiceOver for iOS](https://media.dequeuniversity.com/en/docs/screen-readers-and-input-methods/voiceover-ios-guide.pdf) (EN - PDF)
+
+#### Comment utiliser Orca ?
+
+Vous trouvez des instructionns sur comment lancer [Orca](https://www.a11yproject.com/posts/getting-started-with-orca/) (EN)
+
+Vous avez également le tutoriel : [Orca screen reader tutorial](https://diff.wikimedia.org/2020/07/02/an-orca-screen-reader-tutorial/) (EN)
+
+Paramètrage Orca :
+
+- `CapsLock + espace`
+- `Terminal : orca -s`
 
 ### 4. Prévoir des écouteurs
 
@@ -78,8 +112,7 @@ Nous serons présentes pour faciliter, répondre à vos questions et vous accomp
 
 Les exercices suivent une **timebox** indicative mais non bloquante.
 
-Des exercices bonus (10 et 11) sont disponibles pour les groupes les plus
-rapides.
+Des exercices bonus (10 et 11) sont disponibles pour les groupes les plus rapides.
 
 Ce n'est pas grave si vous n'arrivez pas à tout faire, l'important c'est d'apprendre des choses à votre rythme.
 
@@ -104,15 +137,14 @@ Chaque étape du site doit remplir les critères suivants pour être valide :
 
 Vous avez le dossier `tests` qui vous permet de lancer les tests Playwright.
 
-A chaque exercice, correspond un fichier de tests que nous avons préparé
-pour vous.
+A chaque exercice, correspond un fichier de tests que nous avons préparé pour vous.
 
 Pour chaque exercice, vous devez résoudre les tests pour qu'ils passent au vert, avant de passer à l'exercice suivant.
 
 - [Exercice 01 : Pour commencer doucement : Titres](exercices/exercice%2001/enonce.md)
 - [Exercice 02 : Contrastes](exercices/exercice%2002/enonce.md)
-- [Exercice 03 : Navigation au clavier](exercices/exercice%2003/enonce.md)
-- [Exercice 04 : Bouton ou lien ?](exercices/exercice%2004/enonce.md)
+- [Exercice 03 : Bouton ou lien ?](exercices/exercice%2003/enonce.md)
+- [Exercice 04 : Navigation au clavier](exercices/exercice%2004/enonce.md)
 - [Exercice 05 : La langue](exercices/exercice%2005/enonce.md)
 - [Exercice 06 : Les boutons et leurs labels sont-ils explicites ?](exercices/exercice%2006/enonce.md)
 - [Exercice 07 : Images](exercices/exercice%2007/enonce.md)

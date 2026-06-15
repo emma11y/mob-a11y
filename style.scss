@@ -36,10 +36,10 @@
   --shadow-card-hover: 0 8px 24px rgba(30, 5, 15, 0.08);
 
   // COLORS TO CHANGE
-  --muted-foreground: #928c87;
-  --muted-foreground-50: #c3bfbb;
-  --muted-foreground-60: #bbb7b3;
-  --muted-foreground-80: #a6a19d;
+  --muted-foreground: #575451;
+  --muted-foreground-50: #535150;
+  --muted-foreground-60: #575553;
+  --muted-foreground-80: #585553;
 }
 
 [data-selected-theme='dark'] {
@@ -69,9 +69,9 @@
 
   // COLORS TO CHANGE
   --muted-foreground: #868079;
-  --muted-foreground-50: #534f4b;
-  --muted-foreground-60: #585450;
-  --muted-foreground-80: #6f6a64;
+  --muted-foreground-50: #b1a9a0;
+  --muted-foreground-60: #b4aca4;
+  --muted-foreground-80: #b4aca2;
 }
 
 html,
@@ -161,7 +161,8 @@ button,
   align-content: center;
   border: none;
 
-  &:hover {
+  &:hover,
+  &:focus-visible {
     outline: 0.15em solid var(--color);
     outline-offset: 0.15em;
   }
@@ -171,7 +172,8 @@ a,
 .link {
   color: var(--color);
 
-  &:hover {
+  &:hover,
+  &:focus-visible {
     text-decoration: none;
     outline: 0.2em solid var(--color);
     outline-offset: 0.2em;

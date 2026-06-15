@@ -129,23 +129,23 @@ function drawCart(open: boolean) {
 
 function productCardHTML(product: (typeof products)[number], index: number) {
   return `
-    <div class="product-card" style="animation-delay: ${index * 80}ms">
+    <li class="product-card" style="animation-delay: ${index * 80}ms">
       <div class="card">
         <div class="image">
-          <img src="${product.image}" loading="lazy" />
+          <img src="${product.image}" alt="${product.alt}" loading="lazy" />
         </div>
         <div class="body">
           <div class="header">
             <div>
-              <div class="title">${product.name}</div>
+              <h3 class="title">${product.name}</h3>
               <div class="category">${product.category}</div>
             </div>
             <div class="price">${product.price.toFixed(2)} €</div>
           </div>
-          <div class="add-to-cart" data-testId="add-to-cart" data-add-to-cart="${product.id}">Ajouter dans le panier</div>
+          <button type="button" class="add-to-cart" data-testId="add-to-cart" data-add-to-cart="${product.id}">Ajouter dans le panier <span class="sr-only">le produit ${product.name}</span></button>
         </div>
       </div>
-    </div>
+    </li>
   `;
 }
 
@@ -161,13 +161,13 @@ function cartDrawerHTML() {
           <div class="qty">Quantité : ${item.quantity}</div>
         </div>
         <div class="row-price">${(item.product.price * item.quantity).toFixed(2)} €</div>
-        <div class="button remove" data-testId="cart-remove" data-remove="${item.product.id}">
+        <button type="button" class="button remove" data-testId="cart-remove" data-remove="${item.product.id}">
            <svg aria-hidden="true" aria-hidden="true" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
                 <line x1="18" y1="6" x2="6" y2="18" />
                 <line x1="6" y1="6" x2="18" y2="18" />
             </svg>
-            <span class="sr-only">Supprimer le produit du panier</span>
-        </div>
+            <span class="sr-only">Supprimer du panier le produit ${item.product.name}</span>
+        </button>
       </div>
     `,
     )
@@ -183,7 +183,7 @@ function cartDrawerHTML() {
             <span class="total-label">Total</span>
             <span class="total-value">${totalPrice().toFixed(2)} €</span>
           </div>
-          <div role="link" onclick="javascript:window.location.href = '${baseUrl}finaliser-votre-commande'" class="checkout link">Payer</div>
+          <a href="${baseUrl}finaliser-votre-commande" class="checkout link">Payer</a>
         </div>
       `;
 
@@ -194,12 +194,13 @@ function cartDrawerHTML() {
         <div class="panel-content">
           <div class="panel-header">
             <h1 id="panel-title">Votre panier</h1>
-            <div class="button" id="cart-close" data-testid="cart-close" data-close-drawer>
+            <button type="button" class="button" id="cart-close" data-testid="cart-close" data-close-drawer>
               <svg aria-hidden="true" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
                 <line x1="18" y1="6" x2="6" y2="18" />
                 <line x1="6" y1="6" x2="18" y2="18" />
               </svg>
-            </div>
+              <span class="sr-only">Fermer le panier</span>
+            </button>
           </div>
           ${content}
         </div>
@@ -215,7 +216,7 @@ function productsPageHTML() {
 
     <div class="index-container">
       <div class="container product-grid-section">
-        <div class="product-grid">${grid}</div>
+        <ul class="product-grid">${grid}</ul>
       </div>
     </div>
   `;

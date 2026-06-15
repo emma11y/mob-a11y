@@ -1,51 +1,90 @@
-import { test, expect, ElementHandle } from '@playwright/test';
-import { getElementInfos } from './utils/debug-utils';
+import { test, expect, Locator } from '@playwright/test';
 
 // Definition of done
 // ------------------
-// 1: Détection d'erreurs automatiques avec Axe
-// 2: Détection d'erreur HTML 5
-// 3: Navigation clavier
-// 4: Lecteur d'écran
+// 1: Détection d'erreur HTML 5
+// 2: Navigation clavier
+// 3: Lecteur d'écran
 
-test.describe('Exercice 3 : Navigation au clavier', () => {
+test.describe('Exercice 3 : Boutons et liens', () => {
   test.beforeEach(async ({ page }) => {
     await page.goto('http://localhost:5173/produits');
   });
 
-  test('Tous les boutons et liens doivent avoir le pseudo-class :focus-visible', async ({
+  test("Le bouton d'ouverture du panier doit être un <button>", async ({
     page,
   }) => {
-    const visited = new Set<string>();
+    const toggle = page.getByTestId('cart-toggle');
+    const tagName = await toggle.evaluate((node) => node.tagName);
 
-    while (true) {
-      await page.keyboard.press('Tab');
+    expect(tagName).toBe('BUTTON');
+  });
 
-      const active = (await page.evaluateHandle(
-        () => document.activeElement,
-      )) as ElementHandle<HTMLElement>;
+  test("Les boutons d'ajout dans le panier doivent être des <button>", async ({
+    page,
+  }) => {
+    const buttons = page.getByTestId('add-to-cart');
 
-      const info = await getElementInfos(active);
+    await expect(buttons).toHaveCount(6);
 
-      // ignore les éléments non interactifs
-      if (info.tag !== 'BUTTON' && info.tag !== 'A') continue;
-
-      const uniqueId = `${info.tag}:${info.id}:${info.className}`;
-      if (visited.has(uniqueId)) break;
-      visited.add(uniqueId);
-
-      console.log(
-        `Élément focus : "${info.text}" | selector: ${uniqueId} | outline: ${info.outlineStyle} ${info.outlineWidth}`,
-      );
-
-      const hasVisibleFocus =
-        info.outlineStyle !== 'none' && info.outlineWidth !== '0px';
-
-      if (!hasVisibleFocus) {
-        throw new Error(
-          `L'élément "${info.text}" avec selector "${uniqueId}" n'a pas de focus visible (outlineStyle: ${info.outlineStyle}, outlineWidth: ${info.outlineWidth})`,
-        );
-      }
+    const count = await buttons.count();
+    for (let i = 0; i < count; i++) {
+      await checkTagHtml(buttons.nth(i), 'BUTTON');
     }
+  });
+
+  test('Le bouton de fermeture du panier doit être un <button>', async ({
+    page,
+  }) => {
+    await page.getByTestId('cart-toggle').click();
+
+    const cart = page.locator('id=cart');
+    const toggle = cart.getByTestId('cart-close');
+
+    await checkTagHtml(toggle, 'BUTTON');
+  });
+
+  test('Les boutons de suppression d\élément dans le panier doivent être des <button>', async ({
+    page,
+  }) => {
+    await page.getByTestId('add-to-cart').first().click();
+    await page.getByTestId('cart-toggle').click();
+
+    const cart = page.locator('id=cart');
+    const buttons = cart.getByTestId('cart-remove');
+
+    await expect(buttons).toHaveCount(1);
+
+    const count = await buttons.count();
+    for (let i = 0; i < count; i++) {
+      await checkTagHtml(buttons.nth(i), 'BUTTON');
+    }
+  });
+
+  test('Le lien pour payer doit être un <a>', async ({ page }) => {
+    await page.getByTestId('add-to-cart').first().click();
+    await page.getByTestId('cart-toggle').click();
+
+    const cart = page.locator('id=cart');
+    const cta = cart.getByText('Payer');
+
+    await checkTagHtml(cta, 'A');
+  });
+
+  async function checkTagHtml(locator: Locator, expected: string) {
+    const tagName = await locator.evaluate((node) => node.tagName);
+    expect(tagName).toBe(expected);
+  }
+
+  test('Pas de role=button ou role=link', async ({ page }) => {
+    await page.getByTestId('add-to-cart').first().click();
+    await page.getByTestId('cart-toggle').click();
+
+    const divButtons = await page
+      .locator(
+        'div[role="button"], div[role="link"], a[role="link"], button[role="link"], button[role="button"], button[role="link"]',
+      )
+      .elementHandles();
+    expect(divButtons.length).toBe(0);
   });
 });

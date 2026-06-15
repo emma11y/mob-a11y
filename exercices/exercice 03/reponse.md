@@ -1,65 +1,68 @@
-# Réponse à l'exercice 3 : Navigation au clavier
+# Réponse à l'exercice 03 : Boutons et liens
 
-## Solution 1
+## Solution
 
-Supprimer `outline: none` qui empêche de visualiser le focus sur les éléments interactifs.
+Utiliser les bons éléments HTML en fonction de l’intention :
 
-Par défaut, les navigateurs affichent un contour (outline) lorsqu’un élément reçoit le focus. Le retirer sans alternative rend la navigation au clavier très difficile, voire impossible.
+- `<button>` pour déclencher une action (ouvrir, fermer, ajouter, supprimer…)
+- `<a>` pour naviguer vers une autre page ou une autre ressource
 
-## Solution 2
+Remplacer tous les éléments inappropriés (`<div>`, `<span>`, etc.) par les éléments sémantiques correspondants.
 
-Si le style par défaut du focus ne convient pas visuellement, il est préférable de le personnaliser plutôt que de le supprimer.
+Supprimer également les usages détournés comme :
 
-On peut utiliser la pseudo-classe `:focus-visible` pour afficher un style de focus uniquement lors de la navigation au clavier.
-
-Par exemple, si un élément possède un style au `:hover`, il est recommandé d’ajouter un équivalent pour le focus :
-
-```css
-a:hover,
-a:focus-visible {
-  text-decoration: underline;
-}
+```html
+<div role="button"></div>
 ```
-
-Cela permet d’assurer une cohérence entre navigation souris et clavier.
 
 ## Ce que vérifiaient les tests
 
 Les tests vérifiaient que :
 
-- les éléments interactifs sont accessibles au clavier
-- le focus est visible lors de la navigation avec la touche **Tab**
+- les actions (ouvrir le panier, ajouter, supprimer, fermer) sont faites avec des `<button>`
+- le lien de paiement est bien un `<a>`
+- aucun `<div>` n’utilise `role="button"`
 
-Sans focus visible, il devient impossible de savoir où l’on se trouve dans la page.
+Ils s’appuient sur le nom de balise HTML (`>tagName>`) pour garantir l’usage des bons éléments.
+
+## Pourquoi c’est important
+
+Les éléments HTML natifs embarquent déjà des comportements essentiels :
+
+- accessibilité clavier (**Tab**, **Entrée**, **Espace**)
+- rôle sémantique exposé aux technologies d’assistance
+- comportements par défaut cohérents
+
+Un `<div>` ou un `<span>` :
+
+- n’est pas focusable par défaut
+- n’est pas annoncé correctement par un lecteur d’écran
+- nécessite de recréer tous les comportements (souvent mal faits ou incomplets)
 
 ## Bonnes pratiques
 
-- Ne jamais supprimer le focus sans proposer une alternative visible
-- Utiliser `:focus-visible` pour adapter l’affichage au clavier
-- S’assurer que tous les éléments interactifs sont atteignables avec **Tab**
-- Vérifier l’ordre de tabulation
+- Utiliser `<button>` pour toute action utilisateur·ice
+- Utiliser `<a>` uniquement pour la navigation
+- Ne pas détourner les éléments HTML de leur usage
+- Ne pas utiliser `role=""` pour compenser un mauvais choix d’élément
+- S’appuyer sur les comportements natifs plutôt que de les recréer
 
-## Good to know
+## Tester avec un lecteur d’écran
 
-Il existe plusieurs pseudo-classes CSS liées au focus :
+Avec NVDA et Orca :
 
-- `:focus` : s’applique lorsque l’élément reçoit le focus (souris ou clavier)
-- `:focus-visible` : s’applique uniquement lors d’une navigation au clavier
-- `:focus-within` : s’applique à un élément lorsqu’un de ses descendants a le focus
+- `B` → bouton suivant
+- `Shift + B` → bouton précédent
 
-## Toolbox
+- `K` → lien suivant
+- `Shift + K` → lien précédent
 
-**Lecteur d'écran**
+Avec VoiceOver : `Ctrl + Option + Command + L`
 
-Avec les lecteurs d'écran NVDA et VoiceOver, on peut naviguer d'élément en élément avec les touches **Tab**.
+Vous devriez pouvoir comprendre accéder direcrement aux boutons et liens sans lire tout le contenu.
 
-**Tests automatisés :**
+### À noter
 
-- [Playwright](https://playwright.dev/)
+Un bouton peut être stylé pour ressembler à un lien, et inversement.
 
-Utiliser `press('Tab')`. Exemple :
-
-```ts
-await page.getByRole('link', { name: 'Accueil' }).first().press('Tab');
-await page.getByRole('link', { name: 'Qui sommes nous' }).press('Tab');
-```
+Mais le choix de l’élément doit toujours être guidé par la fonction, pas par l’apparence.

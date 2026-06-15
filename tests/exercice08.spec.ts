@@ -16,24 +16,28 @@ test.describe('Exercice 8 : la page doit être structurée', () => {
     const banner = page.getByRole('banner');
     expect(await banner.count()).toEqual(1);
     expect(await banner.evaluate((node) => node.tagName)).toBe('HEADER');
+    expect(await banner.evaluate((node) => node.role)).toBe('banner');
   });
 
   test('Il doit y avoir au moins une région navigation', async ({ page }) => {
     const navigation = page.getByRole('navigation');
     expect(await navigation.count()).toBeGreaterThanOrEqual(1);
     expect(await navigation.evaluate((node) => node.tagName)).toBe('NAV');
+    expect(await navigation.evaluate((node) => node.role)).toBe('navigation');
   });
 
   test('La région principale doit être présente', async ({ page }) => {
     const main = page.getByRole('main');
     expect(await main.count()).toEqual(1);
     expect(await main.evaluate((node) => node.tagName)).toBe('MAIN');
+    expect(await main.evaluate((node) => node.role)).toBe('main');
   });
 
   test('La région du footer doit être présente', async ({ page }) => {
     const footer = page.getByRole('contentinfo');
     expect(await footer.count()).toEqual(1);
     expect(await footer.evaluate((node) => node.tagName)).toBe('FOOTER');
+    expect(await footer.evaluate((node) => node.role)).toBe('contentinfo');
   });
 
   test('Axe : la page doit être structurée grâce aux landmarks', async ({

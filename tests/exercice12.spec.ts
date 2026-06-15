@@ -72,4 +72,16 @@ test.describe('Exercice 12 : Conditions RGPD', () => {
       await expect(svg).toHaveAttribute('aria-hidden', 'true');
     }
   });
+
+  test('Pas de role=button ou role=link', async ({ page }) => {
+    await page.getByTestId('add-to-cart').first().click();
+    await page.getByTestId('cart-toggle').click();
+
+    const divButtons = await page
+      .locator(
+        'div[role="button"], div[role="link"], a[role="link"], a[role="button"], button[role="button"], button[role="link"]',
+      )
+      .elementHandles();
+    expect(divButtons.length).toBe(0);
+  });
 });

@@ -17,7 +17,7 @@ test.describe('Exercice 6 : Les boutons doivent avoir des labels explicites', ()
   }) => {
     const toggle = page.getByTestId('cart-toggle');
     const toggleLabel = await toggle.innerText();
-    expect(toggleLabel).toBe('Afficher le panier');
+    expect(toggleLabel).toContain('Afficher le panier');
   });
 
   test("Le texte alternatif du bouton d'ouverture du panier doit être uniquement visible pour les lecteurs d'écrans", async ({

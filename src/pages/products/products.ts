@@ -114,6 +114,14 @@ function drawCart(open: boolean) {
           }),
         );
 
+      // Deactivate focus trap when navigating to checkout via "Payer"
+      const checkoutLink = document.querySelector<HTMLElement>('.checkout');
+      if (checkoutLink) {
+        checkoutLink.addEventListener('click', () => {
+          trap?.deactivate();
+        });
+      }
+
       // Remove from cart
       document.querySelectorAll<HTMLElement>('[data-remove]').forEach((el) => {
         el.addEventListener('click', () => {

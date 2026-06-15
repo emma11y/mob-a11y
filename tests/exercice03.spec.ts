@@ -82,7 +82,7 @@ test.describe('Exercice 3 : Boutons et liens', () => {
 
     const divButtons = await page
       .locator(
-        'div[role="button"], div[role="link"], a[role="link"], button[role="link"], button[role="button"], button[role="link"]',
+        'div[role="button"], div[role="link"], a[role="link"], a[role="button"], button[role="button"], button[role="link"]',
       )
       .elementHandles();
     expect(divButtons.length).toBe(0);

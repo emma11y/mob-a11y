@@ -154,7 +154,7 @@ function cartDrawerHTML() {
   const itemsHTML = state.items
     .map(
       (item) => `
-      <div class="item">
+      <div class="item" role="listitem">
         <img src="${item.product.image}" class="thumb" />
         <div class="info">
           <div class="name">${item.product.name}</div>
@@ -177,7 +177,7 @@ function cartDrawerHTML() {
     state.items.length === 0
       ? `<div class="empty"><span class="text">Votre panier est vide</span></div>`
       : `
-        <div class="items">${itemsHTML}</div>
+        <div class="items" role="list">${itemsHTML}</div>
         <div class="panel-footer">
           <div class="total">
             <span class="total-label">Total</span>

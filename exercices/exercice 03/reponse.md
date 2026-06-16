@@ -1,68 +1,65 @@
-# Réponse à l'exercice 03 : Boutons et liens
+# Réponse à l'exercice 4 : Navigation au clavier
 
-## Solution
+## Solution 1
 
-Utiliser les bons éléments HTML en fonction de l’intention :
+Supprimer `outline: none` qui empêche de visualiser le focus sur les éléments interactifs.
 
-- `<button>` pour déclencher une action (ouvrir, fermer, ajouter, supprimer…)
-- `<a>` pour naviguer vers une autre page ou une autre ressource
+Par défaut, les navigateurs affichent un contour (outline) lorsqu’un élément reçoit le focus. Le retirer sans alternative rend la navigation au clavier très difficile, voire impossible.
 
-Remplacer tous les éléments inappropriés (`<div>`, `<span>`, etc.) par les éléments sémantiques correspondants.
+## Solution 2
 
-Supprimer également les usages détournés comme :
+Si le style par défaut du focus ne convient pas visuellement, il est préférable de le personnaliser plutôt que de le supprimer.
 
-```html
-<div role="button"></div>
+On peut utiliser la pseudo-classe `:focus-visible` pour afficher un style de focus uniquement lors de la navigation au clavier.
+
+Par exemple, si un élément possède un style au `:hover`, il est recommandé d’ajouter un équivalent pour le focus :
+
+```css
+a:hover,
+a:focus-visible {
+  text-decoration: underline;
+}
 ```
+
+Cela permet d’assurer une cohérence entre navigation souris et clavier.
 
 ## Ce que vérifiaient les tests
 
 Les tests vérifiaient que :
 
-- les actions (ouvrir le panier, ajouter, supprimer, fermer) sont faites avec des `<button>`
-- le lien de paiement est bien un `<a>`
-- aucun `<div>` n’utilise `role="button"`
+- les éléments interactifs sont accessibles au clavier
+- le focus est visible lors de la navigation avec la touche **Tab**
 
-Ils s’appuient sur le nom de balise HTML (`>tagName>`) pour garantir l’usage des bons éléments.
-
-## Pourquoi c’est important
-
-Les éléments HTML natifs embarquent déjà des comportements essentiels :
-
-- accessibilité clavier (**Tab**, **Entrée**, **Espace**)
-- rôle sémantique exposé aux technologies d’assistance
-- comportements par défaut cohérents
-
-Un `<div>` ou un `<span>` :
-
-- n’est pas focusable par défaut
-- n’est pas annoncé correctement par un lecteur d’écran
-- nécessite de recréer tous les comportements (souvent mal faits ou incomplets)
+Sans focus visible, il devient impossible de savoir où l’on se trouve dans la page.
 
 ## Bonnes pratiques
 
-- Utiliser `<button>` pour toute action utilisateur·ice
-- Utiliser `<a>` uniquement pour la navigation
-- Ne pas détourner les éléments HTML de leur usage
-- Ne pas utiliser `role=""` pour compenser un mauvais choix d’élément
-- S’appuyer sur les comportements natifs plutôt que de les recréer
+- Ne jamais supprimer le focus sans proposer une alternative visible
+- Utiliser `:focus-visible` pour adapter l’affichage au clavier
+- S’assurer que tous les éléments interactifs sont atteignables avec **Tab**
+- Vérifier l’ordre de tabulation
 
-## Tester avec un lecteur d’écran
+## Good to know
 
-Avec NVDA et Orca :
+Il existe plusieurs pseudo-classes CSS liées au focus :
 
-- `B` → bouton suivant
-- `Shift + B` → bouton précédent
+- `:focus` : s’applique lorsque l’élément reçoit le focus (souris ou clavier)
+- `:focus-visible` : s’applique uniquement lors d’une navigation au clavier
+- `:focus-within` : s’applique à un élément lorsqu’un de ses descendants a le focus
 
-- `K` → lien suivant
-- `Shift + K` → lien précédent
+## Toolbox
 
-Avec VoiceOver : `Ctrl + Option + Command + L`
+**Lecteur d'écran**
 
-Vous devriez pouvoir comprendre accéder direcrement aux boutons et liens sans lire tout le contenu.
+Avec les lecteurs d'écran NVDA et VoiceOver, on peut naviguer d'élément en élément avec les touches **Tab**.
 
-### À noter
+**Tests automatisés :**
 
-Un bouton peut être stylé pour ressembler à un lien, et inversement.
+- [Playwright](https://playwright.dev/)
 
-Mais le choix de l’élément doit toujours être guidé par la fonction, pas par l’apparence.
+Utiliser `press('Tab')`. Exemple :
+
+```ts
+await page.getByRole('link', { name: 'Accueil' }).first().press('Tab');
+await page.getByRole('link', { name: 'Qui sommes nous' }).press('Tab');
+```

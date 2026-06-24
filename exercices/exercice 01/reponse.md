@@ -56,7 +56,7 @@ Avec NVDA ou Orca :
 
 Avec Voice Over :
 
-- `Ctrl + Option + H`
+- `Ctrl + Option + Command + H`
 
 Vous devriez pouvoir comprendre accéder direcrement aux titres sans lire tout le contenu.
 

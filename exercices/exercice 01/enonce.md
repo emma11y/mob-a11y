@@ -32,7 +32,7 @@ Avec les lecteurs d'écran NVDA ou Orca, on peut naviguer de titre en titre grâ
 - Pour passer d'un titre au suivant, appuyer sur la touche `H` comme _heading_
 - Pour revenir au titre précédent : appuyer sur les touches `Shift + H`.
 
-Avec VoiceOver : `Ctrl + Option + H`
+Avec VoiceOver : `Ctrl + Commande + Option + H`
 
 ## Corriger le test avec Playwright
 

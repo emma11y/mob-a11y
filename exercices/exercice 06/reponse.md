@@ -4,7 +4,7 @@ Un bouton ou un lien ne doit pas seulement avoir une icône.
 
 Les icônes ne sont pas correctement restitués au lecteur d'écran, c'est pourquoi lorsqu'on a un `<svg>` ou `<i>`, on met l'attribut `aria-hidden="true"` pour que cet élément ne soit pas vocalisable au lecteur d'écran.
 
-C'est pourquoi on doit aussi ajouter
+C'est pourquoi on doit aussi ajouter :
 
 ```html
 <span class="sr-only">Libellé</span>
@@ -22,11 +22,29 @@ C'est pourquoi on doit aussi ajouter
   white-space: nowrap;
   border-width: 0;
 }
+
+.sr-only::before,
+.sr-only::after {
+  content: '\00a0'; /* espace insécable */
+}
 ```
 
-On vous invite à lire l'article [Title, ce faux ami de l’accessibilité](https://www.24joursdeweb.fr/2025/title-ce-faux-ami-de-l-accessibilite) rédigé par François-Xavier Lair sur 24 jours de web.
+A noter qu'on ajoute un espace insécable avant ou après sr-only dans le CSS. Car NVDA et JAWS ne prend pas en compte les simples espaces.
+Si on met ce code `<a>nouveau lien <span class="sr-fr-only">caché</span></a>`. Si on met un simple espace, NVDA l'ignore et va lire **nouveau liencaché**.
+Source : [Update the visually-hidden class](https://www.drupal.org/project/drupal/issues/3591112) (EN)
+Selon l'article, ce défaut est présent uniquement avec :
 
-On aborde l'attribut ARIA dans l'exercice suivant. L'attribut `aria-hidden="true"` permet de ne pas restituer vocalement l'élément.
+- JAWS et Chrome/Edge/IE11
+- NVDA et Chrome/Edge (mais pas NVDA et Firefox)
+
+### Pourquoi on met span class="sr-only" ?
+
+Pourquoi on doit préviligier `<span class="sr-only"></span>` plutôt qu'un `aria-label` ou `title` ?
+
+On vous invite à lire l'article [Title, ce faux ami de l’accessibilité](https://www.24joursdeweb.fr/2025/title-ce-faux-ami-de-l-accessibilite) rédigé par François-Xavier Lair sur 24 jours de web qui explique les différences entre `aria-label`, `title` et `span class="sr-only"`.
+
+Attention la classe `sr-only` est différent de l'attribut `aria-hidden="true"`. L'attribut `aria-hidden="true"` permet de ne pas restituer vocalement l'élément tandis que le `<span class="sr-only">` va vocaliser l'élément sans l'afficher visuellement.
+On aborde cet attribut `aria-hidden` dans l'exercice suivant.
 
 ## Solution
 

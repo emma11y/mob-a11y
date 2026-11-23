@@ -33,6 +33,10 @@
     height: 20rem;
     object-fit: cover;
 
+    &-bottom {
+      object-position: bottom;
+    }
+
     @media screen and (max-width: vars.$md) {
       width: 15rem;
       height: 15rem;
@@ -55,9 +59,9 @@
     .wrap-shodo {
       padding: 0.5em 1em;
 
-      #img-shodo-white,
-      #img-shodo-black {
-        display: none;
+      #logo-shodo svg {
+        width: 61px;
+        height: auto;
       }
     }
 
@@ -84,8 +88,9 @@
 
   .yeeso {
     text-align: center;
-    img {
+    svg {
       width: 25vw;
+      height: auto;
       @media screen and (max-width: vars.$sm) {
         width: 45vw;
       }
@@ -105,13 +110,35 @@
 }
 
 html[data-selected-theme='dark'] {
-  #img-shodo-white {
-    display: block !important;
+  #logo-shodo,
+  #logo-emma11y,
+  #logo-yeeso {
+    color: #fff;
   }
 }
 
 html[data-selected-theme='light'] {
-  #img-shodo-black {
-    display: block;
+  #logo-shodo {
+    color: #000;
+  }
+
+  #logo-emma11y {
+    color: #0e2465;
+  }
+
+  #logo-yeeso {
+    color: #2a3572;
+  }
+}
+
+#logo-emma11y {
+  text-align: center;
+
+  svg {
+    width: 25vw;
+    height: auto;
+    @media screen and (max-width: vars.$sm) {
+      width: 45vw;
+    }
   }
 }

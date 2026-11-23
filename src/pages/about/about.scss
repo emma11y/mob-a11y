@@ -135,10 +135,10 @@ html[data-selected-theme='light'] {
   text-align: center;
 
   svg {
-    width: 25vw;
+    width: 12vw;
     height: auto;
-    @media screen and (max-width: vars.$sm) {
-      width: 45vw;
+    @media screen and (max-width: vars.$lg) {
+      width: 25vw;
     }
   }
 }
